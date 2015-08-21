@@ -1,25 +1,13 @@
-High-Quality Programming Code – Team Projects
+High-Quality Programming Code – Labyrinth-4 Team
 =============================================
 
-Overview
---------
-
-You are given a **C\# software project** designed to implement some of the following **console-based games**:
-
--   Balloon Pops
--   Battle Field
--   Bulls and Cows
--   Game 15
--   Hangman
--   King Survival
--   Labyrinth
--   Minesweeper
-
-The project consists of one or more **source code files**, description and is provided here: <https://github.com/TelerikAcademy/High-Quality-Code/tree/master/Teamwork>.
-
-The name of your team is the same as the project you will start from.
-
-You need to refactor the project in order to **improve its quality** following the best practices learned in the course “[High-Quality Programming Code](http://telerikacademy.com/Courses/Courses/Details/244)” and to **implement unit tests** that ensure that the code has correct behavior.
+Team Labyrinth-4 members:
+  - Emil Tishanov
+  - Teodor Cholakov
+  - Chavdar Angelov
+  - Ivaylo Andonov
+  - Vasil Profirov
+  - Vasil Pavlov 
 
 Detailed Assignment Description
 -------------------------------
