@@ -24,9 +24,9 @@
                 Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
-
-            if ((this.scoreboard.Count == 0 ||
-                this.scoreboard.Count < MaxScorebordSize) && this.scoreboard.Last().Item1 < moveCount)
+            // REALLY MESSY Logic
+            if (this.scoreboard.Count == 0 ||
+                this.scoreboard.Count < MaxScorebordSize && this.scoreboard.Last().Item1 < moveCount)
             {
                 string nickname = this.ShowScoreboardInMessage();
                 this.scoreboard.Add(new Tuple<uint, string>(moveCount, nickname));
