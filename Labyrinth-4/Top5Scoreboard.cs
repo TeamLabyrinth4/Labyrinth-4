@@ -1,80 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth
+﻿namespace Labyrinth
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class Top5Scoreboard
     {
-        #region Fields
-
-        List<Tuple<uint, String>> scoreboard;
-
-        #endregion
+        // TODO IDEA: Create class Player instead using Tuple<uint, string>
+        // TODO IDEA: for Top5Scoreboard to use Singelton Pattern, beacuse we need only one object per game
+        private const int MaxScorebordSize = 5;
+        private IList<Tuple<uint, string>> scoreboard;
 
         public Top5Scoreboard()
         {
-            scoreboard = new List<Tuple<uint, string>>();
+            this.scoreboard = new List<Tuple<uint, string>>(MaxScorebordSize);
         }
 
         public void HandleScoreboard(uint moveCount)
         {
-            if (scoreboard.Count() >= 5 && moveCount > scoreboard.Last().Item1)
+            if (this.scoreboard.Count() >= MaxScorebordSize && moveCount > this.scoreboard.Last().Item1)
             {
-                Console.WriteLine("Your not good enough for the scoreboard :)");
+                Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
 
-            if (scoreboard.Count == 0 ||
-                (scoreboard.Count < 5) && scoreboard.Last().Item1 < moveCount)
+            if ((this.scoreboard.Count == 0 ||
+                this.scoreboard.Count < MaxScorebordSize) && this.scoreboard.Last().Item1 < moveCount)
             {
-                String nickname = ShowScoreboardInMessage();
-                scoreboard.Add(new Tuple<uint, string>(moveCount, nickname));
+                string nickname = this.ShowScoreboardInMessage();
+                this.scoreboard.Add(new Tuple<uint, string>(moveCount, nickname));
                 this.ShowScoreboard();
                 return;
             }
 
-            for (int i = 0; i < scoreboard.Count(); ++i)
+            for (int i = 0; i < this.scoreboard.Count(); ++i)
             {
-                if (moveCount <= scoreboard[i].Item1)
+                if (moveCount <= this.scoreboard[i].Item1)
                 {
-                    String nickname = ShowScoreboardInMessage();
-                    scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
-                    if (scoreboard.Count > 5)
+                    string nickname = this.ShowScoreboardInMessage();
+                    this.scoreboard.Insert(i, new Tuple<uint, string>(moveCount, nickname));
+                    if (this.scoreboard.Count > MaxScorebordSize)
                     {
-                        scoreboard.Remove(scoreboard.Last());
+                        this.scoreboard.Remove(this.scoreboard.Last());
                     }
+
                     this.ShowScoreboard();
                     break;
                 }
             }
         }
 
-        private String ShowScoreboardInMessage()
-        {
-            Console.Write("Please enter your name for the top scoreboard: ");
-            String nickname = Console.ReadLine();
-            return nickname;
-        }
-
         public void ShowScoreboard()
         {
-            if (scoreboard.Count == 0)
+            if (this.scoreboard.Count == 0)
             {
                 Console.WriteLine("The scoreboard is empty.");
                 return;
             }
 
-            for (int i = 0; i < scoreboard.Count; ++i)
+            for (int i = 0; i < this.scoreboard.Count; ++i)
             {
-                Console.WriteLine(  (i+1).ToString() + 
-                                    ". " +
-                                    scoreboard[i].Item2 +
-                                    " --> " + 
-                                    scoreboard[i].Item1.ToString() +
-                                    " moves.");
+                Console.WriteLine("{0}. {1} --> {2} moves", (i + 1).ToString(), this.scoreboard[i].Item2, this.scoreboard[i].Item1.ToString());
             }
+        }
+
+        private string ShowScoreboardInMessage()
+        {
+            Console.Write("Please enter your name for the top scoreboard: ");
+            string nickname = Console.ReadLine();
+            return nickname;
         }
     }
 }
