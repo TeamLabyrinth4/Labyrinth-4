@@ -36,57 +36,56 @@
         public void HandleInput(string input)
         {
             string lowerInput = input.ToLower();
-
-            switch (lowerInput)
+            
+            bool hasDownSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical + 1] == '-';
+            bool hasUpSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical - 1] == '-';
+            bool hasRightSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal + 1][this.matrix.MyPostionVertical] == '-';
+            bool hasLefttSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal - 1][this.matrix.MyPostionVertical] == '-';
+            
+            if (lowerInput == "d" && 
+                this.matrix.MyPostionVertical != MaximalVerticalPosition &&
+                hasDownSideDashNeighbour)
             {
-                case "l":
-                    if (!this.MoveLeft())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "r":
-                    if (!this.MoveRight())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "u":
-                    if (!this.MoveUp())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "d":
-                    if (!this.MoveDown())
-                    {
-                        Console.WriteLine("Invalid move!");
-                    }
-
-                break;
-
-                case "top":
+                this.matrix.MyPostionVertical++;
+                this.moveCount++;
+            } 
+            else if (lowerInput == "u" &&
+                    this.matrix.MyPostionVertical != MinimalVerticalPosition &&
+                    hasUpSideDashNeighbour)
+            {                
+                this.matrix.MyPostionVertical--;
+                this.moveCount++;
+            }
+            else if (lowerInput == "r" &&
+                    this.matrix.MyPostionHorizontal != MaximalHorizontalPosition &&
+                    hasRightSideDashNeighbour)
+            {
+                this.matrix.MyPostionHorizontal++;
+                this.moveCount++;
+            }
+            else if (lowerInput == "l" &&
+                  this.matrix.MyPostionHorizontal != MaximalHorizontalPosition &&
+                  hasLefttSideDashNeighbour)
+            {
+                this.matrix.MyPostionHorizontal--;
+                this.moveCount++;
+            }
+            else if (lowerInput == "top")
+            {
                     this.scoreboard.ShowScoreboard();
-                break;
-
-                case "restart":
+            }
+            else if (lowerInput == "restart")
+            {
                     this.Restart();
-                break;
-
-                case "exit":
+            }
+            else if (lowerInput == "exit")
+            {
                     Console.WriteLine("Good bye!");
                     System.Environment.Exit(0);
-                break;
-
-                default:
-                    Console.WriteLine("Invalid command!");
-                break;
+            }
+            else 
+            {
+                Console.WriteLine("Invalid move!");
             }
 
             this.IsFinished();
@@ -114,6 +113,19 @@
             this.moveCount = 0;
         }
 
+        // private bool MovePlayer(int playerHorizontalPosition, int playerVerticalPosition,int directionBoundary)
+        // {
+        //    if (!(playerHorizontalPosition == directionBoundary) &&
+        //        this.matrix.Matrix[playerHorizontalPosition][playerVerticalPosition + 1] == '-')
+        //    {
+        //        this.matrix.MyPostionVertical++;
+        //        this.moveCount++;
+        //        return true;
+        //    }
+        //
+        //    return false;
+        //
+        // }
         private bool MoveDown()
         {
             if (!(this.matrix.MyPostionVertical == MaximalVerticalPosition) &&
