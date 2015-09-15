@@ -1,5 +1,5 @@
 ﻿namespace Labyrinth
-{    
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -24,31 +24,20 @@
                 Console.WriteLine("You are not good enough for the scoreboard :)");
                 return;
             }
-            // REALLY MESSY Logic
-            if (this.scoreboard.Count == 0 ||
-                this.scoreboard.Count < MaxScorebordSize && this.scoreboard.Last().Score < moveCount)
+            else
             {
                 string nickname = this.GetUserName();
                 // Връзваме се директно с инстацията на Player!!!
+                var player = new Player(nickname, moveCount);
                 this.scoreboard.Add(new Player(nickname, moveCount));
+                this.scoreboard = this.scoreboard.OrderBy(x => x.Score).ToList();
+                if (this.scoreboard.Count > MaxScorebordSize)
+                {
+                    this.scoreboard.RemoveAt(this.scoreboard.Count - 1);
+                }
+
                 this.ShowScoreboard();
                 return;
-            }
-
-            for (int i = 0; i < this.scoreboard.Count(); ++i)
-            {
-                if (moveCount <= this.scoreboard[i].Score)
-                {
-                    string nickname = this.GetUserName();
-                    this.scoreboard.Insert(i, new Player(nickname, moveCount));
-                    if (this.scoreboard.Count > MaxScorebordSize)
-                    {
-                        this.scoreboard.Remove(this.scoreboard.Last());
-                    }
-
-                    this.ShowScoreboard();
-                    break;
-                }
             }
         }
 
