@@ -13,7 +13,7 @@
         public const int MinimalVerticalPosition = 0;
 
         private LabyrinthMatrix matrix;
-        private uint moveCount;
+        private int moveCount;
         private Top5Scoreboard scoreboard;       
 
         public LabyrinthProcesor()

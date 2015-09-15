@@ -47,6 +47,8 @@
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthProcesor.cs" />
     <Compile Include="Top5Scoreboard.cs" />
+    <Compile Include="Users\IPlayer.cs" />
+    <Compile Include="Users\Player.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
