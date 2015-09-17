@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Renderer
+﻿namespace Labyrinth.Renderer
 {
+    using System;
+
     public class ConsoleRenderer : IRenderer
     {
         public ConsoleRenderer()
