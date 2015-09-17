@@ -2,7 +2,7 @@ High-Quality Programming Code – Labyrinth-4 Team
 =============================================
 
 Team Labyrinth-4 members:
-  - Emil Tishanov
+  - Emil Tishinov
   - Teodor Cholakov
   - Chavdar Angelov
   - Ivaylo Andonov
