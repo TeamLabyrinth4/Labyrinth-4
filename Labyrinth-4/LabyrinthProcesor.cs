@@ -14,11 +14,11 @@
 
         private LabyrinthMatrix matrix;
         private int moveCount;
-        private Top5Scoreboard scoreboard;       
+        private ScoreBoardHandler scoreboard;       
 
         public LabyrinthProcesor()
         {
-            this.scoreboard = new Top5Scoreboard();
+            this.scoreboard = new ScoreBoardHandler();
             this.Restart();
         }
 
