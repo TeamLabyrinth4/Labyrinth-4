@@ -15,7 +15,7 @@
                 renderer.ShowLabyrinth(processor.Matrix);
                 processor.ShowInputMessage();
                 string input;
-                input = Console.ReadLine();
+                input = renderer.AddInput();
                 processor.HandleInput(input);
             }
         }

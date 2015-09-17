@@ -28,6 +28,12 @@
 
                 Console.WriteLine();
             }
-        }  
+        }
+
+        public string AddInput() 
+        {
+            string input = Console.ReadLine();
+            return input;
+        }
     }
 }
