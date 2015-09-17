@@ -4,5 +4,8 @@
     {
         void ShowLabyrinth(LabyrinthMatrix labyrinth);
         string AddInput();
+        void ShowWelcomeMessage();
+        void ShowInputMessage();
+        void ShowGoodByeMessage();
     }
 }

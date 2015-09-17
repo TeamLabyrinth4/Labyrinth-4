@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth
 {
+    using Labyrinth.Renderer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -14,11 +15,13 @@
 
         private LabyrinthMatrix matrix;
         private int moveCount;
-        private ScoreBoardHandler scoreboard;       
+        private ScoreBoardHandler scoreboard;
+        private IRenderer renderer;
 
-        public LabyrinthProcesor()
+        public LabyrinthProcesor(IRenderer renderer)
         {
             this.scoreboard = new ScoreBoardHandler();
+            this.renderer = renderer;
             this.Restart();
         }
 
@@ -30,7 +33,7 @@
 
         public void ShowInputMessage()
         {
-            Console.Write("Enter your move (L=left, R-right, U=up, D=down): ");
+            renderer.ShowInputMessage();
         }
 
         public void HandleInput(string input)
@@ -80,8 +83,8 @@
             }
             else if (lowerInput == "exit")
             {
-                    Console.WriteLine("Good bye!");
-                    System.Environment.Exit(0);
+                renderer.ShowGoodByeMessage();
+                System.Environment.Exit(0);
             }
             else 
             {
@@ -106,9 +109,7 @@
 
         private void Restart()
         {
-            Console.WriteLine();
-            Console.WriteLine("Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
-
+            this.renderer.ShowWelcomeMessage();  
             this.matrix = new LabyrinthMatrix();
             this.moveCount = 0;
         }

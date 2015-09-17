@@ -7,9 +7,9 @@
     {
         public static void Main()
         {
-            LabyrinthProcesor processor = new LabyrinthProcesor();
+           
             IRenderer renderer = new ConsoleRenderer();
-
+            LabyrinthProcesor processor = new LabyrinthProcesor(renderer);
             while (true)
             {
                 renderer.ShowLabyrinth(processor.Matrix);
