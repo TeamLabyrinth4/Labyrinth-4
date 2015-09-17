@@ -51,5 +51,9 @@
         {
             Console.WriteLine("Good bye!");
         }
+        public void ShowInvalidMoveMessage()
+        {
+            Console.WriteLine("Invalid move!");
+        }
     }
 }

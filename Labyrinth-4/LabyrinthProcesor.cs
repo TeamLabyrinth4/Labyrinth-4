@@ -88,7 +88,7 @@
             }
             else 
             {
-                Console.WriteLine("Invalid move!");
+                renderer.ShowInvalidMoveMessage();
             }
 
             this.IsFinished();

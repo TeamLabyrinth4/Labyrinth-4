@@ -7,5 +7,6 @@
         void ShowWelcomeMessage();
         void ShowInputMessage();
         void ShowGoodByeMessage();
+        void ShowInvalidMoveMessage();
     }
 }
