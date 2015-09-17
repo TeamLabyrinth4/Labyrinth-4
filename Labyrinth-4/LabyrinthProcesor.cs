@@ -100,8 +100,8 @@
                 this.matrix.MyPostionHorizontal == MaximalHorizontalPosition ||
                 this.matrix.MyPostionVertical == MinimalVerticalPosition ||
                 this.matrix.MyPostionVertical == MaximalVerticalPosition)
-            {
-                Console.WriteLine("Congratulations! You escaped in " + this.moveCount.ToString() + " moves.");
+            {                
+                renderer.ShowEscapeLabyrinthMessage(this.moveCount);
                 this.scoreboard.HandleScoreboard(this.moveCount);
                 this.Restart();
             }

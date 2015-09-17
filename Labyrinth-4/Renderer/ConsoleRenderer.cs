@@ -55,5 +55,9 @@
         {
             Console.WriteLine("Invalid move!");
         }
+        public void ShowEscapeLabyrinthMessage(int moves)
+        {
+            Console.WriteLine("Congratulations! You escaped in " + moves.ToString() + " moves.");
+        }
     }
 }

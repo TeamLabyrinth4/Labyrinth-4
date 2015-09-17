@@ -8,5 +8,6 @@
         void ShowInputMessage();
         void ShowGoodByeMessage();
         void ShowInvalidMoveMessage();
+        void ShowEscapeLabyrinthMessage(int moves);
     }
 }
