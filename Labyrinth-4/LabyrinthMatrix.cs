@@ -10,14 +10,10 @@
         public const int MatrixCols = 7;
 
         private char[][] matrix;
-        private int myPostionVertical;
-        private int myPostionHorizontal;
         private Random random = new Random();
 
         public LabyrinthMatrix()
         {
-            this.myPostionHorizontal = StartPositionVertical;
-            this.myPostionVertical = StartPositionHorizontal;
             this.matrix = this.CreateMatrix();
         }
 
@@ -30,32 +26,6 @@
             get
             {
                 return this.matrix;
-            }
-        }
-
-        public int MyPostionVertical
-        {
-            get
-            {
-                return this.myPostionVertical;
-            }
-
-            set
-            {
-                this.myPostionVertical = value;
-            }
-        }
-
-        public int MyPostionHorizontal
-        {
-            get
-            {
-                return this.myPostionHorizontal;
-            }
-
-            set
-            {
-                this.myPostionHorizontal = value;
             }
         }
 

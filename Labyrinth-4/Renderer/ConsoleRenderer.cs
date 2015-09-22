@@ -1,6 +1,7 @@
 ﻿namespace Labyrinth.Renderer
 {
     using System;
+    using Labyrinth.Users;
 
     public class ConsoleRenderer : IRenderer
     {
@@ -8,7 +9,7 @@
         {
         }
 
-        public void ShowLabyrinth(LabyrinthMatrix labyrinth)
+        public void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayer player)
         {
             Console.WriteLine();
             char[][] myMatrix = labyrinth.Matrix;
@@ -16,7 +17,7 @@
             {
                 for (int j = 0; j < myMatrix[i].Length; j++)
                 {
-                    if (i == labyrinth.MyPostionVertical && j == labyrinth.MyPostionHorizontal)
+                    if (i == player.PositionRow && j == player.PositionCol)
                     {
                         Console.Write("*");
                     }

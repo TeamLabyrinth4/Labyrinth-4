@@ -1,10 +1,11 @@
 ﻿namespace Labyrinth
 {
-    using Labyrinth.Renderer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Labyrinth.Renderer;
+    using Labyrinth.Users;
 
     public class LabyrinthProcesor
     {
@@ -17,11 +18,13 @@
         private int moveCount;
         private ScoreBoardHandler scoreboard;
         private IRenderer renderer;
+        private IPlayer player;
 
-        public LabyrinthProcesor(IRenderer renderer)
+        public LabyrinthProcesor(IRenderer renderer, IPlayer player)
         {
             this.scoreboard = new ScoreBoardHandler();
             this.renderer = renderer;
+            this.player = player;
             this.Restart();
         }
 
@@ -40,46 +43,46 @@
         {
             string lowerInput = input.ToLower();
             
-            bool hasDownSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical + 1] == '-';
-            bool hasUpSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical - 1] == '-';
-            bool hasRightSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal + 1][this.matrix.MyPostionVertical] == '-';
-            bool hasLefttSideDashNeighbour = this.matrix.Matrix[this.matrix.MyPostionHorizontal - 1][this.matrix.MyPostionVertical] == '-';
+            bool hasDownSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-';
+            bool hasUpSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-';
+            bool hasRightSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-';
+            bool hasLefttSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-';
             
             if (lowerInput == "d" && 
-                this.matrix.MyPostionVertical != MaximalVerticalPosition &&
+                this.player.PositionRow != MaximalVerticalPosition &&
                 hasDownSideDashNeighbour)
             {
-                this.matrix.MyPostionVertical++;
+                this.player.PositionRow++;
                 this.moveCount++;
             } 
             else if (lowerInput == "u" &&
-                    this.matrix.MyPostionVertical != MinimalVerticalPosition &&
+                    this.player.PositionRow != MinimalVerticalPosition &&
                     hasUpSideDashNeighbour)
-            {                
-                this.matrix.MyPostionVertical--;
+            {
+                this.player.PositionRow--;
                 this.moveCount++;
             }
             else if (lowerInput == "r" &&
-                    this.matrix.MyPostionHorizontal != MaximalHorizontalPosition &&
+                    this.player.PositionCol != MaximalHorizontalPosition &&
                     hasRightSideDashNeighbour)
             {
-                this.matrix.MyPostionHorizontal++;
+                this.player.PositionCol++;
                 this.moveCount++;
             }
             else if (lowerInput == "l" &&
-                  this.matrix.MyPostionHorizontal != MaximalHorizontalPosition &&
+                  this.player.PositionCol != MaximalHorizontalPosition &&
                   hasLefttSideDashNeighbour)
             {
-                this.matrix.MyPostionHorizontal--;
+                this.player.PositionCol--;
                 this.moveCount++;
             }
             else if (lowerInput == "top")
             {
-                    this.scoreboard.ShowScoreboard();
+                this.scoreboard.ShowScoreboard();
             }
             else if (lowerInput == "restart")
             {
-                    this.Restart();
+                this.Restart();
             }
             else if (lowerInput == "exit")
             {
@@ -96,10 +99,10 @@
 
         private void IsFinished()
         {
-            if (this.matrix.MyPostionHorizontal == MinimalHorizontalPosition ||
-                this.matrix.MyPostionHorizontal == MaximalHorizontalPosition ||
-                this.matrix.MyPostionVertical == MinimalVerticalPosition ||
-                this.matrix.MyPostionVertical == MaximalVerticalPosition)
+            if (this.player.PositionCol == MinimalHorizontalPosition ||
+                this.player.PositionCol == MaximalHorizontalPosition ||
+                this.player.PositionRow == MinimalVerticalPosition ||
+                this.player.PositionRow == MaximalVerticalPosition)
             {                
                 renderer.ShowEscapeLabyrinthMessage(this.moveCount);
                 this.scoreboard.HandleScoreboard(this.moveCount);
@@ -129,10 +132,10 @@
         // }
         private bool MoveDown()
         {
-            if (!(this.matrix.MyPostionVertical == MaximalVerticalPosition) &&
-                this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical + 1] == '-')
+            if (!(this.player.PositionRow == MaximalVerticalPosition) &&
+                this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-')
             {
-                this.matrix.MyPostionVertical++;
+                this.player.PositionRow++;
                 this.moveCount++;
                 return true;
             }
@@ -142,10 +145,10 @@
 
         private bool MoveUp()
         {
-            if (!(this.matrix.MyPostionVertical == MinimalVerticalPosition) &&
-                this.matrix.Matrix[this.matrix.MyPostionHorizontal][this.matrix.MyPostionVertical - 1] == '-')
+            if (!(this.player.PositionRow == MinimalVerticalPosition) &&
+                this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-')
             {
-                this.matrix.MyPostionVertical--;
+                this.player.PositionRow--;
                 this.moveCount++;
                 return true;
             }
@@ -155,10 +158,10 @@
 
         private bool MoveRight()
         {
-            if (!(this.matrix.MyPostionHorizontal == MaximalHorizontalPosition) &&
-                 this.matrix.Matrix[this.matrix.MyPostionHorizontal + 1][this.matrix.MyPostionVertical] == '-')
+            if (!(this.player.PositionCol == MaximalHorizontalPosition) &&
+                 this.matrix.Matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-')
             {
-                this.matrix.MyPostionHorizontal++;
+                this.player.PositionCol++;
                 this.moveCount++;
                 return true;
             }
@@ -168,10 +171,10 @@
 
         private bool MoveLeft()
         {
-            if (!(this.matrix.MyPostionHorizontal == MinimalHorizontalPosition) &&
-                this.matrix.Matrix[this.matrix.MyPostionHorizontal - 1][this.matrix.MyPostionVertical] == '-')
+            if (!(this.player.PositionCol == MinimalHorizontalPosition) &&
+                this.matrix.Matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-')
             {
-                this.matrix.MyPostionHorizontal--;
+                this.player.PositionCol--;
                 this.moveCount++;
                 return true;
             }
