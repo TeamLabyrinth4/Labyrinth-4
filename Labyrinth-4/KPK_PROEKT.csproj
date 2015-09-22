@@ -46,6 +46,7 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthProcesor.cs" />
+    <Compile Include="Messenger.cs" />
     <Compile Include="Renderer\ConsoleRenderer.cs" />
     <Compile Include="Renderer\IRenderer.cs" />
     <Compile Include="Scoreboard\IScoreboard.cs" />

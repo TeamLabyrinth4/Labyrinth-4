@@ -18,10 +18,12 @@
         private ScoreBoardHandler scoreboard;
         private IRenderer renderer;
         private IPlayer player;
+        private Messenger messenger;
 
         public LabyrinthProcesor(IRenderer renderer, IPlayer player)
         {
             this.scoreboard = new ScoreBoardHandler();
+            this.messenger = new Messenger();
             this.renderer = renderer;
             this.player = player;
             this.Restart();
@@ -35,7 +37,7 @@
 
         public void ShowInputMessage()
         {
-            renderer.ShowInputMessage();
+            renderer.ShowMessage(Messenger.InputMessage);
         }
 
         public void HandleInput(string input)
@@ -85,12 +87,12 @@
             }
             else if (lowerInput == "exit")
             {
-                renderer.ShowGoodByeMessage();
+                renderer.ShowMessage(Messenger.GoodBye);
                 System.Environment.Exit(0);
             }
             else 
             {
-                renderer.ShowInvalidMoveMessage();
+                renderer.ShowMessage(Messenger.InvalidMoveMessage);
             }
 
             this.IsFinished();
@@ -103,7 +105,7 @@
                 this.player.PositionRow == MinimalVerticalPosition ||
                 this.player.PositionRow == MaximalVerticalPosition)
             {
-                renderer.ShowEscapeLabyrinthMessage(this.player.Score);
+                renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
                 this.scoreboard.HandleScoreboard(this.player.Score);
                 this.Restart();
             }
@@ -111,7 +113,7 @@
 
         private void Restart()
         {
-            this.renderer.ShowWelcomeMessage();  
+            this.renderer.ShowMessage(Messenger.WelcomeMessage);  
             this.matrix = new LabyrinthMatrix();
             this.player.Score = 0;
         }
