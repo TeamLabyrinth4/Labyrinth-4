@@ -15,7 +15,7 @@
         public void HandleScoreboard(int moveCount)
         {
             string nickname = this.GetUserName();
-            var player = new Player(nickname, moveCount);
+            var player = Player.Instace(nickname, moveCount);
             scoreboard.AddToScoreBoard(player);
             this.ShowScoreboard();
         }

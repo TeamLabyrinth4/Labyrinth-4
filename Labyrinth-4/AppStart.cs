@@ -10,7 +10,7 @@
         {
            
             IRenderer renderer = new ConsoleRenderer();
-            IPlayer player = new Player("Test User", 0);
+            IPlayer player = Player.Instace("Test User", 0);
             LabyrinthProcesor processor = new LabyrinthProcesor(renderer, player);
             while (true)
             {

@@ -15,7 +15,6 @@
         public const int MinimalVerticalPosition = 0;
 
         private LabyrinthMatrix matrix;
-        private int moveCount;
         private ScoreBoardHandler scoreboard;
         private IRenderer renderer;
         private IPlayer player;
@@ -53,28 +52,28 @@
                 hasDownSideDashNeighbour)
             {
                 this.player.PositionRow++;
-                this.moveCount++;
+                this.player.Score++;
             } 
             else if (lowerInput == "u" &&
                     this.player.PositionRow != MinimalVerticalPosition &&
                     hasUpSideDashNeighbour)
             {
                 this.player.PositionRow--;
-                this.moveCount++;
+                this.player.Score++;
             }
             else if (lowerInput == "r" &&
                     this.player.PositionCol != MaximalHorizontalPosition &&
                     hasRightSideDashNeighbour)
             {
                 this.player.PositionCol++;
-                this.moveCount++;
+                this.player.Score++;
             }
             else if (lowerInput == "l" &&
                   this.player.PositionCol != MaximalHorizontalPosition &&
                   hasLefttSideDashNeighbour)
             {
                 this.player.PositionCol--;
-                this.moveCount++;
+                this.player.Score++;
             }
             else if (lowerInput == "top")
             {
@@ -103,9 +102,9 @@
                 this.player.PositionCol == MaximalHorizontalPosition ||
                 this.player.PositionRow == MinimalVerticalPosition ||
                 this.player.PositionRow == MaximalVerticalPosition)
-            {                
-                renderer.ShowEscapeLabyrinthMessage(this.moveCount);
-                this.scoreboard.HandleScoreboard(this.moveCount);
+            {
+                renderer.ShowEscapeLabyrinthMessage(this.player.Score);
+                this.scoreboard.HandleScoreboard(this.player.Score);
                 this.Restart();
             }
         }
@@ -114,7 +113,7 @@
         {
             this.renderer.ShowWelcomeMessage();  
             this.matrix = new LabyrinthMatrix();
-            this.moveCount = 0;
+            this.player.Score = 0;
         }
 
         // private bool MovePlayer(int playerHorizontalPosition, int playerVerticalPosition,int directionBoundary)
@@ -136,7 +135,7 @@
                 this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-')
             {
                 this.player.PositionRow++;
-                this.moveCount++;
+                this.player.Score++;
                 return true;
             }
 
@@ -149,7 +148,7 @@
                 this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-')
             {
                 this.player.PositionRow--;
-                this.moveCount++;
+                this.player.Score++;
                 return true;
             }
 
@@ -162,7 +161,7 @@
                  this.matrix.Matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-')
             {
                 this.player.PositionCol++;
-                this.moveCount++;
+                this.player.Score++;
                 return true;
             }
 
@@ -175,7 +174,7 @@
                 this.matrix.Matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-')
             {
                 this.player.PositionCol--;
-                this.moveCount++;
+                this.player.Score++;
                 return true;
             }
 
