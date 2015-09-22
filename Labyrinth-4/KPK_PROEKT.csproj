@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStart.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthProcesor.cs" />
     <Compile Include="Messenger.cs" />

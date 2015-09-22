@@ -7,18 +7,9 @@
     public static class AppStart
     {
         public static void Main()
-        {           
-            IRenderer renderer = new ConsoleRenderer();
-            IPlayer player = Player.Instace("Test User", 0);
-            LabyrinthProcesor processor = new LabyrinthProcesor(renderer, player);
-            while (true)
-            {
-                renderer.ShowLabyrinth(processor.Matrix, player);
-                processor.ShowInputMessage();
-                string input;
-                input = renderer.AddInput();
-                processor.HandleInput(input);
-            }
+        {
+            var game = Game.Instance;
+            game.GameRun();
         }
     }
 }
