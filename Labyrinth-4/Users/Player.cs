@@ -2,17 +2,21 @@
 {
     using System;
 
-    internal class Player : IPlayer
+    internal sealed class Player : IPlayer
     {
+        private static volatile Player instance;
+        private static object syncLock = new object();
+
         private string name;
         private int score;
         private int positionRow;
         private int positionCol;
 
-        public Player(string name, int score)
+        // TODO Remove int moveCount from Constructur when Player is created in the Facade at the start pf the game
+        private Player(string name, int moveCount)
         {
             this.Name = name;
-            this.Score = score;
+            this.Score = moveCount;
         }
 
         public string Name
@@ -75,6 +79,22 @@
 
                 this.score = value;
             }
+        }
+
+        public static Player Instace(string name, int moveCount)
+        {
+            if (instance == null)
+            {
+                lock (syncLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new Player(name, moveCount);
+                    }
+                }
+            }
+
+            return instance;
         }
     }
 }
