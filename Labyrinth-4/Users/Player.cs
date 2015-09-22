@@ -13,8 +13,6 @@
         private int score;
         private int positionRow;
         private int positionCol;
-        private string p1;
-        private int p2;
 
         // TODO Remove int moveCount from Constructur when Player is created in the Facade at the start pf the game
         private Player(string name, int moveCount)
