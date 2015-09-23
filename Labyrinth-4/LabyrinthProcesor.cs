@@ -106,7 +106,7 @@
                 this.player.PositionRow == MaximalVerticalPosition)
             {
                 renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                this.scoreboard.HandleScoreboard(this.player.Score);
+                this.scoreboard.HandleScoreboard(this.player);
                 this.Restart();
             }
         }
@@ -116,6 +116,8 @@
             this.renderer.ShowMessage(Messenger.WelcomeMessage);  
             this.matrix = new LabyrinthMatrix();
             this.player.Score = 0;
+            this.player.PositionCol = 3;
+            this.player.PositionRow = 3;
         }
 
         // private bool MovePlayer(int playerHorizontalPosition, int playerVerticalPosition,int directionBoundary)

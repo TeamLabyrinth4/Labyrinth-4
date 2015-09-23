@@ -14,11 +14,10 @@
         private int positionRow;
         private int positionCol;
 
-        // TODO Remove int moveCount from Constructur when Player is created in the Facade at the start pf the game
-        private Player(string name, int moveCount)
+        private Player(string name)
         {
             this.Name = name;
-            this.Score = moveCount;
+            this.Score = 0;
             this.PositionRow = StartPositionVertical;
             this.PositionCol = StartPositionHorizontal;
         }
@@ -85,7 +84,7 @@
             }
         }
 
-        public static Player Instace(string name, int moveCount)
+        public static Player Instace(string name)
         {
             if (instance == null)
             {
@@ -93,7 +92,7 @@
                 {
                     if (instance == null)
                     {
-                        instance = new Player(name, moveCount);
+                        instance = new Player(name);
                     }
                 }
             }

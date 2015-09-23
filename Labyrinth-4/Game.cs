@@ -17,7 +17,8 @@ namespace Labyrinth
         public Game()
         {
             this.renderer = new ConsoleRenderer();
-            this.player = Player.Instace("Test User", 0);
+            string username = GetUserName();
+            this.player = Player.Instace(username);
             this.processor = new LabyrinthProcesor(renderer, player);
         }
 
@@ -44,6 +45,12 @@ namespace Labyrinth
                 input = renderer.AddInput();
                 processor.HandleInput(input);
             }
+        }
+        private string GetUserName()
+        {
+            Console.Write("Please enter your name for the top scoreboard: ");
+            string userName = Console.ReadLine();
+            return userName;
         }
     }
 }
