@@ -14,7 +14,7 @@ namespace Labyrinth
         private IPlayer player;
         private LabyrinthProcesor processor;
 
-        public Game()
+        private Game()
         {
             this.renderer = new ConsoleRenderer();
             string username = GetUserName();

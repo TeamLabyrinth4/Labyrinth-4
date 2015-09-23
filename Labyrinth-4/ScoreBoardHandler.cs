@@ -1,12 +1,10 @@
 ﻿namespace Labyrinth
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
+
     using Users;
     using Labyrinth.Scoreboard;
 
-    // TODO this class creates the class Player, which is terrebly WRONG!
     public class ScoreBoardHandler
     {
         private IScoreboard scoreboard = new LocalScoreBoard();
