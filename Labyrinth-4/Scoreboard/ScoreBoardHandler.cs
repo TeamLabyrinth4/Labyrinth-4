@@ -5,7 +5,7 @@
     using Users;
     using Labyrinth.Scoreboard;
 
-    public class ScoreBoardHandler : IScoreBoardHandler
+    public class ScoreBoardHandler : IScoreBoardObserver
     {
         private IScoreboard scoreboard;
 
@@ -14,7 +14,7 @@
             this.scoreboard = new LocalScoreBoard();
         }
 
-        public void HandleScoreboard(IPlayerCloneable player)
+        public void Update(IPlayerCloneable player)
         {
             scoreboard.AddToScoreBoard(player);
             this.ShowScoreboard();

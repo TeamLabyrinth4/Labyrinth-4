@@ -1,25 +1,24 @@
-﻿using Labyrinth.Renderer;
-using Labyrinth.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth
+﻿namespace Labyrinth
 {
+    using Labyrinth.Renderer;
+    using Labyrinth.Users;
+    using System;
+
     public class Game
     {
         private static Game gameInstance;
         private IRenderer renderer;
         private IPlayerCloneable player;
         private LabyrinthProcesor processor;
+        private IScoreBoardObserver scoreBoardHandler;
 
         private Game()
         {
             this.renderer = new ConsoleRenderer();
             string username = GetUserName();
-            this.player = new Player(username);
-            this.processor = new LabyrinthProcesor(renderer, player);
+            this.player = new Player(username);            
+            this.scoreBoardHandler = new ScoreBoardHandler();
+            this.processor = new LabyrinthProcesor(renderer, player, scoreBoardHandler);
         }
 
         public static Game Instance

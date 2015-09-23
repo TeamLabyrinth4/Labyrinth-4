@@ -7,7 +7,7 @@
     using Labyrinth.Renderer;
     using Labyrinth.Users;
 
-    public class LabyrinthProcesor
+    public class LabyrinthProcesor : Subject
     {
         public const int MaximalHorizontalPosition = 6;
         public const int MinimalHorizontalPosition = 0;
@@ -15,18 +15,19 @@
         public const int MinimalVerticalPosition = 0;
 
         private LabyrinthMatrix matrix;
-        private IScoreBoardHandler scoreboard;
         private IRenderer renderer;
         private IPlayerCloneable player;
         private Messenger messenger;
+        private IScoreBoardObserver scoreBoardHandler; 
 
-        public LabyrinthProcesor(IRenderer renderer, IPlayerCloneable player)
+        public LabyrinthProcesor(IRenderer renderer, IPlayerCloneable player, IScoreBoardObserver scoreBoardHandler)
         {
-            this.scoreboard = new ScoreBoardHandler();
+            this.Attach(scoreBoardHandler);
             this.messenger = new Messenger();
+            this.scoreBoardHandler = scoreBoardHandler;
             this.renderer = renderer;
             this.player = player;
-            this.Restart();
+            this.Restart();            
         }
 
         public LabyrinthMatrix Matrix
@@ -79,7 +80,7 @@
             }
             else if (lowerInput == "top")
             {
-                this.scoreboard.ShowScoreboard();
+                scoreBoardHandler.ShowScoreboard();
             }
             else if (lowerInput == "restart")
             {
@@ -107,7 +108,7 @@
             {
                 renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
                 var clone = (IPlayerCloneable)this.player.Clone();
-                this.scoreboard.HandleScoreboard(clone);
+                this.Notify(clone);
                 this.Restart();
             }
         }
@@ -184,6 +185,14 @@
             }
 
             return false;
+        }
+
+        public override void Notify(IPlayerCloneable player)
+        {
+            foreach (IScoreBoardObserver observer in this.observers)
+            {
+                observer.Update(player);
+            }
         }
     }
 }

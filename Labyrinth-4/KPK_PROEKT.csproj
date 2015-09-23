@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AppStart.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthProcesor.cs" />
     <Compile Include="Messenger.cs" />
@@ -52,7 +53,8 @@
     <Compile Include="Renderer\IRenderer.cs" />
     <Compile Include="Scoreboard\IScoreboard.cs" />
     <Compile Include="Scoreboard\LocalScoreBoard.cs" />
-    <Compile Include="ScoreBoardHandler.cs" />
+    <Compile Include="Scoreboard\ScoreBoardHandler.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="Users\IPlayerCloneable.cs" />
     <Compile Include="Users\Player.cs" />
   </ItemGroup>
