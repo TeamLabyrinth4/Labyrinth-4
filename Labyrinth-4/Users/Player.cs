@@ -6,15 +6,13 @@
     {
         private const int StartPositionVertical = 3;
         private const int StartPositionHorizontal = 3;
-        private static volatile Player instance;
-        private static object syncLock = new object();
 
         private string name;
         private int score;
         private int positionRow;
         private int positionCol;
 
-        private Player(string name)
+        public Player(string name)
         {
             this.Name = name;
             this.Score = 0;
@@ -84,20 +82,9 @@
             }
         }
 
-        public static Player Instace(string name)
+        public object Clone()
         {
-            if (instance == null)
-            {
-                lock (syncLock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new Player(name);
-                    }
-                }
-            }
-
-            return instance;
+            return this.MemberwiseClone();
         }
     }
 }

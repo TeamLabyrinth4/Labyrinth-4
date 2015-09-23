@@ -106,7 +106,8 @@
                 this.player.PositionRow == MaximalVerticalPosition)
             {
                 renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                this.scoreboard.HandleScoreboard(this.player);
+                var clone = (IPlayer)this.player.Clone();
+                this.scoreboard.HandleScoreboard(clone);
                 this.Restart();
             }
         }

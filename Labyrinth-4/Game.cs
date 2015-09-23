@@ -18,7 +18,7 @@ namespace Labyrinth
         {
             this.renderer = new ConsoleRenderer();
             string username = GetUserName();
-            this.player = Player.Instace(username);
+            this.player = new Player(username);
             this.processor = new LabyrinthProcesor(renderer, player);
         }
 

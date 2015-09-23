@@ -9,5 +9,7 @@
         int PositionRow { get; set; }
 
         int PositionCol { get; set; }
+
+        object Clone();
     }
 }
