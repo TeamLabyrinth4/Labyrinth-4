@@ -11,7 +11,7 @@ namespace Labyrinth
     {
         private static Game gameInstance;
         private IRenderer renderer;
-        private IPlayer player;
+        private IPlayerCloneable player;
         private LabyrinthProcesor processor;
 
         private Game()

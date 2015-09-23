@@ -9,7 +9,7 @@
     {
         private IScoreboard scoreboard = new LocalScoreBoard();
 
-        public void HandleScoreboard(IPlayer player)
+        public void HandleScoreboard(IPlayerCloneable player)
         {
             scoreboard.AddToScoreBoard(player);
             this.ShowScoreboard();

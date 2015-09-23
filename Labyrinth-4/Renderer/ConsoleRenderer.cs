@@ -9,7 +9,7 @@
         {
         }
 
-        public void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayer player)
+        public void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayerCloneable player)
         {
             Console.WriteLine();
             char[][] myMatrix = labyrinth.Matrix;

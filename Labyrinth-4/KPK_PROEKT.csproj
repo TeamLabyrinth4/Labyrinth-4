@@ -53,7 +53,7 @@
     <Compile Include="Scoreboard\IScoreboard.cs" />
     <Compile Include="Scoreboard\LocalScoreBoard.cs" />
     <Compile Include="ScoreBoardHandler.cs" />
-    <Compile Include="Users\IPlayer.cs" />
+    <Compile Include="Users\IPlayerClonable.cs" />
     <Compile Include="Users\Player.cs" />
   </ItemGroup>
   <ItemGroup>

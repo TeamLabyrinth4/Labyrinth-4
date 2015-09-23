@@ -17,10 +17,10 @@
         private LabyrinthMatrix matrix;
         private ScoreBoardHandler scoreboard;
         private IRenderer renderer;
-        private IPlayer player;
+        private IPlayerCloneable player;
         private Messenger messenger;
 
-        public LabyrinthProcesor(IRenderer renderer, IPlayer player)
+        public LabyrinthProcesor(IRenderer renderer, IPlayerCloneable player)
         {
             this.scoreboard = new ScoreBoardHandler();
             this.messenger = new Messenger();
@@ -106,7 +106,7 @@
                 this.player.PositionRow == MaximalVerticalPosition)
             {
                 renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                var clone = (IPlayer)this.player.Clone();
+                var clone = (IPlayerCloneable)this.player.Clone();
                 this.scoreboard.HandleScoreboard(clone);
                 this.Restart();
             }

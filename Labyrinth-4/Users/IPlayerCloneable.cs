@@ -1,6 +1,6 @@
 ﻿namespace Labyrinth.Users
 {
-    public interface IPlayer
+    public interface IPlayerCloneable
     {
         string Name { get; set; }
 
