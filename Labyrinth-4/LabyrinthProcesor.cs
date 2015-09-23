@@ -15,7 +15,7 @@
         public const int MinimalVerticalPosition = 0;
 
         private LabyrinthMatrix matrix;
-        private ScoreBoardHandler scoreboard;
+        private IScoreBoardHandler scoreboard;
         private IRenderer renderer;
         private IPlayerCloneable player;
         private Messenger messenger;
