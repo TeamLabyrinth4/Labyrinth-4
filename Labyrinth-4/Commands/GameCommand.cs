@@ -30,7 +30,7 @@ namespace Labyrinth.Commands
                 case "restart": labyrinthProcesor.Restart(); break;
 
                 case "exit": renderer.ShowMessage(Messenger.GoodBye); System.Environment.Exit(0); break;
-
+                      
                 default: renderer.ShowMessage(Messenger.InvalidMoveMessage); break;
             }
         }

@@ -39,7 +39,7 @@ namespace Labyrinth.Commands
             switch (this.command)
             {
                 case "d": this.MoveUp(); break;
-
+                      
                 case "u": this.MoveDown(); break;
 
                 case "l": this.MoveRight(); break;
