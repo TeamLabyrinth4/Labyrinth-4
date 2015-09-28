@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+
     using Labyrinth.Renderer;
     using Labyrinth.Users;
 
@@ -18,7 +19,7 @@
         private IRenderer renderer;
         private IPlayerCloneable player;
         private Messenger messenger;
-        private IScoreBoardObserver scoreBoardHandler; 
+        private IScoreBoardObserver scoreBoardHandler;
 
         public LabyrinthProcesor(IRenderer renderer, IPlayerCloneable player, IScoreBoardObserver scoreBoardHandler)
         {
@@ -27,7 +28,7 @@
             this.scoreBoardHandler = scoreBoardHandler;
             this.renderer = renderer;
             this.player = player;
-            this.Restart();            
+            this.Restart();
         }
 
         public LabyrinthMatrix Matrix
@@ -44,56 +45,24 @@
         public void HandleInput(string input)
         {
             string lowerInput = input.ToLower();
-            
-            bool hasDownSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-';
-            bool hasUpSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-';
-            bool hasRightSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-';
-            bool hasLefttSideDashNeighbour = this.matrix.Matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-';
-            
-            if (lowerInput == "d" && 
-                this.player.PositionRow != MaximalVerticalPosition &&
-                hasDownSideDashNeighbour)
+
+            switch (lowerInput)
             {
-                this.player.PositionRow++;
-                this.player.Score++;
-            } 
-            else if (lowerInput == "u" &&
-                    this.player.PositionRow != MinimalVerticalPosition &&
-                    hasUpSideDashNeighbour)
-            {
-                this.player.PositionRow--;
-                this.player.Score++;
-            }
-            else if (lowerInput == "r" &&
-                    this.player.PositionCol != MaximalHorizontalPosition &&
-                    hasRightSideDashNeighbour)
-            {
-                this.player.PositionCol++;
-                this.player.Score++;
-            }
-            else if (lowerInput == "l" &&
-                  this.player.PositionCol != MaximalHorizontalPosition &&
-                  hasLefttSideDashNeighbour)
-            {
-                this.player.PositionCol--;
-                this.player.Score++;
-            }
-            else if (lowerInput == "top")
-            {
-                scoreBoardHandler.ShowScoreboard();
-            }
-            else if (lowerInput == "restart")
-            {
-                this.Restart();
-            }
-            else if (lowerInput == "exit")
-            {
-                renderer.ShowMessage(Messenger.GoodBye);
-                System.Environment.Exit(0);
-            }
-            else 
-            {
-                renderer.ShowMessage(Messenger.InvalidMoveMessage);
+                case "d": MoveDown(); break;
+
+                case "u": MoveUp(); break;
+
+                case "l": MoveLeft(); break;
+
+                case "r": MoveRight(); break;
+
+                case "top": scoreBoardHandler.ShowScoreboard(); break;
+
+                case "restart": this.Restart(); break;
+
+                case "exit": renderer.ShowMessage(Messenger.GoodBye); System.Environment.Exit(0); break;
+
+                default: renderer.ShowMessage(Messenger.InvalidMoveMessage); break;
             }
 
             this.IsFinished();
@@ -115,7 +84,7 @@
 
         private void Restart()
         {
-            this.renderer.ShowMessage(Messenger.WelcomeMessage);  
+            this.renderer.ShowMessage(Messenger.WelcomeMessage);
             this.matrix = new LabyrinthMatrix();
             this.player.Score = 0;
             this.player.PositionCol = 3;
@@ -135,6 +104,7 @@
         //    return false;
         //
         // }
+
         private bool MoveDown()
         {
             if (!(this.player.PositionRow == MaximalVerticalPosition) &&

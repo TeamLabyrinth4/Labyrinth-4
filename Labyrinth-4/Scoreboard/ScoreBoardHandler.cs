@@ -1,8 +1,8 @@
 ﻿namespace Labyrinth
 {
     using System;
-
     using Users;
+
     using Labyrinth.Scoreboard;
 
     public class ScoreBoardHandler : IScoreBoardObserver
