@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStart.cs" />
+    <Compile Include="Commands\UserCommand.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
     <Compile Include="LabyrinthMatrix.cs" />

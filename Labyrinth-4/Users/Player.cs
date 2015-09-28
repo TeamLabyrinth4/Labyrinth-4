@@ -82,6 +82,30 @@
             }
         }
 
+        private void MoveDown()
+        {
+            this.PositionRow++;
+            this.Score++;
+        }
+
+        private void MoveUp()
+        {
+            this.PositionRow--;
+            this.Score++;
+        }
+
+        private void MoveRight()
+        {
+            this.PositionCol++;
+            this.Score++;
+        }
+
+        private void MoveLeft()
+        {
+            this.PositionCol--;
+            this.Score++;
+        }
+
         public object Clone()
         {
             return this.MemberwiseClone();
