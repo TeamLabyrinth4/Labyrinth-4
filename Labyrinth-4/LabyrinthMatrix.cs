@@ -17,10 +17,6 @@
             this.matrix = this.CreateMatrix();
         }
 
-        public LabyrinthMatrix(LabyrinthMatrix labirinth)
-        {
-        }
-
         public char[][] Matrix
         {
             get
@@ -53,10 +49,10 @@
 
         private char GetRandomSymbol()
         {
-            int random1 = this.random.Next(0, 2);
+            int randomNumber = this.random.Next(0, 2);
 
-            if (random1 == 1)
-            {
+            if (randomNumber == 1)
+            {               
                 return 'X';
             }
             else
