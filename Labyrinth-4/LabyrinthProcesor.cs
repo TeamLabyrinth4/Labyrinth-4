@@ -7,6 +7,7 @@
 
     using Labyrinth.Renderer;
     using Labyrinth.Users;
+    using Labyrinth.Commands;
 
     public class LabyrinthProcesor : Subject
     {
@@ -45,25 +46,17 @@
         public void HandleInput(string input)
         {
             string lowerInput = input.ToLower();
+            Command command;
 
-            switch (lowerInput)
-            {
-                case "d": MoveDown(); break;
-
-                case "u": MoveUp(); break;
-
-                case "l": MoveLeft(); break;
-
-                case "r": MoveRight(); break;
-
-                case "top": scoreBoardHandler.ShowScoreboard(); break;
-
-                case "restart": this.Restart(); break;
-
-                case "exit": renderer.ShowMessage(Messenger.GoodBye); System.Environment.Exit(0); break;
-
-                default: renderer.ShowMessage(Messenger.InvalidMoveMessage); break;
+            if(lowerInput.Length == 1){
+                command = new PlayerCommand(this.player, this.matrix.Matrix, lowerInput);
             }
+            else
+            {
+                command = new GameCommand(this, this.scoreBoardHandler, this.renderer, lowerInput);
+            }
+
+            command.Execute();
 
             this.IsFinished();
         }
@@ -82,7 +75,7 @@
             }
         }
 
-        private void Restart()
+        public void Restart()
         {
             this.renderer.ShowMessage(Messenger.WelcomeMessage);
             this.matrix = new LabyrinthMatrix();
@@ -104,58 +97,6 @@
         //    return false;
         //
         // }
-
-        private bool MoveDown()
-        {
-            if (!(this.player.PositionRow == MaximalVerticalPosition) &&
-                this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-')
-            {
-                this.player.PositionRow++;
-                this.player.Score++;
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool MoveUp()
-        {
-            if (!(this.player.PositionRow == MinimalVerticalPosition) &&
-                this.matrix.Matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-')
-            {
-                this.player.PositionRow--;
-                this.player.Score++;
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool MoveRight()
-        {
-            if (!(this.player.PositionCol == MaximalHorizontalPosition) &&
-                 this.matrix.Matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-')
-            {
-                this.player.PositionCol++;
-                this.player.Score++;
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool MoveLeft()
-        {
-            if (!(this.player.PositionCol == MinimalHorizontalPosition) &&
-                this.matrix.Matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-')
-            {
-                this.player.PositionCol--;
-                this.player.Score++;
-                return true;
-            }
-
-            return false;
-        }
 
         public override void Notify(IPlayerCloneable player)
         {
