@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Labyrinth.Users;
-
-namespace Labyrinth.Commands
+﻿namespace Labyrinth.Commands
 {
+    using Labyrinth.Users;
+
     class PlayerCommand : Command
     {
         private IPlayerCloneable player;

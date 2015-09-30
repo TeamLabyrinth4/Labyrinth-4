@@ -53,7 +53,7 @@
             }
             else
             {
-                command = new GameCommand(this, this.scoreBoardHandler, this.renderer, lowerInput);
+                command = new GameCommand(this, this.scoreBoardHandler, this.renderer, this.player, lowerInput);
             }
 
             command.Execute();
@@ -83,20 +83,6 @@
             this.player.PositionCol = 3;
             this.player.PositionRow = 3;
         }
-
-        // private bool MovePlayer(int playerHorizontalPosition, int playerVerticalPosition,int directionBoundary)
-        // {
-        //    if (!(playerHorizontalPosition == directionBoundary) &&
-        //        this.matrix.Matrix[playerHorizontalPosition][playerVerticalPosition + 1] == '-')
-        //    {
-        //        this.matrix.MyPostionVertical++;
-        //        this.moveCount++;
-        //        return true;
-        //    }
-        //
-        //    return false;
-        //
-        // }
 
         public override void Notify(IPlayerCloneable player)
         {

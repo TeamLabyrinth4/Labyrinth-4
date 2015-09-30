@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Commands
+﻿namespace Labyrinth.Commands
 {
     public abstract class Command
     {
