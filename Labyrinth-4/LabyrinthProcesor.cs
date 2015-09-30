@@ -1,13 +1,8 @@
 ﻿namespace Labyrinth
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
+    using Labyrinth.Commands;
     using Labyrinth.Renderer;
     using Labyrinth.Users;
-    using Labyrinth.Commands;
 
     public class LabyrinthProcesor : Subject
     {
@@ -40,7 +35,7 @@
 
         public void ShowInputMessage()
         {
-            renderer.ShowMessage(Messenger.InputMessage);
+            this.renderer.ShowMessage(Messenger.InputMessage);
         }
 
         public void HandleInput(string input)
@@ -48,7 +43,8 @@
             string lowerInput = input.ToLower();
             Command command;
 
-            if(lowerInput.Length == 1){
+            if (lowerInput.Length == 1)
+            {
                 command = new PlayerCommand(this.player, this.matrix.Matrix, lowerInput);
             }
             else
@@ -59,20 +55,6 @@
             command.Execute();
 
             this.IsFinished();
-        }
-
-        private void IsFinished()
-        {
-            if (this.player.PositionCol == MinimalHorizontalPosition ||
-                this.player.PositionCol == MaximalHorizontalPosition ||
-                this.player.PositionRow == MinimalVerticalPosition ||
-                this.player.PositionRow == MaximalVerticalPosition)
-            {
-                renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                var clone = (IPlayerCloneable)this.player.Clone();
-                this.Notify(clone);
-                this.Restart();
-            }
         }
 
         public void Restart()
@@ -86,9 +68,23 @@
 
         public override void Notify(IPlayerCloneable player)
         {
-            foreach (IScoreBoardObserver observer in this.observers)
+            foreach (IScoreBoardObserver observer in this.Observers)
             {
                 observer.Update(player);
+            }
+        }
+
+        private void IsFinished()
+        {
+            if (this.player.PositionCol == MinimalHorizontalPosition ||
+                this.player.PositionCol == MaximalHorizontalPosition ||
+                this.player.PositionRow == MinimalVerticalPosition ||
+                this.player.PositionRow == MaximalVerticalPosition)
+            {
+                this.renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
+                var clone = (IPlayerCloneable)this.player.Clone();
+                this.Notify(clone);
+                this.Restart();
             }
         }
     }

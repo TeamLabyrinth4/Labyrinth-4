@@ -1,8 +1,9 @@
 ﻿namespace Labyrinth
 {
+    using System;
+
     using Labyrinth.Renderer;
     using Labyrinth.Users;
-    using System;
 
     public class Game
     {
@@ -15,10 +16,10 @@
         private Game()
         {
             this.renderer = new ConsoleRenderer();
-            string username = GetUserName();
+            string username = this.GetUserName();
             this.player = new Player(username);            
             this.scoreBoardHandler = new ScoreBoardHandler();
-            this.processor = new LabyrinthProcesor(renderer, player, scoreBoardHandler);
+            this.processor = new LabyrinthProcesor(this.renderer, this.player, this.scoreBoardHandler);
         }
 
         public static Game Instance
@@ -38,13 +39,14 @@
         {
             while (true)
             {
-                renderer.ShowLabyrinth(processor.Matrix, player);
-                processor.ShowInputMessage();
+                this.renderer.ShowLabyrinth(this.processor.Matrix, this.player);
+                this.processor.ShowInputMessage();
                 string input;
-                input = renderer.AddInput();
-                processor.HandleInput(input);
+                input = this.renderer.AddInput();
+                this.processor.HandleInput(input);
             }
         }
+
         private string GetUserName()
         {
             Console.Write("Please enter your name for the top scoreboard: ");

@@ -2,7 +2,7 @@
 {
     using Labyrinth.Users;
 
-    class PlayerCommand : Command
+    public class PlayerCommand : Command
     {
         private IPlayerCloneable player;
         private string command;
@@ -19,13 +19,17 @@
         {
             switch (this.command)
             {
-                case "d": this.MoveDown(); break;
+                case "d": this.MoveDown();
+                    break;
 
-                case "u": this.MoveUp(); break;
+                case "u": this.MoveUp();
+                    break;
 
-                case "l": this.MoveLeft(); break;
+                case "l": this.MoveLeft();
+                    break;
 
-                case "r": this.MoveRight(); break;
+                case "r": this.MoveRight();
+                    break;
             }
         }
 
@@ -33,13 +37,17 @@
         {
             switch (this.command)
             {
-                case "d": this.MoveUp(); break;
+                case "d": this.MoveUp();
+                    break;
                       
-                case "u": this.MoveDown(); break;
+                case "u": this.MoveDown();
+                    break;
 
-                case "l": this.MoveRight(); break;
+                case "l": this.MoveRight();
+                    break;
 
-                case "r": this.MoveLeft(); break;
+                case "r": this.MoveLeft();
+                    break;
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿namespace Labyrinth
 {
     using System;
+
     using Users;
 
     using Labyrinth.Scoreboard;
@@ -16,13 +17,13 @@
 
         public void Update(IPlayerCloneable player)
         {
-            scoreboard.AddToScoreBoard(player);
+            this.scoreboard.AddToScoreBoard(player);
             this.ShowScoreboard();
         }
 
         public void ShowScoreboard()
         {
-            var currentScoreBoard = scoreboard.ReturnCurrentScoreBoard();
+            var currentScoreBoard = this.scoreboard.ReturnCurrentScoreBoard();
             if (currentScoreBoard.Count == 0)
             {
                 Console.WriteLine("The scoreboard is empty.");

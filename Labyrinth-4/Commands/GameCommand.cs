@@ -1,10 +1,11 @@
 ﻿namespace Labyrinth.Commands
-{
-    using Labyrinth.Renderer;
+{   
     using System;
+
+    using Labyrinth.Renderer;
     using Users;
 
-    class GameCommand : Command
+    public class GameCommand : Command
     {
         private LabyrinthProcesor labyrinthProcesor;
         private IScoreBoardObserver scoreboardHandler;
@@ -25,20 +26,21 @@
         {
             switch (this.command)
             {
-                case "top": scoreboardHandler.ShowScoreboard();
+                case "top": this.scoreboardHandler.ShowScoreboard();
                     break;
 
-                case "restart": labyrinthProcesor.Restart();
+                case "restart": this.labyrinthProcesor.Restart();
                     break;
 
-                case "exit": renderer.ShowMessage(Messenger.GoodBye); System.Environment.Exit(0);
+                case "exit": this.renderer.ShowMessage(Messenger.GoodBye);
+                    System.Environment.Exit(0);
                     break;
 
-                case "newplayer": renderer.ShowMessage(Messenger.ChangePlayer);
-                    AddNewPlayer();
+                case "newplayer": this.renderer.ShowMessage(Messenger.ChangePlayer);
+                    this.AddNewPlayer();
                     break;
 
-                default: renderer.ShowMessage(Messenger.InvalidMoveMessage);
+                default: this.renderer.ShowMessage(Messenger.InvalidMoveMessage);
                     break;
             }
         }
@@ -48,7 +50,7 @@
             Console.Write("Please enter your name: ");
             string userName = Console.ReadLine();
             this.player.Name = userName;
-            labyrinthProcesor.Restart();
+            this.labyrinthProcesor.Restart();
         }
     }
 }

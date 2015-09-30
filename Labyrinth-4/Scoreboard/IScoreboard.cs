@@ -1,7 +1,8 @@
 ﻿namespace Labyrinth.Scoreboard
 {
-    using Labyrinth.Users;
     using System.Collections.Generic;
+
+    using Labyrinth.Users;
 
     public interface IScoreboard
     {
