@@ -5,7 +5,7 @@
     using Labyrinth.Renderer;
     using Labyrinth.Users;
 
-    public class Game
+    public sealed class Game
     {
         private static Game gameInstance;
         private IRenderer renderer;
@@ -13,26 +13,22 @@
         private LabyrinthProcesor processor;
         private IScoreBoardObserver scoreBoardHandler;
 
-        private Game()
+        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard)
         {
-            this.renderer = new ConsoleRenderer();
-            string username = this.GetUserName();
-            this.player = new Player(username);            
-            this.scoreBoardHandler = new ScoreBoardHandler();
+            this.renderer = renderer;
+            this.player = player;
+            this.scoreBoardHandler = scoreboard;
             this.processor = new LabyrinthProcesor(this.renderer, this.player, this.scoreBoardHandler);
         }
 
-        public static Game Instance
+        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard)
         {
-            get
+            if (gameInstance == null)
             {
-                if (gameInstance == null)
-                {
-                    gameInstance = new Game();
-                }
+                gameInstance = new Game(player, renderer, scoreboard);
+            }
 
-                return gameInstance;
-            }            
+            return gameInstance;
         }
 
         public void GameRun()
@@ -45,13 +41,6 @@
                 input = this.renderer.AddInput();
                 this.processor.HandleInput(input);
             }
-        }
-
-        private string GetUserName()
-        {
-            Console.Write("Please enter your name for the top scoreboard: ");
-            string userName = Console.ReadLine();
-            return userName;
         }
     }
 }
