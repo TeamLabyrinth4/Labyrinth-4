@@ -58,7 +58,7 @@
     <Compile Include="Scoreboard\LocalScoreBoard.cs" />
     <Compile Include="Scoreboard\ScoreBoardHandler.cs" />
     <Compile Include="Subject.cs" />
-    <Compile Include="Users\IPlayerCloneable.cs" />
+    <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\Player.cs" />
   </ItemGroup>
   <ItemGroup>
