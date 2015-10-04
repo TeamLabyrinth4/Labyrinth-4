@@ -72,11 +72,12 @@
 
         private Memento SaveMemento()
         {
-            return new Memento(this.player.PositionRow, this.player.PositionCol);
+            return new Memento(this.player.Score,this.player.PositionRow, this.player.PositionCol);
         }
 
         private void RestoreMemento(Memento mementos)
         {
+            this.player.Score = mementos.Score;
             this.player.PositionRow = mementos.PositionRow;
             this.player.PositionCol = mementos.PositionCol;
         }
