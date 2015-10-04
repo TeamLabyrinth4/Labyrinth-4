@@ -8,8 +8,7 @@
         {
             var constructor = new GameConstructor();
             var gameBuilder = new SimpleConsoleGameBuilder();
-            constructor.SetupGame(gameBuilder);
-            var game = constructor.InitGame();
+            var game = constructor.SetupGame(gameBuilder);
             game.GameRun();
         }
     }
