@@ -49,7 +49,7 @@
 
         private char GetRandomSymbol()
         {
-            int randomNumber = this.random.Next(0, 2);
+            int randomNumber = this.random.Next(0, 3);
 
             if (randomNumber == 1)
             {               
