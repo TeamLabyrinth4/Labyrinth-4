@@ -11,5 +11,13 @@
         int PositionRow { get; set; }
 
         int PositionCol { get; set; }
+
+        void MoveUp();
+
+        void MoveDown();
+
+        void MoveRight();
+
+        void MoveLeft();
     }
 }

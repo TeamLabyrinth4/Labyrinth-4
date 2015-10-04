@@ -60,6 +60,8 @@
     <Compile Include="Subject.cs" />
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Users\Player.cs" />
+    <Compile Include="Users\PlayerFactory.cs" />
+    <Compile Include="Users\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -7,6 +7,8 @@
         private const int StartPositionVertical = 3;
         private const int StartPositionHorizontal = 3;
 
+        private PlayerMovement playerMovement = PlayerFactory.getPlayer();
+
         private string name;
         private int score;
         private int positionRow;
@@ -85,6 +87,26 @@
         public object Clone()
         {
             return this.MemberwiseClone();
+        }
+
+        public void MoveUp()
+        {
+            this.playerMovement.MoveUp(this);
+        }
+
+        public void MoveDown()
+        {
+            this.playerMovement.MoveDown(this);
+        }
+
+        public void MoveRight()
+        {
+            this.playerMovement.MoveRight(this);
+        }
+
+        public void MoveLeft()
+        {
+            this.playerMovement.MoveLeft(this);
         }
     }
 }

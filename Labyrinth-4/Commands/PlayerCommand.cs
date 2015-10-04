@@ -56,8 +56,7 @@
             if (!(this.player.PositionRow == LabyrinthProcesor.MinimalVerticalPosition) &&
                 this.matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-')
             {
-                this.player.PositionRow++;
-                this.player.Score++;
+                this.player.MoveDown();
                 return true;
             }
 
@@ -69,8 +68,7 @@
             if (!(this.player.PositionRow == LabyrinthProcesor.MinimalVerticalPosition) &&
                 this.matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-')
             {
-                this.player.PositionRow--;
-                this.player.Score++;
+                this.player.MoveUp();
                 return true;
             }
 
@@ -82,8 +80,7 @@
             if (!(this.player.PositionCol == LabyrinthProcesor.MaximalHorizontalPosition) &&
                  this.matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-')
             {
-                this.player.PositionCol++;
-                this.player.Score++;
+                this.player.MoveRight();
                 return true;
             }
 
@@ -95,8 +92,7 @@
             if (!(this.player.PositionCol == LabyrinthProcesor.MinimalHorizontalPosition) &&
                  this.matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-')
             {
-                this.player.PositionCol--;
-                this.player.Score++;
+                this.player.MoveLeft();
                 return true;
             }
 
