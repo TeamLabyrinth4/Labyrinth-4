@@ -37,6 +37,7 @@
         public string AddInput()
         {
             string input = Console.ReadLine();
+            Console.Clear();
             return input;
         }
     }

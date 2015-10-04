@@ -46,14 +46,14 @@
 
                 case "save":
                     this.labyrinthProcesor.memory.Memento = this.SaveMemento();
-                    Console.WriteLine("At position: X:{0},Y:{1}", this.player.PositionRow, this.player.PositionCol);
                     this.renderer.ShowMessage(Messenger.Save);
+                    this.renderer.ShowMessage(string.Format(Messenger.Positions, this.player.PositionRow, this.player.PositionCol));
                     break;
 
                 case "load":
                     this.RestoreMemento(this.labyrinthProcesor.memory.Memento);
                     this.renderer.ShowMessage(Messenger.Load);
-                    Console.WriteLine("At position: X:{0},Y:{1}",this.player.PositionRow,this.player.PositionCol);
+                    this.renderer.ShowMessage(string.Format(Messenger.Positions, this.player.PositionRow, this.player.PositionCol));
                     break;
 
                 default:
