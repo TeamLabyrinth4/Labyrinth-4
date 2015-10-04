@@ -1,5 +1,5 @@
 ﻿namespace Labyrinth.Commands
-{   
+{
     using System;
 
     using Labyrinth.Renderer;
@@ -26,21 +26,38 @@
         {
             switch (this.command)
             {
-                case "top": this.scoreboardHandler.ShowScoreboard();
+                case "top":
+                    this.scoreboardHandler.ShowScoreboard();
                     break;
 
-                case "restart": this.labyrinthProcesor.Restart();
+                case "restart":
+                    this.labyrinthProcesor.Restart();
                     break;
 
-                case "exit": this.renderer.ShowMessage(Messenger.GoodBye);
+                case "exit":
+                    this.renderer.ShowMessage(Messenger.GoodBye);
                     System.Environment.Exit(0);
                     break;
 
-                case "newplayer": this.renderer.ShowMessage(Messenger.ChangePlayer);
+                case "newplayer":
+                    this.renderer.ShowMessage(Messenger.ChangePlayer);
                     this.AddNewPlayer();
                     break;
 
-                default: this.renderer.ShowMessage(Messenger.InvalidMoveMessage);
+                case "save":
+                    this.labyrinthProcesor.memory.Memento = this.SaveMemento();
+                    Console.WriteLine("At position: X:{0},Y:{1}", this.player.PositionRow, this.player.PositionCol);
+                    this.renderer.ShowMessage(Messenger.Save);
+                    break;
+
+                case "load":
+                    this.RestoreMemento(this.labyrinthProcesor.memory.Memento);
+                    this.renderer.ShowMessage(Messenger.Load);
+                    Console.WriteLine("At position: X:{0},Y:{1}",this.player.PositionRow,this.player.PositionCol);
+                    break;
+
+                default:
+                    this.renderer.ShowMessage(Messenger.InvalidMoveMessage);
                     break;
             }
         }
@@ -52,5 +69,16 @@
             this.player.Name = userName;
             this.labyrinthProcesor.Restart();
         }
+        public Memento SaveMemento()
+        {
+            return new Memento(this.player.PositionRow, this.player.PositionCol);
+        }
+
+        public void RestoreMemento(Memento mementos)
+        {
+            this.player.PositionRow = mementos.PositionRow;
+            this.player.PositionCol = mementos.PositionCol;
+        }
+
     }
 }

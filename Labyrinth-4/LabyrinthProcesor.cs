@@ -16,6 +16,7 @@
         private IPlayer player;
         private Messenger messenger;
         private IScoreBoardObserver scoreBoardHandler;
+        internal StateMemory memory = new StateMemory();
 
         public LabyrinthProcesor(IRenderer renderer, IPlayer player, IScoreBoardObserver scoreBoardHandler)
         {

@@ -7,6 +7,8 @@
         public const string WelcomeMessage = "Welcome to “Labirinth” game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game. And 'newplayer' to set a new player";
         public const string InputMessage = "Enter your move (L=left, R-right, U=up, D=down): ";
         public const string ChangePlayer = "Please Enter a new Name for the Player";
+        public const string Save = "Position Saved!";
+        public const string Load = "Position Restored!";
 
         public string WriteFinalMessage(int moves)
         {
