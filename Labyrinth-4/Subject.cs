@@ -18,6 +18,6 @@
             this.Observers.Remove(observer);
         }
 
-        public abstract void Notify(IPlayerCloneable player);
+        public abstract void Notify(IPlayer player);
     }
 }

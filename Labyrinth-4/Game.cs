@@ -9,7 +9,7 @@
     {
         private static Game gameInstance;
         private IRenderer renderer;
-        private IPlayerCloneable player;
+        private IPlayer player;
         private LabyrinthProcesor processor;
         private IScoreBoardObserver scoreBoardHandler;
 

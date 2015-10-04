@@ -2,7 +2,7 @@
 {
     using System;
 
-    internal sealed class Player : IPlayerCloneable
+    internal sealed class Player : IPlayer
     {
         private const int StartPositionVertical = 3;
         private const int StartPositionHorizontal = 3;

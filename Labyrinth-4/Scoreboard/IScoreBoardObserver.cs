@@ -6,6 +6,6 @@
     {
         void ShowScoreboard();
 
-        void Update(IPlayerCloneable player);
+        void Update(IPlayer player);
     }
 }

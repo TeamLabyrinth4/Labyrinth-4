@@ -4,11 +4,11 @@
 
     public class PlayerCommand : Command
     {
-        private IPlayerCloneable player;
+        private IPlayer player;
         private string command;
         private char[][] matrix;
 
-        public PlayerCommand(IPlayerCloneable player, char[][] matrix, string command)
+        public PlayerCommand(IPlayer player, char[][] matrix, string command)
         {
             this.player = player;
             this.command = command;

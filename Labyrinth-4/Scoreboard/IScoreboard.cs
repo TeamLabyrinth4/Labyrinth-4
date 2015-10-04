@@ -6,8 +6,8 @@
 
     public interface IScoreboard
     {
-        void AddToScoreBoard(IPlayerCloneable player);
+        void AddToScoreBoard(IPlayer player);
 
-        IList<IPlayerCloneable> ReturnCurrentScoreBoard();
+        IList<IPlayer> ReturnCurrentScoreBoard();
     }
 }

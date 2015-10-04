@@ -9,14 +9,14 @@
     public class LocalScoreBoard : IScoreboard
     {
         private const int MaxScorebordSize = 5;
-        private IList<IPlayerCloneable> scoreboard;
+        private IList<IPlayer> scoreboard;
 
         public LocalScoreBoard()
         {
-            this.scoreboard = new List<IPlayerCloneable>(MaxScorebordSize);
+            this.scoreboard = new List<IPlayer>(MaxScorebordSize);
         }
 
-        public void AddToScoreBoard(IPlayerCloneable player)
+        public void AddToScoreBoard(IPlayer player)
         {
             if (this.scoreboard.Count() >= MaxScorebordSize && player.Score > this.scoreboard.Last().Score)
             {
@@ -35,10 +35,10 @@
             }
         }
 
-        public IList<IPlayerCloneable> ReturnCurrentScoreBoard()
+        public IList<IPlayer> ReturnCurrentScoreBoard()
         {
             // TODO: perform a deep clone of the collection / add coresponding pattern
-            return new List<IPlayerCloneable>(this.scoreboard);
+            return new List<IPlayer>(this.scoreboard);
         }
     }
 }

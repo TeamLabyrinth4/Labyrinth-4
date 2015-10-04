@@ -2,9 +2,8 @@
 {
     using System;
 
-    using Users;
-
     using Labyrinth.Scoreboard;
+    using Users;
 
     public class ScoreBoardHandler : IScoreBoardObserver
     {
@@ -15,7 +14,7 @@
             this.scoreboard = new LocalScoreBoard();
         }
 
-        public void Update(IPlayerCloneable player)
+        public void Update(IPlayer player)
         {
             this.scoreboard.AddToScoreBoard(player);
             this.ShowScoreboard();

@@ -4,7 +4,7 @@
 
     public interface IRenderer
     {
-        void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayerCloneable player);
+        void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayer player);
 
         string AddInput();
 

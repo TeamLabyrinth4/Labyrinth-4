@@ -10,10 +10,10 @@
         private LabyrinthProcesor labyrinthProcesor;
         private IScoreBoardObserver scoreboardHandler;
         private IRenderer renderer;
-        private IPlayerCloneable player;
+        private IPlayer player;
         private string command;
 
-        public GameCommand(LabyrinthProcesor labyrinthProcesor, IScoreBoardObserver scoreboardHandler, IRenderer renderer, IPlayerCloneable player, string command)
+        public GameCommand(LabyrinthProcesor labyrinthProcesor, IScoreBoardObserver scoreboardHandler, IRenderer renderer, IPlayer player, string command)
         {
             this.labyrinthProcesor = labyrinthProcesor;
             this.scoreboardHandler = scoreboardHandler;
