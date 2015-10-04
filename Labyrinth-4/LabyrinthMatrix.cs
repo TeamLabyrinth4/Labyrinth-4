@@ -4,10 +4,8 @@
 
     public class LabyrinthMatrix
     {
-        public const int StartPositionVertical = 3;
-        public const int StartPositionHorizontal = 3;
-        public const int MatrixRows = 7;
-        public const int MatrixCols = 7;
+        public const int MatrixRows = 11;
+        public const int MatrixCols = 11;
 
         private char[][] matrix;
         private Random random = new Random();
@@ -41,8 +39,6 @@
                     matrix[i][j] = this.GetRandomSymbol();
                 }
             }
-
-            matrix[3][3] = '-';
 
             return matrix;
         }

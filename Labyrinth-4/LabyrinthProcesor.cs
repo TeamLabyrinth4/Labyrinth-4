@@ -6,10 +6,12 @@
 
     public class LabyrinthProcesor : Subject
     {
-        public const int MaximalHorizontalPosition = 6;
+        public const int MaximalHorizontalPosition = 10;
         public const int MinimalHorizontalPosition = 0;
-        public const int MaximalVerticalPosition = 6;
+        public const int MaximalVerticalPosition = 10;
         public const int MinimalVerticalPosition = 0;
+        public const int StartPositionVertical = 5;
+        public const int StartPositionHorizontal = 5;
 
         private LabyrinthMatrix matrix;
         private IRenderer renderer;
@@ -63,8 +65,8 @@
             this.renderer.ShowMessage(Messenger.WelcomeMessage);
             this.matrix = new LabyrinthMatrix();
             this.player.Score = 0;
-            this.player.PositionCol = 3;
-            this.player.PositionRow = 3;
+            this.player.PositionCol = StartPositionHorizontal;
+            this.player.PositionRow = StartPositionVertical;
         }
 
         public override void Notify(IPlayer player)

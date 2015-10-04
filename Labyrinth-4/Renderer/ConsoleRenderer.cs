@@ -5,10 +5,6 @@
 
     public class ConsoleRenderer : IRenderer
     {
-        public ConsoleRenderer()
-        {
-        }
-
         public void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayer player)
         {
             Console.WriteLine();
@@ -19,7 +15,9 @@
                 {
                     if (i == player.PositionRow && j == player.PositionCol)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("*");
+                        Console.ResetColor();
                     }
                     else
                     {
@@ -34,12 +32,12 @@
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);
-        }   
+        }
 
-        public string AddInput() 
+        public string AddInput()
         {
             string input = Console.ReadLine();
             return input;
-        }  
+        }
     }
 }
