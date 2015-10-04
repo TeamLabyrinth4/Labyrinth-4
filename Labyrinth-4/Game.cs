@@ -8,12 +8,12 @@
     public sealed class Game
     {
         private static volatile Game gameInstance;
+        private static object syncLock = new object();
         private IRenderer renderer;
         private IPlayer player;
         private LabyrinthProcesor processor;
         private IScoreBoardObserver scoreBoardHandler;
         private string input;
-        private static object syncLock = new object();
 
         private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthProcesor processor)
         {
@@ -46,7 +46,7 @@
                 this.renderer.ShowLabyrinth(this.processor.Matrix, this.player);
                 this.processor.ShowInputMessage();
                 this.input = this.renderer.AddInput();
-                this.processor.HandleInput(input);
+                this.processor.HandleInput(this.input);
             }
         }
     }

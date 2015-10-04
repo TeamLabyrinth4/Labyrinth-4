@@ -7,7 +7,7 @@
         private const int StartPositionVertical = 3;
         private const int StartPositionHorizontal = 3;
 
-        private PlayerMovement playerMovement = PlayerFactory.getPlayer();
+        private PlayerMovement playerMovement = PlayerFactory.GetPlayer();
 
         private string name;
         private int score;

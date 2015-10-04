@@ -45,13 +45,13 @@
                     break;
 
                 case "save":
-                    this.labyrinthProcesor.memory.Memento = this.SaveMemento();
+                    this.labyrinthProcesor.Memory.Memento = this.SaveMemento();
                     this.renderer.ShowMessage(Messenger.Save);
                     this.renderer.ShowMessage(string.Format(Messenger.Positions, this.player.PositionRow, this.player.PositionCol));
                     break;
 
                 case "load":
-                    this.RestoreMemento(this.labyrinthProcesor.memory.Memento);
+                    this.RestoreMemento(this.labyrinthProcesor.Memory.Memento);
                     this.renderer.ShowMessage(Messenger.Load);
                     this.renderer.ShowMessage(string.Format(Messenger.Positions, this.player.PositionRow, this.player.PositionCol));
                     break;
@@ -69,16 +69,16 @@
             this.player.Name = userName;
             this.labyrinthProcesor.Restart();
         }
-        public Memento SaveMemento()
+
+        private Memento SaveMemento()
         {
             return new Memento(this.player.PositionRow, this.player.PositionCol);
         }
 
-        public void RestoreMemento(Memento mementos)
+        private void RestoreMemento(Memento mementos)
         {
             this.player.PositionRow = mementos.PositionRow;
             this.player.PositionCol = mementos.PositionCol;
         }
-
     }
 }

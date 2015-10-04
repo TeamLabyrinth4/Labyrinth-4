@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Users
+﻿namespace Labyrinth.Users
 {
     public class PlayerFactory
     {
-
         private static PlayerMovement playerMovement;
 
-        public static PlayerMovement getPlayer()
+        public static PlayerMovement GetPlayer()
         {
             if (playerMovement == null)
             {

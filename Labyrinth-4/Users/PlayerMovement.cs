@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Users
+﻿namespace Labyrinth.Users
 {
     public class PlayerMovement
     {
@@ -29,7 +24,6 @@ namespace Labyrinth.Users
         {
             player.PositionCol--;
             player.Score++;
-
         }
     }
 }

@@ -22,7 +22,7 @@
             return new ScoreBoardHandler();
         }
 
-        string GetUserName()
+        public string GetUserName()
         {
             Console.Write("Please enter your name for the top scoreboard: ");
             string userName = Console.ReadLine();
