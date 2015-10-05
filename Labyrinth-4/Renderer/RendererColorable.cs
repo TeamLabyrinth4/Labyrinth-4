@@ -28,7 +28,7 @@ namespace Labyrinth.Renderer
 
         public void ChangeConsoleColor()
         {
-            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Cyan;
         }
     }
 }
