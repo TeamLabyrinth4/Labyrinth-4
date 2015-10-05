@@ -17,7 +17,7 @@
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("*");
-                        Console.ResetColor();
+                        // Console.ResetColor();
                     }
                     else
                     {

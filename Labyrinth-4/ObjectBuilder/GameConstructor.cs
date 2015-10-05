@@ -13,10 +13,12 @@
         public Game SetupGame(SimpleConsoleGameBuilder objectBuilder)
         {
             this.renderer = objectBuilder.CreteRenderer();
+            var rendererColoured = new RendererColorable(this.renderer);
+            rendererColoured.ChangeConsoleColor();
             this.player = objectBuilder.CreatePlayer();
             this.scoreBoardHandler = objectBuilder.CreteScoreBoardHanler();
-            this.procesor = new LabyrinthProcesor(this.renderer, this.player, this.scoreBoardHandler);
-            return Game.Instance(this.player, this.renderer, this.scoreBoardHandler, this.procesor);
+            this.procesor = new LabyrinthProcesor(rendererColoured, this.player, this.scoreBoardHandler);
+            return Game.Instance(this.player, rendererColoured, this.scoreBoardHandler, this.procesor);
         }
     }
 }

@@ -51,6 +51,9 @@
     <Compile Include="ObjectBuilder\GameConstructor.cs" />
     <Compile Include="ObjectBuilder\IGameObjectBuilder.cs" />
     <Compile Include="ObjectBuilder\SimpleConsoleGameBuilder.cs" />
+    <Compile Include="Renderer\Decorator.cs" />
+    <Compile Include="Renderer\RendererSizeable.cs" />
+    <Compile Include="Renderer\RendererColorable.cs" />
     <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
     <Compile Include="LabyrinthMatrix.cs" />
     <Compile Include="LabyrinthProcesor.cs" />
