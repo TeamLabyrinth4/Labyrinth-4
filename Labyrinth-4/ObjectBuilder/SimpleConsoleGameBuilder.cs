@@ -14,7 +14,9 @@
 
         public IRenderer CreteRenderer()
         {
-            return new ConsoleRenderer();
+            var renderer = new RendererColorable(new ConsoleRenderer());
+            renderer.ChangeConsoleColor();
+            return renderer;
         }
 
         public IScoreBoardObserver CreteScoreBoardHanler()

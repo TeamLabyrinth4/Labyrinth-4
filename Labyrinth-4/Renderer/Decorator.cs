@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Renderer
+﻿namespace Labyrinth.Renderer
 {
-    abstract class Decorator : IRenderer
+    public abstract class Decorator : IRenderer
     {
         protected Decorator(IRenderer renderer)
         {
@@ -19,8 +14,6 @@ namespace Labyrinth.Renderer
             this.Renderer.ShowLabyrinth(labyrinth, player);
         }
 
-
-
         public string AddInput()
         {
             return this.Renderer.AddInput();
@@ -30,6 +23,5 @@ namespace Labyrinth.Renderer
         {
             this.Renderer.ShowMessage(message);
         }
-
     }
 }
