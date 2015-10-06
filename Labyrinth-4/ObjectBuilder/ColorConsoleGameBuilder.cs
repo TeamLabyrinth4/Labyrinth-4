@@ -4,7 +4,7 @@
     using Labyrinth.Renderer;
     using Labyrinth.Users;
 
-    public class SimpleConsoleGameBuilder : IGameObjectBuilder
+    public class ColorConsoleGameBuilder : IGameObjectBuilder
     {
         public IPlayer CreatePlayer()
         {
@@ -13,8 +13,9 @@
         }
 
         public IRenderer CreteRenderer()
-        {            
-            return new ConsoleRenderer();
+        {
+            var renderer = new RendererColorable(new ConsoleRenderer());
+            return renderer;
         }
 
         public IScoreBoardObserver CreteScoreBoardHanler()
@@ -29,7 +30,7 @@
             return userName;
         }
 
-        public  Messages CreateMessages()
+        public Messages CreateMessages()
         {
             return new Messages();
         }

@@ -7,9 +7,10 @@
         public RendererSizeable(IRenderer renderer)
             : base(renderer)
         {
+            this.ChangeConsoleWIndowSize();
         }
 
-        public void ChangeConsoleWIndowSize()
+        private void ChangeConsoleWIndowSize()
         {
             Console.SetWindowSize(150, 60);
         }

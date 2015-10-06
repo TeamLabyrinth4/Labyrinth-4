@@ -4,9 +4,6 @@
 
     internal sealed class Player : IPlayer
     {
-        private const int StartPositionVertical = 3;
-        private const int StartPositionHorizontal = 3;
-
         private PlayerMovement playerMovement = PlayerFactory.GetPlayer();
 
         private string name;
@@ -18,8 +15,6 @@
         {
             this.Name = name;
             this.Score = 0;
-            this.PositionRow = StartPositionVertical;
-            this.PositionCol = StartPositionHorizontal;
         }
 
         public string Name

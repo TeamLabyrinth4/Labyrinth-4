@@ -8,13 +8,15 @@
         private IRenderer renderer;
         private IPlayer player;
         private IScoreBoardObserver scoreBoardHandler;
+        private Messages messages;
 
-        public Game SetupGame(SimpleConsoleGameBuilder objectBuilder)
+        public Game SetupGame(IGameObjectBuilder objectBuilder)
         {
             this.renderer = objectBuilder.CreteRenderer();
             this.player = objectBuilder.CreatePlayer();
             this.scoreBoardHandler = objectBuilder.CreteScoreBoardHanler();
-            return Game.Instance(this.player, this.renderer, this.scoreBoardHandler);
+            this.messages = objectBuilder.CreateMessages();
+            return Game.Instance(this.player, this.renderer, this.scoreBoardHandler, this.messages);
         }
     }
 }

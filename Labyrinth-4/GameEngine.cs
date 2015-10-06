@@ -29,20 +29,20 @@
         private IContext context;
         private string input;
 
-        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard)
+        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, Messages messages)
         {
             this.Attach(scoreBoardHandler);
             this.renderer = renderer;
             this.player = player;
             this.scoreBoardHandler = scoreboard;
-            this.messenger = new Messages();
+            this.messenger = messages;
 
             this.context = new Context(this.scoreBoardHandler, this.renderer, this.player, this.matrix);
             this.factory = new CommandFactory(this.context);
             this.Restart();
         }
 
-        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard)
+        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, Messages messages)
         {
             if (gameInstance == null)
             {
@@ -50,7 +50,7 @@
                 {
                     if (gameInstance == null)
                     {
-                        gameInstance = new Game(player, renderer, scoreboard);
+                        gameInstance = new Game(player, renderer, scoreboard, messages);
                     }
                 }
             }

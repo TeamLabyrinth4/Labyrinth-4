@@ -7,11 +7,12 @@
         public RendererColorable(IRenderer renderer)
             : base(renderer)
         {
+            this.ChangeConsoleColor();
         }
 
-        public void ChangeConsoleColor()
+        private void ChangeConsoleColor()
         {
-           // Console.ForegroundColor = ConsoleColor.Cyan;
+           Console.ForegroundColor = ConsoleColor.Cyan;
         }
     }
 }

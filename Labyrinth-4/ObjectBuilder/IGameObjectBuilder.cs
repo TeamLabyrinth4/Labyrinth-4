@@ -10,5 +10,7 @@
         IPlayer CreatePlayer();
 
         IScoreBoardObserver CreteScoreBoardHanler();
+
+        Messages CreateMessages();
     }
 }
