@@ -122,10 +122,8 @@
                 this.player.PositionCol == Constants.MaximalHorizontalPosition ||
                 this.player.PositionRow == Constants.MinimalVerticalPosition ||
                 this.player.PositionRow == Constants.MaximalVerticalPosition)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
+            {                
                 this.renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                Console.ResetColor();
                 var clone = (IPlayer)this.player.Clone();
                 this.Notify(clone);
                 this.Restart();
