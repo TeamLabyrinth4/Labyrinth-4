@@ -39,6 +39,8 @@ namespace Labyrinth.Factories
                     this.commands[CommandType.Save] = new SaveCommand(this.Context); break;
                 case CommandType.Restore:
                     this.commands[CommandType.Restore] = new LoadCommand(this.Context); break;
+                case CommandType.Newplayer:
+                    this.commands[CommandType.Newplayer] = new NewPlayerCommand(this.Context); break;
                 default:
                     this.commands[CommandType.Restore] = null; break;
             }

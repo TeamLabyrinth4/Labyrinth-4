@@ -4,7 +4,7 @@
 
     public interface IScoreBoardHandler
     {
-        void HandleScoreboard(IPlayerCloneable player);
+        void HandleScoreboard(IPlayer player);
 
         void ShowScoreboard();
     }

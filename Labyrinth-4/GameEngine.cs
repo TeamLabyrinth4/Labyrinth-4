@@ -19,7 +19,7 @@
     {
         private static volatile Game gameInstance;
         private static object syncLock = new object();
-
+ 
         private LabyrinthMatrix matrix;
         private IRenderer renderer;
         private IPlayer player;
@@ -112,7 +112,7 @@
         {
             foreach (IScoreBoardObserver observer in this.Observers)
             {
-                //observer.Update(player);
+               // observer.Update(player);
             }
         }
 

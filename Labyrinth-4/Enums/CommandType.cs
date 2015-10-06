@@ -12,6 +12,6 @@ namespace Labyrinth.Enums
         Top,
         Save,
         Restore,
-        NewPlayer
+        Newplayer
     }
 }
