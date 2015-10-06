@@ -11,7 +11,7 @@
 
         public void ChangeConsoleColor()
         {
-            Console.ForegroundColor = ConsoleColor.Cyan;
+           // Console.ForegroundColor = ConsoleColor.Cyan;
         }
     }
 }

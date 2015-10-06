@@ -1,12 +1,13 @@
 ﻿namespace Labyrinth
 {
-    using System.Collections.Generic;
+    // TODO : Should be renamed and movein in some folder (e.t ScoreTableObserver)
 
+    using System.Collections.Generic;
     using Labyrinth.Users;
 
     public abstract class Subject
     {
-        protected readonly List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();
+        public List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();
 
         public void Attach(IScoreBoardObserver observer)
         {

@@ -44,10 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStart.cs" />
-    <Compile Include="Commands\Command.cs" />
-    <Compile Include="Commands\GameCommand.cs" />
+    <Compile Include="Commands\ExitCommand.cs" />
+    <Compile Include="Commands\Contract\ICommand.cs" />
+    <Compile Include="Commands\LoadCommand.cs" />
+    <Compile Include="Commands\NewPlayerCommand.cs" />
     <Compile Include="Commands\PlayerCommand.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="Commands\RestartCommand.cs" />
+    <Compile Include="Commands\SaveCommand.cs" />
+    <Compile Include="Commands\TopCommand.cs" />
+    <Compile Include="Common\CommandValidator.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\MoveValidator.cs" />
+    <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\IContext.cs" />
+    <Compile Include="Enums\CommandType.cs" />
+    <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Factories\ICommandFactory.cs" />
+    <Compile Include="GameEngine.cs" />
     <Compile Include="ObjectBuilder\GameConstructor.cs" />
     <Compile Include="ObjectBuilder\IGameObjectBuilder.cs" />
     <Compile Include="ObjectBuilder\SimpleConsoleGameBuilder.cs" />
@@ -55,9 +68,8 @@
     <Compile Include="Renderer\RendererSizeable.cs" />
     <Compile Include="Renderer\RendererColorable.cs" />
     <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
-    <Compile Include="LabyrinthMatrix.cs" />
-    <Compile Include="LabyrinthProcesor.cs" />
-    <Compile Include="Messenger.cs" />
+    <Compile Include="Models\LabyrinthMatrix.cs" />
+    <Compile Include="Common\Messages.cs" />
     <Compile Include="Renderer\ConsoleRenderer.cs" />
     <Compile Include="Renderer\IRenderer.cs" />
     <Compile Include="Scoreboard\IScoreboard.cs" />
@@ -65,11 +77,11 @@
     <Compile Include="Scoreboard\ScoreBoardHandler.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Users\IPlayer.cs" />
-    <Compile Include="Users\Memento.cs" />
+    <Compile Include="Memento\Memento.cs" />
     <Compile Include="Users\Player.cs" />
     <Compile Include="Users\PlayerFactory.cs" />
     <Compile Include="Users\PlayerMovement.cs" />
-    <Compile Include="Users\PositionMemory.cs" />
+    <Compile Include="Memento\PositionMemory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

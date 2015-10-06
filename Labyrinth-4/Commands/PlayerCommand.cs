@@ -1,12 +1,17 @@
 ﻿namespace Labyrinth.Commands
 {
+    using System;
+    using Contexts;
     using Labyrinth.Users;
+    using Common;
 
-    public class PlayerCommand : Command
+    public class PlayerCommand : ICommand
     {
         private IPlayer player;
         private string command;
         private char[][] matrix;
+
+        public IContext Context { get; set; }
 
         public PlayerCommand(IPlayer player, char[][] matrix, string command)
         {
@@ -15,45 +20,31 @@
             this.matrix = matrix;
         }
 
-        public override void Execute()
+        public void Execute()
         {
             switch (this.command)
             {
-                case "d": this.MoveDown();
+                case "d":
+                    this.MoveDown();
                     break;
 
-                case "u": this.MoveUp();
+                case "u":
+                    this.MoveUp();
                     break;
 
-                case "l": this.MoveLeft();
+                case "l":
+                    this.MoveLeft();
                     break;
 
-                case "r": this.MoveRight();
-                    break;
-            }
-        }
-
-        public void UnExecute()
-        {
-            switch (this.command)
-            {
-                case "d": this.MoveUp();
-                    break;
-                      
-                case "u": this.MoveDown();
-                    break;
-
-                case "l": this.MoveRight();
-                    break;
-
-                case "r": this.MoveLeft();
+                case "r":
+                    this.MoveRight();
                     break;
             }
         }
 
         private bool MoveDown()
         {
-            if (!(this.player.PositionRow == LabyrinthProcesor.MinimalVerticalPosition) &&
+            if (!(this.player.PositionRow == Constants.MinimalVerticalPosition) &&
                 this.matrix[this.player.PositionCol][this.player.PositionRow + 1] == '-')
             {
                 this.player.MoveDown();
@@ -65,7 +56,7 @@
 
         private bool MoveUp()
         {
-            if (!(this.player.PositionRow == LabyrinthProcesor.MinimalVerticalPosition) &&
+            if (!(this.player.PositionRow == Constants.MinimalVerticalPosition) &&
                 this.matrix[this.player.PositionCol][this.player.PositionRow - 1] == '-')
             {
                 this.player.MoveUp();
@@ -77,7 +68,7 @@
 
         private bool MoveRight()
         {
-            if (!(this.player.PositionCol == LabyrinthProcesor.MaximalHorizontalPosition) &&
+            if (!(this.player.PositionCol == Constants.MaximalHorizontalPosition) &&
                  this.matrix[this.player.PositionCol + 1][this.player.PositionRow] == '-')
             {
                 this.player.MoveRight();
@@ -89,7 +80,7 @@
 
         private bool MoveLeft()
         {
-            if (!(this.player.PositionCol == LabyrinthProcesor.MinimalHorizontalPosition) &&
+            if (!(this.player.PositionCol == Constants.MinimalHorizontalPosition) &&
                  this.matrix[this.player.PositionCol - 1][this.player.PositionRow] == '-')
             {
                 this.player.MoveLeft();
