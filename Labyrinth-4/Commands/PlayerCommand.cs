@@ -8,28 +8,53 @@
     public class PlayerCommand : ICommand
     {
         private IPlayer player;
-        private string command;
         private char[][] matrix;
 
+<<<<<<< HEAD
         public IContext Context { get; set; }
 
         public PlayerCommand(IPlayer player, char[][] matrix, string command)
+=======
+        public PlayerCommand(IPlayer player, char[][] matrix)
+>>>>>>> origin/master
         {
             this.player = player;
-            this.command = command;
             this.matrix = matrix;
         }
 
+<<<<<<< HEAD
         public void Execute()
+=======
+        public override void Execute(string command)
+>>>>>>> origin/master
         {
-            switch (this.command)
+            switch (command)
             {
                 case "d":
                     this.MoveDown();
                     break;
 
+<<<<<<< HEAD
                 case "u":
                     this.MoveUp();
+=======
+                case "l": this.MoveLeft();
+                    break;
+
+                case "r": this.MoveRight();
+                    break;
+            }
+        }
+
+        public void UnExecute(string command)
+        {
+            switch (command)
+            {
+                case "d": this.MoveUp();
+                    break;
+                      
+                case "u": this.MoveDown();
+>>>>>>> origin/master
                     break;
 
                 case "l":
