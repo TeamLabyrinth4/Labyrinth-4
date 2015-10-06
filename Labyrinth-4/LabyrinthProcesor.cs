@@ -54,14 +54,14 @@
 
             if (lowerInput.Length == 1)
             {
-                command = new PlayerCommand(this.player, this.matrix.Matrix, lowerInput);
+                command = new PlayerCommand(this.player, this.matrix.Matrix);
             }
             else
             {
-                command = new GameCommand(this, this.scoreBoardHandler, this.renderer, this.player, lowerInput);
+                command = new GameCommand(this, this.scoreBoardHandler, this.renderer, this.player);
             }
 
-            command.Execute();
+            command.Execute(lowerInput);
 
             this.IsFinished();
         }

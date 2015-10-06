@@ -11,20 +11,18 @@
         private IScoreBoardObserver scoreboardHandler;
         private IRenderer renderer;
         private IPlayer player;
-        private string command;
 
-        public GameCommand(LabyrinthProcesor labyrinthProcesor, IScoreBoardObserver scoreboardHandler, IRenderer renderer, IPlayer player, string command)
+        public GameCommand(LabyrinthProcesor labyrinthProcesor, IScoreBoardObserver scoreboardHandler, IRenderer renderer, IPlayer player)
         {
             this.labyrinthProcesor = labyrinthProcesor;
             this.scoreboardHandler = scoreboardHandler;
             this.renderer = renderer;
             this.player = player;
-            this.command = command;
         }
 
-        public override void Execute()
+        public override void Execute(string command)
         {
-            switch (this.command)
+            switch (command)
             {
                 case "top":
                     this.scoreboardHandler.ShowScoreboard();

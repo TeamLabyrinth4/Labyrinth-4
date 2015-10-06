@@ -5,19 +5,17 @@
     public class PlayerCommand : Command
     {
         private IPlayer player;
-        private string command;
         private char[][] matrix;
 
-        public PlayerCommand(IPlayer player, char[][] matrix, string command)
+        public PlayerCommand(IPlayer player, char[][] matrix)
         {
             this.player = player;
-            this.command = command;
             this.matrix = matrix;
         }
 
-        public override void Execute()
+        public override void Execute(string command)
         {
-            switch (this.command)
+            switch (command)
             {
                 case "d": this.MoveDown();
                     break;
@@ -33,9 +31,9 @@
             }
         }
 
-        public void UnExecute()
+        public void UnExecute(string command)
         {
-            switch (this.command)
+            switch (command)
             {
                 case "d": this.MoveUp();
                     break;
