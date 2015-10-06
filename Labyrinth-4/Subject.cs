@@ -7,7 +7,7 @@
 
     public abstract class Subject
     {
-        public List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();
+        protected readonly List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();
 
         public void Attach(IScoreBoardObserver observer)
         {

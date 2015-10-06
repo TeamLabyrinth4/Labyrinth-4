@@ -31,7 +31,6 @@
 
         private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, Messages messages)
         {
-            this.Attach(scoreBoardHandler);
             this.renderer = renderer;
             this.player = player;
             this.scoreBoardHandler = scoreboard;
@@ -39,6 +38,8 @@
 
             this.context = new Context(this.scoreBoardHandler, this.renderer, this.player, this.matrix);
             this.factory = new CommandFactory(this.context);
+
+            this.Attach(this.scoreBoardHandler);
             this.Restart();
         }
 
@@ -112,7 +113,7 @@
         {
             foreach (IScoreBoardObserver observer in this.Observers)
             {
-               // observer.Update(player);
+               observer.Update(player);
             }
         }
 
