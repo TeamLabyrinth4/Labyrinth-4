@@ -29,6 +29,14 @@ namespace Labyrinth.Factories
 
             switch (input)
             {
+                case CommandType.U:
+                    this.commands[CommandType.U] = new MoveUpCommand(this.Context); break;
+                case CommandType.D:
+                    this.commands[CommandType.D] = new MoveDownCommand(this.Context); break;
+                case CommandType.R:
+                    this.commands[CommandType.R] = new MoveRightCommand(this.Context); break;
+                case CommandType.L:
+                    this.commands[CommandType.L] = new MoveLeftCommand(this.Context); break;
                 case CommandType.Exit:
                     this.commands[CommandType.Exit] = new ExitCommand(this.Context); break;
                 case CommandType.Restart:

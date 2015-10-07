@@ -19,7 +19,7 @@
     {
         private static volatile Game gameInstance;
         private static object syncLock = new object();
- 
+
         private LabyrinthMatrix matrix;
         private IRenderer renderer;
         private IPlayer player;
@@ -29,11 +29,12 @@
         private IContext context;
         private string input;
 
-        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, Messages messages)
+        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             this.renderer = renderer;
             this.player = player;
             this.scoreBoardHandler = scoreboard;
+            this.matrix = matrix;
             this.messenger = messages;
 
             this.context = new Context(this.scoreBoardHandler, this.renderer, this.player, this.matrix);
@@ -43,7 +44,7 @@
             this.Restart();
         }
 
-        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, Messages messages)
+        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             if (gameInstance == null)
             {
@@ -51,7 +52,7 @@
                 {
                     if (gameInstance == null)
                     {
-                        gameInstance = new Game(player, renderer, scoreboard, messages);
+                        gameInstance = new Game(player, renderer, scoreboard, matrix, messages);
                     }
                 }
             }
@@ -86,12 +87,6 @@
                 command = this.factory.CreateCommand(commandsValidator.GetType(input));
                 command.Execute();
             }
-
-            else if (MoveValidator.IsValidComandDir(lowerInput))
-            {
-                command = new PlayerCommand(this.player, this.matrix.Matrix, lowerInput);
-                command.Execute();
-            }
             else
             {
                 Console.WriteLine("Invalid Command");
@@ -113,7 +108,7 @@
         {
             foreach (IScoreBoardObserver observer in this.Observers)
             {
-               observer.Update(player);
+                observer.Update(player);
             }
         }
 
@@ -123,7 +118,7 @@
                 this.player.PositionCol == Constants.MaximalHorizontalPosition ||
                 this.player.PositionRow == Constants.MinimalVerticalPosition ||
                 this.player.PositionRow == Constants.MaximalVerticalPosition)
-            {                
+            {
                 this.renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
                 var clone = (IPlayer)this.player.Clone();
                 this.Notify(clone);

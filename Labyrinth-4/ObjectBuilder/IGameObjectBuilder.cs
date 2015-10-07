@@ -11,6 +11,8 @@
 
         IScoreBoardObserver CreteScoreBoardHanler();
 
+        LabyrinthMatrix CreateLabyrinthMatrix();
+
         Messages CreateMessages();
     }
 }

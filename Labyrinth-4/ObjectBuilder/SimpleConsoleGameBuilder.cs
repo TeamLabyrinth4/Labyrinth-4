@@ -22,6 +22,11 @@
             return new ScoreBoardHandler();
         }
 
+        public LabyrinthMatrix CreateLabyrinthMatrix()
+        {
+            return new LabyrinthMatrix();
+        }
+
         public string GetUserName()
         {
             Console.Write("Please enter your name for the top scoreboard: ");

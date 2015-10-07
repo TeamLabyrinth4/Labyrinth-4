@@ -47,8 +47,11 @@
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\Contract\ICommand.cs" />
     <Compile Include="Commands\LoadCommand.cs" />
+    <Compile Include="Commands\MoveDownCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Commands\NewPlayerCommand.cs" />
-    <Compile Include="Commands\PlayerCommand.cs" />
     <Compile Include="Commands\RestartCommand.cs" />
     <Compile Include="Commands\SaveCommand.cs" />
     <Compile Include="Commands\TopCommand.cs" />

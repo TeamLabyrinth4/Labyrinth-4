@@ -30,6 +30,12 @@
             return userName;
         }
 
+
+        public LabyrinthMatrix CreateLabyrinthMatrix()
+        {
+            return new LabyrinthMatrix();
+        }
+
         public Messages CreateMessages()
         {
             return new Messages();
