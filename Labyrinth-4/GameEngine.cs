@@ -19,11 +19,7 @@
     {
         private static volatile Game gameInstance;
         private static object syncLock = new object();
-
-        private LabyrinthMatrix matrix;
-        private IRenderer renderer;
-        private IPlayer player;
-        private IScoreBoardObserver scoreBoardHandler;
+        
         private Messages messenger;
         private ICommandFactory factory;
         private IContext context;
@@ -31,17 +27,13 @@
 
         private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
-            this.renderer = renderer;
-            this.player = player;
-            this.scoreBoardHandler = scoreboard;
-            this.matrix = matrix;
             this.messenger = messages;
 
-            this.context = new Context(this.scoreBoardHandler, this.renderer, this.player, this.matrix);
+            this.context = new Context(scoreboard, renderer, player, matrix);
             this.factory = new CommandFactory(this.context);
 
-            this.Attach(this.scoreBoardHandler);
-            this.Restart();
+            this.Attach(context.ScoreboardHandler);
+            this.context.Restart();
         }
 
         public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
@@ -64,16 +56,16 @@
         {
             while (true)
             {
-                this.renderer.ShowLabyrinth(this.matrix, this.player);
+                this.context.Renderer.ShowLabyrinth(this.context.Matrix, this.context.Player);
                 this.ShowInputMessage();
-                this.input = this.renderer.AddInput();
+                this.input = this.context.Renderer.AddInput();
                 this.HandleInput(this.input);
             }
         }
 
         public void ShowInputMessage()
         {
-            this.renderer.ShowMessage(Messages.InputMessage);
+            this.context.Renderer.ShowMessage(Messages.InputMessage);
         }
 
         public void HandleInput(string input)
@@ -95,15 +87,6 @@
             this.IsFinished();
         }
 
-        public void Restart()
-        {
-            this.renderer.ShowMessage(Messages.WelcomeMessage);
-            this.matrix = new LabyrinthMatrix();
-            this.player.Score = 0;
-            this.player.PositionCol = Constants.StartPositionHorizontal;
-            this.player.PositionRow = Constants.StartPositionVertical;
-        }
-
         public override void Notify(IPlayer player)
         {
             foreach (IScoreBoardObserver observer in this.Observers)
@@ -114,15 +97,15 @@
 
         private void IsFinished()
         {
-            if (this.player.PositionCol == Constants.MinimalHorizontalPosition ||
-                this.player.PositionCol == Constants.MaximalHorizontalPosition ||
-                this.player.PositionRow == Constants.MinimalVerticalPosition ||
-                this.player.PositionRow == Constants.MaximalVerticalPosition)
+            if (this.context.Player.PositionCol == Constants.MinimalHorizontalPosition ||
+                this.context.Player.PositionCol == Constants.MaximalHorizontalPosition ||
+                this.context.Player.PositionRow == Constants.MinimalVerticalPosition ||
+                this.context.Player.PositionRow == Constants.MaximalVerticalPosition)
             {
-                this.renderer.ShowMessage(this.messenger.WriteFinalMessage(this.player.Score));
-                var clone = (IPlayer)this.player.Clone();
+                this.context.Renderer.ShowMessage(this.messenger.WriteFinalMessage(this.context.Player.Score));
+                var clone = (IPlayer)this.context.Player.Clone();
                 this.Notify(clone);
-                this.Restart();
+                this.context.Restart();
             }
         }
     }
