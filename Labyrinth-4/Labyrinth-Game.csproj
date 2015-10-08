@@ -64,7 +64,9 @@
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\ICommandFactory.cs" />
     <Compile Include="GameEngine.cs" />
-    <Compile Include="ObjectBuilder\ColorConsoleGameBuilder.cs" />
+    <Compile Include="ObjectBuilder\ConsoleColorableGameBuilder.cs" />
+    <Compile Include="ObjectBuilder\ConsoleSizeableGameBuilder.cs" />
+    <Compile Include="ObjectBuilder\Decorator.cs" />
     <Compile Include="ObjectBuilder\GameConstructor.cs" />
     <Compile Include="ObjectBuilder\IGameObjectBuilder.cs" />
     <Compile Include="ObjectBuilder\SimpleConsoleGameBuilder.cs" />

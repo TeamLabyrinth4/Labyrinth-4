@@ -14,5 +14,7 @@
         LabyrinthMatrix CreateLabyrinthMatrix();
 
         Messages CreateMessages();
+
+        string GetUserName();
     }
 }
