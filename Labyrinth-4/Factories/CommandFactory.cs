@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Labyrinth.Commands;
-using Labyrinth.Contexts;
-using Labyrinth.Enums;
-
-namespace Labyrinth.Factories
+﻿namespace Labyrinth.Factories
 {
-    class CommandFactory : ICommandFactory
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Labyrinth.Commands;
+    using Labyrinth.Contexts;
+    using Labyrinth.Enums;
+
+    public class CommandFactory : ICommandFactory
     {
         // Flyweight pattern
         private readonly Dictionary<CommandType, ICommand> commands = new Dictionary<CommandType, ICommand>();
@@ -30,27 +30,38 @@ namespace Labyrinth.Factories
             switch (input)
             {
                 case CommandType.U:
-                    this.commands[CommandType.U] = new MoveUpCommand(this.Context); break;
+                    this.commands[CommandType.U] = new MoveUpCommand(this.Context); 
+                    break;
                 case CommandType.D:
-                    this.commands[CommandType.D] = new MoveDownCommand(this.Context); break;
+                    this.commands[CommandType.D] = new MoveDownCommand(this.Context); 
+                    break;
                 case CommandType.R:
-                    this.commands[CommandType.R] = new MoveRightCommand(this.Context); break;
+                    this.commands[CommandType.R] = new MoveRightCommand(this.Context); 
+                    break;
                 case CommandType.L:
-                    this.commands[CommandType.L] = new MoveLeftCommand(this.Context); break;
+                    this.commands[CommandType.L] = new MoveLeftCommand(this.Context);
+                    break;
                 case CommandType.Exit:
-                    this.commands[CommandType.Exit] = new ExitCommand(this.Context); break;
+                    this.commands[CommandType.Exit] = new ExitCommand(this.Context);
+                    break;
                 case CommandType.Restart:
-                    this.commands[CommandType.Restart] = new RestartCommand(this.Context); break;
+                    this.commands[CommandType.Restart] = new RestartCommand(this.Context); 
+                    break;
                 case CommandType.Top:
-                    this.commands[CommandType.Top] = new TopCommand(this.Context); break;
+                    this.commands[CommandType.Top] = new TopCommand(this.Context); 
+                    break;
                 case CommandType.Save:
-                    this.commands[CommandType.Save] = new SaveCommand(this.Context); break;
+                    this.commands[CommandType.Save] = new SaveCommand(this.Context); 
+                    break;
                 case CommandType.Restore:
-                    this.commands[CommandType.Restore] = new LoadCommand(this.Context); break;
+                    this.commands[CommandType.Restore] = new LoadCommand(this.Context); 
+                    break;
                 case CommandType.Newplayer:
-                    this.commands[CommandType.Newplayer] = new NewPlayerCommand(this.Context); break;
+                    this.commands[CommandType.Newplayer] = new NewPlayerCommand(this.Context); 
+                    break;
                 default:
-                    this.commands[CommandType.Restore] = null; break;
+                    this.commands[CommandType.Restore] = null; 
+                    break;
             }
 
             return this.commands[input];

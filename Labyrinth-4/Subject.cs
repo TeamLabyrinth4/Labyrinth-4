@@ -1,7 +1,6 @@
 ﻿namespace Labyrinth
 {
     // TODO : Should be renamed and movein in some folder (e.t ScoreTableObserver)
-
     using System.Collections.Generic;
     using Labyrinth.Users;
 

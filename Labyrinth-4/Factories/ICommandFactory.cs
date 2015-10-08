@@ -1,13 +1,10 @@
-﻿using Labyrinth.Commands;
-using Labyrinth.Contexts;
-using Labyrinth.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Factories
+﻿namespace Labyrinth.Factories
 {
+    using System;
+    using Labyrinth.Commands;
+    using Labyrinth.Contexts;
+    using Labyrinth.Enums;
+    
     public interface ICommandFactory
     {
         IContext Context { get; }

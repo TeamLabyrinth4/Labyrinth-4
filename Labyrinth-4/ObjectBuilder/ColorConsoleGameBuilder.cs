@@ -30,7 +30,6 @@
             return userName;
         }
 
-
         public LabyrinthMatrix CreateLabyrinthMatrix()
         {
             return new LabyrinthMatrix();

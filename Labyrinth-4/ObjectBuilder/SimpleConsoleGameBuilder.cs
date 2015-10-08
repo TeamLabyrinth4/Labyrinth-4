@@ -13,7 +13,7 @@
         }
 
         public IRenderer CreteRenderer()
-        {            
+        {
             return new ConsoleRenderer();
         }
 
@@ -34,7 +34,7 @@
             return userName;
         }
 
-        public  Messages CreateMessages()
+        public Messages CreateMessages()
         {
             return new Messages();
         }

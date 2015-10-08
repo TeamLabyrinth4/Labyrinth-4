@@ -1,25 +1,24 @@
 ﻿namespace Labyrinth
 {
-    //TODO:
-    //StyleCop formatting 
-    //fix ObservePattern
-    //fix command 'restart' to generate new matrix not the same;
-    //rename class Subject and move it to folder
-
+    // TODO:
+    // StyleCop formatting 
+    // fix ObservePattern
+    // fix command 'restart' to generate new matrix not the same;
+    // rename class Subject and move it to folder
     using System;
+    using Commands;
+    using Common;
+    using Contexts;    
+    using Enums;
+    using Factories;
     using Renderer;
     using Users;
-    using Factories;
-    using Contexts;
-    using Commands;
-    using Enums;
-    using Common;
 
     public sealed class Game : Subject
     {
         private static volatile Game gameInstance;
         private static object syncLock = new object();
-        
+
         private Messages messenger;
         private ICommandFactory factory;
         private IContext context;
@@ -32,7 +31,7 @@
             this.context = new Context(scoreboard, renderer, player, matrix);
             this.factory = new CommandFactory(this.context);
 
-            this.Attach(context.ScoreboardHandler);
+            this.Attach(this.context.ScoreboardHandler);
             this.context.Restart();
         }
 

@@ -1,11 +1,11 @@
-﻿using Labyrinth.Contexts;
-
-namespace Labyrinth.Commands
+﻿namespace Labyrinth.Commands
 {
+    using Labyrinth.Contexts;
+
     public interface ICommand
     {
-        void Execute();
-
         IContext Context { get; }
+
+        void Execute();
     }
 }

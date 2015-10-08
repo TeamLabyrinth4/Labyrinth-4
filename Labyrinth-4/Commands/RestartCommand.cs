@@ -1,10 +1,10 @@
 ﻿namespace Labyrinth.Commands
 {
-    using Labyrinth.Contexts;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Labyrinth.Contexts;
 
     public class RestartCommand : ICommand
     {

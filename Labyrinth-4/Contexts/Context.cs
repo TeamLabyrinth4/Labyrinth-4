@@ -1,9 +1,9 @@
 ﻿namespace Labyrinth.Contexts
 {
     using System;
+    using Common;
     using Labyrinth.Renderer;
     using Labyrinth.Users;
-    using Common;
 
     internal class Context : IContext
     {

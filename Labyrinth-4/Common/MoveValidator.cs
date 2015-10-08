@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.Common
+﻿namespace Labyrinth.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public static class MoveValidator
     {
         public static bool IsValidComandDir(string command)
@@ -14,6 +14,7 @@ namespace Labyrinth.Common
             {
                 return true;
             }
+
             return false;
         }
     }

@@ -2,7 +2,7 @@
 {
     using System;
 
-    class RendererColorable : Decorator
+    public class RendererColorable : Decorator
     {
         public RendererColorable(IRenderer renderer)
             : base(renderer)
