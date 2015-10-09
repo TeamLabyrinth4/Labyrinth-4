@@ -1,10 +1,12 @@
 ﻿namespace Labyrinth
 {
     using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
 
+    /// <summary>
+    /// The class helps to handle the input from the client and to validate it if it's in the correct format.
+    /// </summary>
+    /// <typeparam name="T">A Generic Type Parameter for the input.</typeparam>
     public class CommandValidator<T>
     {
         public CommandValidator()

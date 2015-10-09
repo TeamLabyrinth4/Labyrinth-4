@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth.Users
 {
+    /// <summary>
+    /// The 'Memento' class, which will hold information about the players position and score.
+    /// </summary>
     public class Memento
     {
         public Memento(int score, int positionRow, int positionCol)

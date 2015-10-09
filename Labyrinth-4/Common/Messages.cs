@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth
 {
+    /// <summary>
+    /// The class holds all possible in-game messages, which may be displayed to the player.
+    /// </summary>
     public class Messages
     {
         public const string GoodBye = "Good bye!";

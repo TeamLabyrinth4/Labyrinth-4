@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth.Common
 {
+    /// <summary>
+    /// The class holds shared in-game constants which may be used by other classes.
+    /// </summary>
     public class Constants
     {
         public const int MaximalHorizontalPosition = 16;
