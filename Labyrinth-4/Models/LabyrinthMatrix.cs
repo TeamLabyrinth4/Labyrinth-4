@@ -2,10 +2,16 @@
 {
     using System;
 
+    /// <summary>
+    /// Generates the playfield of the game.
+    /// It uses jagged array, because in The .NET Framework enables faster accesses to them compare to 2D arrays.
+    /// </summary>
     public class LabyrinthMatrix
     {
         public const int MatrixRows = 17;
         public const int MatrixCols = 17;
+        public const char BlockedField = 'X';
+        public const char EmptyField = '-';
 
         private char[][] matrix;
         private Random random = new Random();
@@ -49,11 +55,11 @@
 
             if (randomNumber == 1)
             {               
-                return 'X';
+                return BlockedField;
             }
             else
             {
-                return '-';
+                return EmptyField;
             }
         }
     }
