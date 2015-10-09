@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Users
 {
     /// <summary>
-    ///  Concrete Flyweight class holding the possible player movements
+    ///  Concrete Flyweight class holding the possible player movements.
     /// </summary>
     public class PlayerMovement
     {

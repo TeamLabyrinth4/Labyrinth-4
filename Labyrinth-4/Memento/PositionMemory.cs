@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Users
 {
     /// <summary>
-    /// The 'Caretaker' class
+    /// The 'Caretaker' class.
     /// </summary>
     public class StateMemory
     {

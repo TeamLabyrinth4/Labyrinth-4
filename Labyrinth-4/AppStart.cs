@@ -3,7 +3,7 @@
     using Labyrinth.ObjectBuilder;
 
     /// <summary>
-    /// The start point of the Labyrinth Game
+    /// The start point of the Labyrinth Game.
     /// </summary>
     public static class AppStart
     {

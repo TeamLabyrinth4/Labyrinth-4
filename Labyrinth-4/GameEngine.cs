@@ -12,9 +12,9 @@
     using Users;
 
     /// <summary>
-    /// The Game Engine class, which implements thread safe Singleton pattern
-    /// Its is a Facade as well, hiding all the complex logic of the game within its methods
-    /// Implemets Observer pattern to handle edn game events
+    /// The Game Engine class, which implements thread safe Singleton pattern.
+    /// Its is a Facade as well, hiding all the complex logic of the game within its methods.
+    /// Implements Observer pattern to handle the end game event.
     /// </summary>
     public sealed class GameEngine : ObserverSubject
     {
