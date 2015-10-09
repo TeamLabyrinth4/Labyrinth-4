@@ -19,7 +19,19 @@ Team Labyrinth-4 members:
 
 3. __Fixed StyleCop Issues:__
 
+* Fixed Warning: CSharp.Spacing : The spacing around keywords and symbols, multiple empty rows and etc.
+* Fixed Warning CSharp.Readability : Extensive use of 'this.' to indicate that the item is a member of the given class.	
+* Fixed Warning CSharp.Ordering : All using directives are placed inside of the namespace. Methods have proper ordering depending on their access modifier
+* Fixed CSharp.Naming : All method names begin with an upper-case letter.
+* Fixed CSharp.Maintainability : All classes, fields and methods have an access modifier.
+* Fixed CSharp.Layout : Curly brackets are properly placed, Blank lines are introduced where needed and etc.
+
 4. __Introduced New Methods:__
+
+* the method private char[][] CreateMatrix() is moved outside the LabyrinthMatrix() constructor;
+* the metohd private char GetRandomSymbol() is moved outside the LabyrinthMatrix() constructor;
+
+At the start most of the methods are already separated, so only parts of the code were moved outside the construcotrs of certain objects.
 
 - - - -
 
