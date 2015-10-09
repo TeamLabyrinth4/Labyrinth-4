@@ -3,7 +3,7 @@
     using Labyrinth.Users;
 
     /// <summary>
-    /// The Observer interface giving the required functionality - The 'Subject' interface
+    /// The Observer interface giving the required functionality 
     /// </summary>
     public interface IScoreBoardObserver
     {

@@ -6,7 +6,7 @@
     using Users;
 
     /// <summary>
-    /// The 'ConcreteObserver' class, who manages the relation with the databes with top players
+    /// The 'ConcreteObserver' class, who manages the relation with the databases with top players.
     /// </summary>
     public class ScoreBoardHandler : IScoreBoardObserver
     {

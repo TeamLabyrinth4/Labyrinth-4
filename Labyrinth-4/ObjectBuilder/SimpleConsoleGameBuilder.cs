@@ -6,6 +6,9 @@
     using Scoreboard;
     using Users;
 
+    /// <summary>
+    /// The 'ConcreteBuilder' class, it creates all needed object for a simple console game.
+    /// </summary>
     public class SimpleConsoleGameBuilder : IGameObjectBuilder
     {
         public IPlayer CreatePlayer()

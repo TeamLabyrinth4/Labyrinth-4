@@ -1,8 +1,11 @@
 ﻿namespace Labyrinth.Renderer
 {
     using System;
-    using Labyrinth.Users;
+    using Users;
 
+    /// <summary>
+    /// A simple renderer used to the display all game information and messages to the client via the console.
+    /// </summary>
     public class ConsoleRenderer : IRenderer
     {
         public void ShowLabyrinth(LabyrinthMatrix labyrinth, IPlayer player)

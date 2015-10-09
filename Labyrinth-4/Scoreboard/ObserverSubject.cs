@@ -4,6 +4,9 @@
 
     using Labyrinth.Users;
 
+    /// <summary>
+    /// The 'Subject' abstract class which defines the implementation of the Observer pattern.
+    /// </summary>
     public abstract class ObserverSubject
     {
         protected readonly List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();

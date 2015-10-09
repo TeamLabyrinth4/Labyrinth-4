@@ -5,7 +5,7 @@
     using Labyrinth.Users;
 
     /// <summary>
-    /// Defines the functionality of the database with the top players
+    /// Defines the functionality of the database with the top players.
     /// </summary>
     public interface IScoreboard
     {

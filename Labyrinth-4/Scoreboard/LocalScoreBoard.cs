@@ -7,7 +7,7 @@
     using Labyrinth.Users;
 
     /// <summary>
-    /// Implementation of a local database of the best players
+    /// Implementation of a local database of the best players.
     /// </summary>
     public class LocalScoreBoard : IScoreboard
     {
