@@ -26,7 +26,7 @@
             Console.Write("Please enter your name: ");
             string userName = Console.ReadLine();
             this.Context.Player.Name = userName;
-            this.Context.Restart();
+            this.Context.StartNewGame();
         }
     }
 }

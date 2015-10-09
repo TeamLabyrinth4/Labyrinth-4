@@ -15,6 +15,6 @@
 
         StateMemory Memory { get; }
 
-        void Restart();
+        void StartNewGame();
     }
 }

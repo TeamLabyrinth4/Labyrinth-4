@@ -34,7 +34,7 @@
             this.factory = new CommandFactory(this.context);
 
             this.Attach(this.context.ScoreboardHandler);
-            this.context.Restart();
+            this.context.StartNewGame();
         }
 
         public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
@@ -106,7 +106,7 @@
                 this.context.Renderer.ShowMessage(this.messenger.WriteFinalMessage(this.context.Player.Score));
                 var clone = (IPlayer)this.context.Player.Clone();
                 this.Notify(clone);
-                this.context.Restart();
+                this.context.StartNewGame();
             }
         }
     }

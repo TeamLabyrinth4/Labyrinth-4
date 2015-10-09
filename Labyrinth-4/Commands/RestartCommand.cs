@@ -17,7 +17,7 @@
 
         public void Execute()
         {
-            this.Context.Restart();
+            this.Context.StartNewGame();
         }
     }
 }

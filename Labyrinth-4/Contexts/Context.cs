@@ -26,7 +26,7 @@
 
         public IScoreBoardObserver ScoreboardHandler { get; set; }
 
-        public void Restart()
+        public void StartNewGame()
         {
             this.Renderer.ShowMessage(Messages.Restarted);
             this.Matrix = new LabyrinthMatrix();
