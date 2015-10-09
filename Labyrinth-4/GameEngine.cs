@@ -8,15 +8,16 @@
     using System;
     using Commands;
     using Common;
-    using Contexts;    
+    using Contexts;
     using Enums;
     using Factories;
     using Renderer;
     using Users;
+    using Scoreboard;
 
-    public sealed class Game : Subject
+    public sealed class GameEngine : ObserverSubject
     {
-        private static volatile Game gameInstance;
+        private static volatile GameEngine gameInstance;
         private static object syncLock = new object();
 
         private Messages messenger;
@@ -24,7 +25,7 @@
         private IContext context;
         private string input;
 
-        private Game(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
+        private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             this.messenger = messages;
 
@@ -35,7 +36,7 @@
             this.context.Restart();
         }
 
-        public static Game Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
+        public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             if (gameInstance == null)
             {
@@ -43,7 +44,7 @@
                 {
                     if (gameInstance == null)
                     {
-                        gameInstance = new Game(player, renderer, scoreboard, matrix, messages);
+                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix, messages);
                     }
                 }
             }
@@ -53,6 +54,9 @@
 
         public void GameRun()
         {
+
+        
+
             while (true)
             {
                 this.context.Renderer.ShowLabyrinth(this.context.Matrix, this.context.Player);

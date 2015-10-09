@@ -64,16 +64,12 @@
     <Compile Include="Factories\CommandFactory.cs" />
     <Compile Include="Factories\ICommandFactory.cs" />
     <Compile Include="GameEngine.cs" />
-    <Compile Include="ObjectBuilder\ConsoleColorableGameBuilder.cs" />
-    <Compile Include="ObjectBuilder\ConsoleSizeableGameBuilder.cs" />
+    <Compile Include="ObjectBuilder\GameTypes\ConsoleColorableGameBuilder.cs" />
+    <Compile Include="ObjectBuilder\GameTypes\ConsoleSizeableGameBuilder.cs" />
     <Compile Include="ObjectBuilder\Decorator.cs" />
     <Compile Include="ObjectBuilder\GameConstructor.cs" />
     <Compile Include="ObjectBuilder\IGameObjectBuilder.cs" />
     <Compile Include="ObjectBuilder\SimpleConsoleGameBuilder.cs" />
-    <Compile Include="Renderer\Decorator.cs" />
-    <Compile Include="Renderer\RendererSizeable.cs" />
-    <Compile Include="Renderer\RendererColorable.cs" />
-    <Compile Include="Scoreboard\IScoreBoardHandler.cs" />
     <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
     <Compile Include="Models\LabyrinthMatrix.cs" />
     <Compile Include="Common\Messages.cs" />
@@ -82,7 +78,7 @@
     <Compile Include="Scoreboard\IScoreboard.cs" />
     <Compile Include="Scoreboard\LocalScoreBoard.cs" />
     <Compile Include="Scoreboard\ScoreBoardHandler.cs" />
-    <Compile Include="Subject.cs" />
+    <Compile Include="Scoreboard\ObserverSubject.cs" />
     <Compile Include="Users\IPlayer.cs" />
     <Compile Include="Memento\Memento.cs" />
     <Compile Include="Users\Player.cs" />

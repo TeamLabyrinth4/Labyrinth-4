@@ -15,10 +15,9 @@
                 {
                     if (i == player.PositionRow && j == player.PositionCol)
                     {
-                        // Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.Write("*");
-
-                        // Console.ResetColor();
+                        Console.ResetColor();
                     }
                     else
                     {

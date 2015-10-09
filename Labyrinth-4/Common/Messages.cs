@@ -10,7 +10,7 @@
         public const string Save = "Position Saved!";
         public const string Load = "Position Restored!";
         public const string Positions = "At position: X:{0},Y:{1}";
-        public const string Restarted = "Restarted game !\n" + WelcomeMessage;
+        public const string Restarted = "New game started !\n" + WelcomeMessage;
 
         public string WriteFinalMessage(int moves)
         {

@@ -4,8 +4,8 @@
 
     public class LabyrinthMatrix
     {
-        public const int MatrixRows = 11;
-        public const int MatrixCols = 11;
+        public const int MatrixRows = 17;
+        public const int MatrixCols = 17;
 
         private char[][] matrix;
         private Random random = new Random();
