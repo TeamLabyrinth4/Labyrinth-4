@@ -1,45 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Labyrinth.ObjectBuilder
+﻿namespace Labyrinth.ObjectBuilder
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public abstract class Decorator : IGameObjectBuilder
     {
-        protected IGameObjectBuilder gameObjectBuilder { get; set; }
         protected Decorator(IGameObjectBuilder gameObjectBuilder)
         {
-            this.gameObjectBuilder = gameObjectBuilder;
+            this.GameObjectBuilder = gameObjectBuilder;
         }
+
+        protected IGameObjectBuilder GameObjectBuilder { get; set; }
+
         public Renderer.IRenderer CreteRenderer()
         {
-            return this.gameObjectBuilder.CreteRenderer();
+            return this.GameObjectBuilder.CreteRenderer();
         }
 
         public Users.IPlayer CreatePlayer()
         {
-            return this.gameObjectBuilder.CreatePlayer();
+            return this.GameObjectBuilder.CreatePlayer();
         }
 
         public IScoreBoardObserver CreteScoreBoardHanler()
         {
-            return this.gameObjectBuilder.CreteScoreBoardHanler();
+            return this.GameObjectBuilder.CreteScoreBoardHanler();
         }
 
         public LabyrinthMatrix CreateLabyrinthMatrix()
         {
-            return this.gameObjectBuilder.CreateLabyrinthMatrix();
+            return this.GameObjectBuilder.CreateLabyrinthMatrix();
         }
 
         public Messages CreateMessages()
         {
-            return this.gameObjectBuilder.CreateMessages();
+            return this.GameObjectBuilder.CreateMessages();
         }
 
         public string GetUserName()
         {
-            return this.gameObjectBuilder.GetUserName();
+            return this.GameObjectBuilder.GetUserName();
         }
     }
 }
