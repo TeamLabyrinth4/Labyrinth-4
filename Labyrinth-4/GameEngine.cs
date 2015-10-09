@@ -1,20 +1,21 @@
 ﻿namespace Labyrinth
 {
-    // TODO:
-    // StyleCop formatting 
-    // fix ObservePattern
-    // fix command 'restart' to generate new matrix not the same;
-    // rename class Subject and move it to folder
     using System;
+
     using Commands;
     using Common;
     using Contexts;
     using Enums;
     using Factories;
     using Renderer;
-    using Users;
     using Scoreboard;
+    using Users;
 
+    /// <summary>
+    /// The Game Engine class, which implements thread safe Singleton pattern
+    /// Its is a Facade as well, hiding all the complex logic of the game within its methods
+    /// Implemets Observer pattern to handle edn game events
+    /// </summary>
     public sealed class GameEngine : ObserverSubject
     {
         private static volatile GameEngine gameInstance;
@@ -54,9 +55,6 @@
 
         public void GameRun()
         {
-
-        
-
             while (true)
             {
                 this.context.Renderer.ShowLabyrinth(this.context.Matrix, this.context.Player);

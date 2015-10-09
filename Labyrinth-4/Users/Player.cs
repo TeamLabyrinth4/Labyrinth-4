@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// The actual implementation of the IPlayer interfaced
+    /// </summary>
     internal sealed class Player : IPlayer
     {
         private PlayerMovement playerMovement = PlayerFactory.GetPlayer();

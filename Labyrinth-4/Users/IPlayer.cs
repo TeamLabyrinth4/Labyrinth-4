@@ -2,6 +2,9 @@
 {
     using System;
 
+    /// <summary>
+    /// This interface provides all the basic functionalities for a player
+    /// </summary>
     public interface IPlayer : ICloneable
     {
         string Name { get; set; }

@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth.Users
 {
+    /// <summary>
+    ///  Concrete Flyweight class holding the possible player movements
+    /// </summary>
     public class PlayerMovement
     {
         public void MoveDown(IPlayer player)
