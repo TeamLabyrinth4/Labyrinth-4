@@ -5,13 +5,16 @@
     using Labyrinth.Scoreboard;
     using Users;
 
+    /// <summary>
+    /// The 'ConcreteObserver' class, who manages the relation with the databes with top players
+    /// </summary>
     public class ScoreBoardHandler : IScoreBoardObserver
     {
         private IScoreboard scoreboard;
 
-        public ScoreBoardHandler()
+        public ScoreBoardHandler(IScoreboard scoreboard)
         {
-            this.scoreboard = new LocalScoreBoard();
+            this.scoreboard = scoreboard;
         }
 
         public void Update(IPlayer player)

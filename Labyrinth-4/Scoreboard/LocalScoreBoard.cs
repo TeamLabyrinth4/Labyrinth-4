@@ -6,6 +6,9 @@
 
     using Labyrinth.Users;
 
+    /// <summary>
+    /// Implementation of a local database of the best players
+    /// </summary>
     public class LocalScoreBoard : IScoreboard
     {
         private const int MaxScorebordSize = 5;

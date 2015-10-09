@@ -1,7 +1,8 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
-    using Labyrinth.Renderer;
+    using Labyrinth.Renderer;    
     using Labyrinth.Users;
+    using Scoreboard;
 
     public interface IGameObjectBuilder
     {
@@ -9,7 +10,9 @@
 
         IPlayer CreatePlayer();
 
-        IScoreBoardObserver CreteScoreBoardHanler();
+        IScoreboard CreateScoreboard();
+
+        IScoreBoardObserver CreteScoreBoardHanler(IScoreboard scoreboard);
 
         LabyrinthMatrix CreateLabyrinthMatrix();
 

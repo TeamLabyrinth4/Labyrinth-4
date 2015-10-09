@@ -1,9 +1,6 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+    using Scoreboard;
 
     public abstract class Decorator : IGameObjectBuilder
     {
@@ -24,9 +21,9 @@
             return this.GameObjectBuilder.CreatePlayer();
         }
 
-        public IScoreBoardObserver CreteScoreBoardHanler()
+        public IScoreBoardObserver CreteScoreBoardHanler(IScoreboard scoreboard)
         {
-            return this.GameObjectBuilder.CreteScoreBoardHanler();
+            return this.GameObjectBuilder.CreteScoreBoardHanler(scoreboard);
         }
 
         public LabyrinthMatrix CreateLabyrinthMatrix()
@@ -42,6 +39,11 @@
         public string GetUserName()
         {
             return this.GameObjectBuilder.GetUserName();
+        }
+
+        public IScoreboard CreateScoreboard()
+        {
+            return new LocalScoreBoard();
         }
     }
 }

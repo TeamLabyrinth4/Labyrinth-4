@@ -1,8 +1,10 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
     using System;
-    using Labyrinth.Renderer;
-    using Labyrinth.Users;
+
+    using Renderer;
+    using Scoreboard;
+    using Users;
 
     public class SimpleConsoleGameBuilder : IGameObjectBuilder
     {
@@ -17,9 +19,9 @@
             return new ConsoleRenderer();
         }
 
-        public IScoreBoardObserver CreteScoreBoardHanler()
+        public IScoreBoardObserver CreteScoreBoardHanler(IScoreboard scoreboard)
         {
-            return new ScoreBoardHandler();
+            return new ScoreBoardHandler(scoreboard);
         }
 
         public LabyrinthMatrix CreateLabyrinthMatrix()
@@ -37,6 +39,11 @@
         public Messages CreateMessages()
         {
             return new Messages();
+        }
+
+        public IScoreboard CreateScoreboard()
+        {
+            return new LocalScoreBoard();
         }
     }
 }
