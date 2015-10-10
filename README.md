@@ -93,17 +93,17 @@ in class top5score. Now we can store data in the player in a separate place.<br/
 2. The Main method is extracted from the class ConsoleWritter and put in separate class AppStart. <br/>
 3. In method HandleScoreboard(int moveCount) in Top5Scoreboard class
 the logic for recording the top players is improved by substitution of a for loop with a LINQ:
-```
+
 this.scoreboard = this.scoreboard.OrderBy(x => x.Score).ToList()</code>;
-```<br/>
-4. New classes ScoreBoardHandler, LocalScoreBoard and new interface IScoreboard are introduced. LocalScoreBoard implements the new interface with the methods: 
-```
-void AddToScoreBoard(IPlayer player);
+<br/>
+4. New classes ScoreBoardHandler, LocalScoreBoard and new interface IScoreboard are introduced. LocalScoreBoard implements the new interface with the methods: </br>
+<code>
+void AddToScoreBoard(IPlayer player);<br/>
 IList<IPlayer> ReturnCurrentScoreBoard();
-```
+</code>;<br/>
 ScoreBoardHandler has an instance of the LocalScoreBoard recorded in it.
 ScoreBoardHandler has method HandleScoreboard which calls the new method AddToScoreBoard from LocalScoreBoard. ShowScoreboard() calls ReturnCurrentScoreBoard.<br/>
-5. IRenderer interface added. The concrete implementation of this new interface is through the ConsoleRenderer class. This class has method for all the logic of the game for the UI. This separation of the UI logic follows the Single responsibility principle. Now all the other classes when has to use the console they use method from this class. In the final version this class implements three methods: ShowLabyrinth(), AddInput() and ShowMessage(). There are several messages which could be passed to ShowMessage() method. Class for the messages is introduced where we have a couple of constants to keep the strings. Also it is possible to change the ConsoleRenderer with some different UI platform. This is implementation of the open-closed principle with strategy pattern. The other classes use instance of IRenderer - not the concrete implementation.  
+5. IRenderer interface added. The concrete implementation of this new interface is through the ConsoleRenderer class. This class has methods for all the logic of the game for the UI. This separation of the UI logic follows the Single responsibility principle. Now all the other classes when has to use the console they use method from this class. In the final version this class implements three methods: ShowLabyrinth(), AddInput() and ShowMessage(). There are several messages which could be passed to ShowMessage() method. Class for the messages is introduced where we have a couple of constants to keep the strings. Also it is possible to change the ConsoleRenderer with some different UI platform. This is implementation of the open-closed principle with strategy pattern. The other classes use instance of IRenderer - not the concrete implementation.  
 6. 
 - - - -
 
