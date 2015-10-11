@@ -40,7 +40,8 @@
 
         public string AddPlayersName()
         {
-            return Console.ReadLine();
+            string input = Console.ReadLine();
+            return input;
         }
 
         public string AddInput()

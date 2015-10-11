@@ -1,10 +1,13 @@
-﻿namespace Labyrinth_Game.Tests
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace Labyrinth_Game.Tests
 {
     using Labyrinth.Scoreboard;
     using Labyrinth.Users;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
     using System.Collections.Generic;
+    using System;
+    using System.Text;
 
     [TestClass]
     public class ScoreboardTests
@@ -21,11 +24,12 @@
         public void TestScoreboardToAddNewPlayer()
         {
             var mockedScoreboard = new Mock<IScoreboard>();
-            var playerToAdd = new Player("Test Five") { Score = 12 };
             mockedScoreboard.Setup(x => x.AddToScoreBoard(It.IsAny<IPlayer>()))
                 .Callback((IPlayer player) => fakeDb.Add((Player)player));
 
             var scoreboard = mockedScoreboard.Object;
+
+            var playerToAdd = new Player("Test Five") { Score = 12 };
 
             scoreboard.AddToScoreBoard(playerToAdd);
             var expectedCount = 5;
@@ -36,13 +40,13 @@
         public void TestScoreboardToReturnCorrectListOfPlayers()
         {
             var mockedScoreboard = new Mock<IScoreboard>();
-            var playerToAdd = new Player("Test Five") { Score = 12 };
+            
             mockedScoreboard.Setup(x => x.AddToScoreBoard(It.IsAny<IPlayer>()))
                 .Callback((IPlayer player) => fakeDb.Add((Player)player));
             mockedScoreboard.Setup(x => x.ReturnCurrentScoreBoard()).Returns(fakeDb);
 
             var scoreboard = mockedScoreboard.Object;
-
+            var playerToAdd = new Player("Test Five") { Score = 12 };
             scoreboard.AddToScoreBoard(playerToAdd);
             var expectedDb = scoreboard.ReturnCurrentScoreBoard();
             Assert.AreEqual(expectedDb.Count, fakeDb.Count);
