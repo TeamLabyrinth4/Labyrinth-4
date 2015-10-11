@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Renderer
 {
-    using Model;
     using System;
+    using Model;    
     using Users;
 
     /// <summary>

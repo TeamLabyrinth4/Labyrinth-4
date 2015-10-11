@@ -35,6 +35,7 @@
                 Console.WriteLine(Messages.EmptyScoreBoard);
                 return;
             }
+
             Console.WriteLine(Messages.ScoreBoardHeader);
             for (int i = 0; i < currentScoreBoard.Count; ++i)
             {

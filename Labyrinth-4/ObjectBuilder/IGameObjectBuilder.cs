@@ -1,11 +1,11 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
-    using Utilities;
-    using Model;
+    using Model;      
     using Renderer;
     using Scoreboard;
     using Users;
-
+    using Utilities; 
+ 
     /// <summary>
     /// The 'Builder' abstract class
     /// Specifies an abstract interface for creating all need objects for running the game.

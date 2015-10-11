@@ -6,11 +6,11 @@
     using Contexts;
     using Enums;
     using Factories;
-    using Renderer;
+    using Model;
+    using Renderer;  
     using Scoreboard;
     using Users;
-    using Utilities;
-    using Model;
+    using Utilities;   
 
     /// <summary>
     /// The Game Engine class, which implements thread safe Singleton pattern.
@@ -33,7 +33,6 @@
         /// <param name="renderer">Accepts any instance of IRenderer.</param>
         /// <param name="scoreboard">Accepts any instance of IScoreBoardObserver.</param>
         /// <param name="matrix">Accepts instance of the class LabyrinthMatrix.</param>
-
         private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix)
         {
             this.context = new Context(scoreboard, renderer, player, matrix);

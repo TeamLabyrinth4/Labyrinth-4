@@ -1,12 +1,11 @@
 ﻿namespace Labyrinth.Contexts
 {
     using System;
-
-    using Labyrinth.Utilities;
-    using Labyrinth.Renderer;
-    using Labyrinth.Users;
-    using Labyrinth.Scoreboard;
     using Labyrinth.Model;
+    using Labyrinth.Renderer;
+    using Labyrinth.Scoreboard;
+    using Labyrinth.Users;
+    using Labyrinth.Utilities;
 
     internal class Context : IContext
     {

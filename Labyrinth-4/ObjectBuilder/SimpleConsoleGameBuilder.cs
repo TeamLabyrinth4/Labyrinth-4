@@ -1,11 +1,10 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
     using System;
-
+    using Model;
     using Renderer;
     using Scoreboard;
-    using Users;
-    using Model;
+    using Users;   
     using Utilities;
 
     /// <summary>

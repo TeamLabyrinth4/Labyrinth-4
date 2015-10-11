@@ -1,8 +1,8 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
-    using Utilities;
     using Model;
     using Scoreboard;
+    using Utilities;   
 
     /// <summary>
     /// A Decorator class which wrap the IGameObjectBuilder interface in order to add new functionality.

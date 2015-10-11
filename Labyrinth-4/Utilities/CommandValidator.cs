@@ -1,4 +1,5 @@
 ﻿[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Labyrinth-Game.Tests")]
+
 namespace Labyrinth.Utilities
 {
     using System;
