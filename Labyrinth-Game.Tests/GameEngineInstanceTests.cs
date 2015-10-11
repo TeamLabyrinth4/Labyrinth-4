@@ -20,9 +20,8 @@
             var mockedRenderer = new Mock<IRenderer>();
             var mockedScoreBoardObserver = new Mock<IScoreBoardObserver>();
             var mockedLabyrinthMatrix = new LabyrinthMatrix();
-            var mockedMessages = new Messages();
 
-            var game = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix, mockedMessages);
+            var game = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
 
             Assert.IsTrue(game is GameEngine);
         }
