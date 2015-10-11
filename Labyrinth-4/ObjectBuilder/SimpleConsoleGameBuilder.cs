@@ -41,11 +41,6 @@
             return userName;
         }
 
-        public Messages CreateMessages()
-        {
-            return new Messages();
-        }
-
         public IScoreboard CreateScoreboard()
         {
             return new LocalScoreBoard();

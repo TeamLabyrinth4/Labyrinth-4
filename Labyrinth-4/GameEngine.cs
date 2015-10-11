@@ -22,7 +22,6 @@
         private static volatile GameEngine gameInstance;
         private static object syncLock = new object();
 
-        private Messages messenger;
         private ICommandFactory factory;
         private IContext context;
         private string input;
@@ -34,11 +33,9 @@
         /// <param name="renderer">Accepts any instance of IRenderer.</param>
         /// <param name="scoreboard">Accepts any instance of IScoreBoardObserver.</param>
         /// <param name="matrix">Accepts instance of the class LabyrinthMatrix.</param>
-        /// <param name="messages">Accepts instance of the class Messages.</param>
-        private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
-        {
-            this.messenger = messages;
 
+        private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix)
+        {
             this.context = new Context(scoreboard, renderer, player, matrix);
             this.factory = new CommandFactory(this.context);
 
@@ -53,9 +50,8 @@
         /// <param name="renderer">Accepts any instance of IRenderer.</param>
         /// <param name="scoreboard">Accepts any instance of IScoreBoardObserver.</param>
         /// <param name="matrix">Accepts instance of the class LabyrinthMatrix.</param>
-        /// <param name="messages">Accepts instance of the class Messages.</param>
         /// <returns>Instance of the GameEngine class.</returns>
-        public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
+        public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix)
         {
             if (gameInstance == null)
             {
@@ -63,7 +59,7 @@
                 {
                     if (gameInstance == null)
                     {
-                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix, messages);
+                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix);
                     }
                 }
             }
@@ -109,7 +105,9 @@
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 this.context.Renderer.ShowMessage(Messages.InvalidMoveMessage);
+                Console.ResetColor();
             }
 
             this.IsFinished();
