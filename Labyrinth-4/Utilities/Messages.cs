@@ -16,5 +16,6 @@
         public const string StartNewGame = "\nNew game started !\n\n" + WelcomeMessage;
         public const string EmptyScoreBoard = "The scoreboard is empty.";
         public const string ScoreBoardHeader = "---TOP 5 SCOREBOARD---\n";
+        public const string LabirinthBlock = "Labirinth Block, Go in different direction.";
     }
 }
