@@ -33,6 +33,13 @@
             }
         }
 
+        public void ShowInvalidMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(message);
+            Console.ResetColor();
+        }
+
         public void ShowMessage(string message)
         {
             Console.WriteLine(message);

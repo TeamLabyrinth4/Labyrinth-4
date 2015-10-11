@@ -103,10 +103,8 @@
                 command.Execute();
             }
             else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                this.context.Renderer.ShowMessage(Messages.InvalidMoveMessage);
-                Console.ResetColor();
+            {                
+                this.context.Renderer.ShowInvalidMessage(Messages.InvalidMoveMessage);               
             }
 
             this.IsFinished();

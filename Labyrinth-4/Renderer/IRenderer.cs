@@ -16,6 +16,8 @@
 
         void ShowMessage(string message);
 
+        void ShowInvalidMessage(string message);
+
         string WriteFinalMessage(int moves);
     }
 }
