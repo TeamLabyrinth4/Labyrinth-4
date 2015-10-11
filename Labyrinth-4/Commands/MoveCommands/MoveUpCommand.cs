@@ -26,7 +26,7 @@
 
         public void Execute()
         {
-            if ( this.Context.Matrix.Matrix[this.Context.Player.PositionCol][this.Context.Player.PositionRow - 1] == '-')
+            if (this.Context.Matrix.Matrix[this.Context.Player.PositionCol][this.Context.Player.PositionRow - 1] == '-')
             {
                 this.Context.Player.MoveUp();
             }

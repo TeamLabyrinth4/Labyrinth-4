@@ -12,6 +12,8 @@
 
         string AddInput();
 
+        string AddPlayersName();
+
         void ShowMessage(string message);
 
         string WriteFinalMessage(int moves);

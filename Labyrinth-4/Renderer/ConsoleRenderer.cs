@@ -38,6 +38,11 @@
             Console.WriteLine(message);
         }
 
+        public string AddPlayersName()
+        {
+            return Console.ReadLine();
+        }
+
         public string AddInput()
         {
             string input = Console.ReadLine();

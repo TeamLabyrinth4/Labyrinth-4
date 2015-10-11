@@ -32,8 +32,8 @@
 
         private void AddNewPlayer()
         {
-            Console.Write("Please enter your name: ");
-            string userName = Console.ReadLine();
+            this.Context.Renderer.ShowMessage("Please enter your name: ");
+            string userName = this.Context.Renderer.AddPlayersName();
             this.Context.Player.Name = userName;
             this.Context.StartNewGame();
         }
