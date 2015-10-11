@@ -7,6 +7,9 @@
     /// </summary>
     public static class AppStart
     {
+        /// <summary>
+        /// The method initializes the games and then starts it.
+        /// </summary>
         public static void Main()
         {
             var constructor = new GameConstructor();

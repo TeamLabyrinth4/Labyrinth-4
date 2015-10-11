@@ -1,10 +1,14 @@
 ﻿namespace Labyrinth.Users
 {
     using System;
+    using System.IO;
+    using System.Runtime.Serialization;
+    using System.Runtime.Serialization.Formatters.Binary;
 
     /// <summary>
     /// The actual implementation of the IPlayer interfaced
     /// </summary>
+    [Serializable]
     internal sealed class Player : IPlayer
     {
         private PlayerMovement playerMovement = PlayerFactory.GetPlayer();
@@ -84,7 +88,21 @@
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            // Don't serialize a null object, simply return the default for that object
+            if (Object.ReferenceEquals(this, null))
+            {
+                return this;
+            }
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new MemoryStream();
+
+            using (stream)
+            {
+                formatter.Serialize(stream, this);
+                stream.Seek(0, SeekOrigin.Begin);
+                return formatter.Deserialize(stream);
+            }
         }
 
         public void MoveUp()
