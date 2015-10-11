@@ -18,6 +18,10 @@
         private int positionRow;
         private int positionCol;
 
+        /// <summary>
+        /// Creates an initialization of the class and sets the initial score to 0.
+        /// </summary>
+        /// <param name="name">Accepts the name of the client as a string.</param>
         public Player(string name)
         {
             this.Name = name;

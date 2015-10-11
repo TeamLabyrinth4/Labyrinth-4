@@ -12,6 +12,10 @@
     /// </summary>
     public class MoveLeftCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a move left command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public MoveLeftCommand(IContext context)
         {
             this.Context = context;

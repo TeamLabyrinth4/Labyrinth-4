@@ -16,6 +16,9 @@
         private char[][] matrix;
         private Random random = new Random();
 
+        /// <summary>
+        /// Creates a new playfield for the game.
+        /// </summary>
         public LabyrinthMatrix()
         {
             this.matrix = this.CreateMatrix();

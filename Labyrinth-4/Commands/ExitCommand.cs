@@ -8,6 +8,10 @@
     /// </summary>
     public class ExitCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a exit command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param>      
         public ExitCommand(IContext context)
         {
             this.Context = context;

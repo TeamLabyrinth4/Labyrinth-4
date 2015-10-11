@@ -26,6 +26,14 @@
         private IContext context;
         private string input;
 
+        /// <summary>
+        /// Creates instance of the game engine object.
+        /// </summary>
+        /// <param name="player">Accepts any instance of IPlayer.</param>
+        /// <param name="renderer">Accepts any instance of IRenderer.</param>
+        /// <param name="scoreboard">Accepts any instance of IScoreBoardObserver.</param>
+        /// <param name="matrix">Accepts instance of the class LabyrinthMatrix.</param>
+        /// <param name="messages">Accepts instance of the class Messages.</param>
         private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             this.messenger = messages;
@@ -37,6 +45,15 @@
             this.context.StartNewGame();
         }
 
+        /// <summary>
+        /// Creates a thread safety Singleton instance of the GameEngine. 
+        /// </summary>
+        /// <param name="player">Accepts any instance of IPlayer.</param>
+        /// <param name="renderer">Accepts any instance of IRenderer.</param>
+        /// <param name="scoreboard">Accepts any instance of IScoreBoardObserver.</param>
+        /// <param name="matrix">Accepts instance of the class LabyrinthMatrix.</param>
+        /// <param name="messages">Accepts instance of the class Messages.</param>
+        /// <returns>Instance of the GameEngine class.</returns>
         public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
         {
             if (gameInstance == null)
@@ -53,6 +70,9 @@
             return gameInstance;
         }
 
+        /// <summary>
+        /// The method performs the core game logic.
+        /// </summary>
         public void GameRun()
         {
             while (true)
@@ -64,11 +84,18 @@
             }
         }
 
+        /// <summary>
+        /// Method for displaying messages to the client.
+        /// </summary>
         public void ShowInputMessage()
         {
             this.context.Renderer.ShowMessage(Messages.InputMessage);
         }
 
+        /// <summary>
+        /// Method to handle the commands coming from the client.
+        /// </summary>
+        /// <param name="input">A string input from the client.</param>
         public void HandleInput(string input)
         {
             var lowerInput = input.ToLower();
@@ -88,6 +115,10 @@
             this.IsFinished();
         }
 
+        /// <summary>
+        /// Method used in Observer pattern to call the update to all attached objects.
+        /// </summary>
+        /// <param name="player">Instance of IPLayer.</param>
         public override void Notify(IPlayer player)
         {
             foreach (IScoreBoardObserver observer in this.Observers)
@@ -96,6 +127,9 @@
             }
         }
 
+        /// <summary>
+        /// Method that handles the ending of the current game.
+        /// </summary>
         private void IsFinished()
         {
             if (this.context.Player.PositionCol == Constants.MinimalHorizontalPosition ||

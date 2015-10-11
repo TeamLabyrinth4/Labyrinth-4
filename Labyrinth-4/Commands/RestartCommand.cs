@@ -11,6 +11,10 @@
     /// </summary>
     public class RestartCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a restart command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public RestartCommand(IContext context)
         {
             this.Context = context;

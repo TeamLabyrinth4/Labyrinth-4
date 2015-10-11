@@ -12,6 +12,10 @@
     /// </summary>
     public class LoadCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a load command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public LoadCommand(IContext context)
         {
             this.Context = context;

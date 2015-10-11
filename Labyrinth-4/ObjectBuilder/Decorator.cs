@@ -7,6 +7,10 @@
     /// </summary>
     public abstract class Decorator : IGameObjectBuilder
     {
+        /// <summary>
+        /// Creates instance of the basic Decorator class.
+        /// </summary>
+        /// <param name="gameObjectBuilder">Can accepts any type of IGameObjectBuilder object.</param>
         protected Decorator(IGameObjectBuilder gameObjectBuilder)
         {
             this.GameObjectBuilder = gameObjectBuilder;

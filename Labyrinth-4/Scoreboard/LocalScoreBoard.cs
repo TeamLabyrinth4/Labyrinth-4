@@ -14,6 +14,9 @@
         private const int MaxScorebordSize = 5;
         private IList<IPlayer> scoreboard;
 
+        /// <summary>
+        /// Creates an local scoreboard using List with predefined size.
+        /// </summary>
         public LocalScoreBoard()
         {
             this.scoreboard = new List<IPlayer>(MaxScorebordSize);

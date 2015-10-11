@@ -12,6 +12,10 @@
     {
         private IScoreboard scoreboard;
 
+        /// <summary>
+        /// Creates an object which will handle the relation with the database.
+        /// </summary>
+        /// <param name="scoreboard">A Scoreboard object to store the result.</param>
         public ScoreBoardHandler(IScoreboard scoreboard)
         {
             this.scoreboard = scoreboard;

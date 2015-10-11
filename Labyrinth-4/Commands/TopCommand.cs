@@ -11,6 +11,10 @@
     /// </summary>
     public class TopCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a show top players command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public TopCommand(IContext context)
         {
             this.Context = context;

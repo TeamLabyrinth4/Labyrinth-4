@@ -11,6 +11,10 @@
     /// </summary>
     public class NewPlayerCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a new player command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public NewPlayerCommand(IContext context)
         {
             this.Context = context;

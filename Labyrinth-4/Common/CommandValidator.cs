@@ -9,6 +9,9 @@
     /// <typeparam name="T">A Generic Type Parameter for the input.</typeparam>
     public class CommandValidator<T>
     {
+        /// <summary>
+        /// Gets an instance of a command validator.
+        /// </summary>
         public CommandValidator()
         {
             if (!typeof(T).IsEnum)

@@ -14,6 +14,10 @@
         // Flyweight pattern
         private readonly Dictionary<CommandType, ICommand> commands = new Dictionary<CommandType, ICommand>();
 
+        /// <summary>
+        /// Instance of the factory which will create game commands.
+        /// </summary>
+        /// <param name="context">The current game context.</param>
         public CommandFactory(IContext context)
         {
             this.Context = context;

@@ -12,6 +12,10 @@
     /// </summary>
     public class SaveCommand : ICommand
     {
+        /// <summary>
+        ///  Gets an instance of a save command
+        /// </summary>
+        /// <param name="context">Accepts the current game context.</param> 
         public SaveCommand(IContext context)
         {
             this.Context = context;
