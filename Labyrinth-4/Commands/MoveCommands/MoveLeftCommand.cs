@@ -26,10 +26,13 @@
 
         public void Execute()
         {
-            if (!(this.Context.Player.PositionCol == Constants.MinimalHorizontalPosition) &&
-                 this.Context.Matrix.Matrix[this.Context.Player.PositionCol - 1][this.Context.Player.PositionRow] == '-')
+            if (this.Context.Matrix.Matrix[this.Context.Player.PositionCol - 1][this.Context.Player.PositionRow] == '-')
             {
                 this.Context.Player.MoveLeft();
+            }
+            else
+            {
+                this.Context.Renderer.ShowMessage(Messages.LabirinthBlock);
             }
         }
     }

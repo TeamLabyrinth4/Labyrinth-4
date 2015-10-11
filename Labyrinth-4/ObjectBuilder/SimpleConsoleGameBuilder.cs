@@ -44,6 +44,6 @@
         public IScoreboard CreateScoreboard()
         {
             return new LocalScoreBoard();
-        }
+        }       
     }
 }
