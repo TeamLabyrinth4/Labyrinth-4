@@ -19,9 +19,9 @@
             var mockedPlayer = new Mock<IPlayer>();
             var mockedRenderer = new Mock<IRenderer>();
             var mockedScoreBoardObserver = new Mock<IScoreBoardObserver>();
-            var mockedLabyrinthMatrix = new LabyrinthMatrix();
+            var labyrinthMatrix = new LabyrinthMatrix();
 
-            var game = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
+            var game = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, labyrinthMatrix);
 
             Assert.IsTrue(game is GameEngine);
         }
@@ -32,16 +32,16 @@
             var mockedPlayer = new Mock<IPlayer>();
             var mockedRenderer = new Mock<IRenderer>();
             var mockedScoreBoardObserver = new Mock<IScoreBoardObserver>();
-            var mockedLabyrinthMatrix = new LabyrinthMatrix();
+            var labyrinthMatrix = new LabyrinthMatrix();
 
-            mockedPlayer.Setup(x => x.Name).Returns("Stamat");
+            mockedPlayer.SetupProperty(x => x.Name, "Stamat");
 
-            var initialGameIntance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
+            var initialGameIntance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, labyrinthMatrix);
 
             mockedPlayer = new Mock<IPlayer>();
-            mockedPlayer.Setup(x => x.Name).Returns("Pesho");
+            mockedPlayer.SetupProperty(x => x.Name, "Pesho");
 
-            var secondGameInstance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
+            var secondGameInstance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, labyrinthMatrix);
 
             Assert.AreEqual(initialGameIntance, secondGameInstance);
         }
