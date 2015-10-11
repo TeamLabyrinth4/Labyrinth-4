@@ -131,8 +131,6 @@ What kind of objects will be created:
 
         LabyrinthMatrix CreateLabyrinthMatrix();
 
-        Messages CreateMessages();
-
         string GetUserName();
     }
 ~~~ 
@@ -147,9 +145,8 @@ The Direcotr class:
             this.scoreboard = objectBuilder.CreateScoreboard();
             this.scoreBoardHandler = objectBuilder.CreteScoreBoardHanler(this.scoreboard);
             this.matrix = objectBuilder.CreateLabyrinthMatrix();
-            this.messages = objectBuilder.CreateMessages();
 
-            return GameEngine.Instance(this.player, this.renderer, this.scoreBoardHandler, this.matrix, this.messages);
+            return GameEngine.Instance(this.player, this.renderer, this.scoreBoardHandler, this.matrix);
         }
 ~~~
 
@@ -175,7 +172,7 @@ public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoar
                 {
                     if (gameInstance == null)
                     {
-                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix, messages);
+                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix);
                     }
                 }
             }
@@ -357,7 +354,7 @@ public class ConsoleSizeableGameBuilder : Decorator
 
 ##### Command Pattern:
 
-It was used to handle all ingma commands
+It was used to handle all ingame commands
 
 ~~~c#
  public interface ICommand
@@ -444,19 +441,28 @@ public class Memento
 ## How SOLID Principles are followed:
 
 1. Single responsibility principle
-	* 
+	* Classes are focused on performing only one task 
+	* For example the playfield does not know how it is drawn
+	* Separate in-game saver - Memento pattern
 
 2. Open/closed principle
-	* 
+	* The code relies on a Interfaces not on a concrete classes, they can be easily replaced with new ones.
+	* The core game logic does not rely on if-else constructions (Command pattern)
+	* New features are added via the Decorator pattern
 
 3. Liskov substitution principle
-	* 
+	* Child classes do not remove base class behaviour or violate base class invariants
+	* There is no type checking
+	* No virtual methods in class constructors
 
 4. Interface segregation principle
-	* 
+	* Most interfaces are small and focused 
+	* There are no classes who does not implement given interface
 
 5. Dependency inversion principle
-	* 
+	* There are no hidden dependencies in constructors.
+	* It was used Constructor injection.
+	* Limited use of new keyword and static classic and methods.
 
 - - - - 
 
