@@ -7,6 +7,9 @@
     using Labyrinth.Contexts;
     using Users;
 
+    /// <summary>
+    /// Saves the game. Used with Memento pattern.
+    /// </summary>
     public class SaveCommand : ICommand
     {
         public SaveCommand(IContext context)

@@ -1,10 +1,10 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
 
+    /// <summary>
+    /// Setups a console game with a fixed window size this is a Concrete Decorator class.
+    /// </summary>
     public class ConsoleSizeableGameBuilder : Decorator
     {
         public ConsoleSizeableGameBuilder(IGameObjectBuilder gameObjectBuilder)

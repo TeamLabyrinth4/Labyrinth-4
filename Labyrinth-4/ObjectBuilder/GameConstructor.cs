@@ -4,6 +4,10 @@
     using Scoreboard;
     using Users;
 
+    /// <summary>
+    /// The 'Director' class who puts the creating of all game objects in the right order.
+    /// taking in mind all dependencies.
+    /// </summary>
     public class GameConstructor
     {
         private IRenderer renderer;
@@ -14,8 +18,7 @@
         private IScoreboard scoreboard;
 
         /// <summary>
-        /// The 'Director' class who puts the creating of all game objects in the right order.
-        /// taking in mind all dependencies.
+        /// The methods put the creation of the initial game objects in the correct order.
         /// </summary>
         /// <param name="objectBuilder">Gets a concrete builder, which will provide the needed objects.</param>
         /// <returns>Instance of the game engine.</returns>

@@ -1,13 +1,14 @@
 ﻿namespace Labyrinth.Factories
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Labyrinth.Commands;
     using Labyrinth.Contexts;
     using Labyrinth.Enums;
 
+    /// <summary>
+    /// Factory which will create all the needed commands within the game.
+    /// It will hold only one instance of each for better performance.
+    /// </summary>
     public class CommandFactory : ICommandFactory
     {
         // Flyweight pattern

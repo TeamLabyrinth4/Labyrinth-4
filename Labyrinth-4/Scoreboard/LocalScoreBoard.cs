@@ -40,7 +40,6 @@
 
         public IList<IPlayer> ReturnCurrentScoreBoard()
         {
-            // TODO: perform a deep clone of the collection / add coresponding pattern
             return new List<IPlayer>(this.scoreboard);
         }
     }

@@ -6,6 +6,9 @@
     using System.Text;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// Displays the best player and their score.
+    /// </summary>
     public class TopCommand : ICommand
     {
         public TopCommand(IContext context)

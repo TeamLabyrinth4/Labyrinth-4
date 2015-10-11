@@ -6,7 +6,7 @@
     using System.Runtime.Serialization.Formatters.Binary;
 
     /// <summary>
-    /// The actual implementation of the IPlayer interfaced
+    /// The actual implementation of the IPlayer interfaced.
     /// </summary>
     [Serializable]
     internal sealed class Player : IPlayer
@@ -89,7 +89,7 @@
         public object Clone()
         {
             // Don't serialize a null object, simply return the default for that object
-            if (Object.ReferenceEquals(this, null))
+            if (object.ReferenceEquals(this, null))
             {
                 return this;
             }

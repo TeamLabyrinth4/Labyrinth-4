@@ -7,6 +7,9 @@
     using Labyrinth.Common;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// Moves the player in direction left.
+    /// </summary>
     public class MoveLeftCommand : ICommand
     {
         public MoveLeftCommand(IContext context)

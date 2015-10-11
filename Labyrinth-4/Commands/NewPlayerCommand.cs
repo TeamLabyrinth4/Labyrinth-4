@@ -6,6 +6,9 @@
     using System.Text;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// The class adds a new player in the game.
+    /// </summary>
     public class NewPlayerCommand : ICommand
     {
         public NewPlayerCommand(IContext context)

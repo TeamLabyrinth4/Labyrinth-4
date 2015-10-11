@@ -7,6 +7,9 @@
     using Labyrinth.Common;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// Moves the player in direction down.
+    /// </summary>
     public class MoveDownCommand : ICommand
     {
         public MoveDownCommand(IContext context)

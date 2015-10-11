@@ -15,6 +15,11 @@
         public const string Positions = "At position: X:{0},Y:{1}";
         public const string Restarted = "New game started !\n" + WelcomeMessage;
 
+        /// <summary>
+        /// Generates the message with the final result from the game.
+        /// </summary>
+        /// <param name="moves">The actual result from the game.</param>
+        /// <returns>A message to be displayed to the client.</returns>
         public string WriteFinalMessage(int moves)
         {
             return "Congratulations! You escaped in " + moves.ToString() + " moves.";

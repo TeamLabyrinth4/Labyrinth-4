@@ -7,6 +7,9 @@
     using Labyrinth.Common;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// Moves the player in direction up.
+    /// </summary>
     public class MoveUpCommand : ICommand
     {
         public MoveUpCommand(IContext context)

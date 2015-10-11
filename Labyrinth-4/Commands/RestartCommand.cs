@@ -6,6 +6,9 @@
     using System.Text;
     using Labyrinth.Contexts;
 
+    /// <summary>
+    /// Starts a new game.
+    /// </summary>
     public class RestartCommand : ICommand
     {
         public RestartCommand(IContext context)

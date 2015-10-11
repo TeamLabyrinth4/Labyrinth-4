@@ -1,9 +1,10 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
     using System;
-    using Labyrinth.Renderer;
-    using Labyrinth.Users;
 
+    /// <summary>
+    /// Setups a colorful console this is a Concrete Decorator class.
+    /// </summary>
     public class ConsoleColorableGameBuilder : Decorator
     {
         public ConsoleColorableGameBuilder(IGameObjectBuilder gameObjectBuilder) : base(gameObjectBuilder)

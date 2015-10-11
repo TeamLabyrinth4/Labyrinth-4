@@ -7,6 +7,9 @@
     using Labyrinth.Contexts;
     using Users;
 
+    /// <summary>
+    /// The class executes Load command and it's linked with the Memento pattern.
+    /// </summary>
     public class LoadCommand : ICommand
     {
         public LoadCommand(IContext context)

@@ -2,6 +2,9 @@
 {
     using Scoreboard;
 
+    /// <summary>
+    /// A Decorator class which wrap the IGameObjectBuilder interface in order to add new functionality.
+    /// </summary>
     public abstract class Decorator : IGameObjectBuilder
     {
         protected Decorator(IGameObjectBuilder gameObjectBuilder)
