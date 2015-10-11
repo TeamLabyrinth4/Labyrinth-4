@@ -9,7 +9,7 @@
     /// The actual implementation of the IPlayer interfaced.
     /// </summary>
     [Serializable]
-    internal sealed class Player : IPlayer
+    public sealed class Player : IPlayer
     {
         private PlayerMovement playerMovement = PlayerFactory.GetPlayer();
 
