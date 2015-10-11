@@ -40,11 +40,6 @@
             return this.GameObjectBuilder.CreateLabyrinthMatrix();
         }
 
-        public Messages CreateMessages()
-        {
-            return this.GameObjectBuilder.CreateMessages();
-        }
-
         public string GetUserName()
         {
             return this.GameObjectBuilder.GetUserName();

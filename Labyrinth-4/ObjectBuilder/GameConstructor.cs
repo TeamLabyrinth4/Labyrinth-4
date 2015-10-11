@@ -31,9 +31,8 @@
             this.scoreboard = objectBuilder.CreateScoreboard();
             this.scoreBoardHandler = objectBuilder.CreteScoreBoardHanler(this.scoreboard);
             this.matrix = objectBuilder.CreateLabyrinthMatrix();
-            this.messages = objectBuilder.CreateMessages();
 
-            return GameEngine.Instance(this.player, this.renderer, this.scoreBoardHandler, this.matrix, this.messages);
+            return GameEngine.Instance(this.player, this.renderer, this.scoreBoardHandler, this.matrix);
         }
     }
 }
