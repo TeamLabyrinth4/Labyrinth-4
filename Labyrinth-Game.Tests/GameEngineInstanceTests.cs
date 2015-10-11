@@ -25,5 +25,25 @@
 
             Assert.IsTrue(game is GameEngine);
         }
+
+        [TestMethod]
+        public void IntanceAlwaysReturnsTheSameGameEngineIntance()
+        {
+            var mockedPlayer = new Mock<IPlayer>();
+            var mockedRenderer = new Mock<IRenderer>();
+            var mockedScoreBoardObserver = new Mock<IScoreBoardObserver>();
+            var mockedLabyrinthMatrix = new LabyrinthMatrix();
+
+            mockedPlayer.Setup(x => x.Name).Returns("Stamat");
+
+            var initialGameIntance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
+
+            mockedPlayer = new Mock<IPlayer>();
+            mockedPlayer.Setup(x => x.Name).Returns("Pesho");
+
+            var secondGameInstance = GameEngine.Instance(mockedPlayer.Object, mockedRenderer.Object, mockedScoreBoardObserver.Object, mockedLabyrinthMatrix);
+
+            Assert.AreEqual(initialGameIntance, secondGameInstance);
+        }
     }
 }
