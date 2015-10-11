@@ -112,7 +112,7 @@ ScoreBoardHandler has method HandleScoreboard which calls the new method AddToSc
 
 ### Creatinal Patterns
 
-1. __Builder Pattern:__
+##### Builder Pattern:
 
 Implemented to create all the needed initial game objects, respecrting all dependencies between them in order to create the Game Engine.
 
@@ -162,7 +162,7 @@ Usage:
  var game = constructor.SetupGame(gameBuilder);
 ~~~ 
 
-2. __Singleton Pattern:__
+##### Singleton Pattern:
 
 Used for the GameEngine, because we need only one istnce of this object.
 
@@ -184,7 +184,7 @@ public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoar
         }
 ~~~
 
-3. __Prototype Pattern:__ 
+##### Prototype Pattern:
 
 Implemented in the Player class. Helps us to keep only one instance of the player within the hole game, the cloning is used when we need to save the player in the database.
 
@@ -209,7 +209,7 @@ Implemented in the Player class. Helps us to keep only one instance of the playe
         }
 ~~~
 
-4. __Factory Method:__
+##### Factory Method:
 
 Used for creating the ingame commands:
 ~~~c#
@@ -273,7 +273,7 @@ Also it masused for creating the player movements and etc.
 
 ### Structural Patterns
 
-5. __Facade Pattern:__
+##### Facade Pattern:
 
 In this project this is the GameEngine class, which hides all complex logic and relation between the object within itself.
 
@@ -305,7 +305,7 @@ public void GameRun()
         }
 ~~~ 
 
-6. __Flyweight Pattern:__
+##### Flyweight Pattern:
 
 Reduceses the creation of new in game objects.
 
@@ -333,7 +333,7 @@ Also how the commands are stored:
 private readonly Dictionary<CommandType, ICommand> commands = new Dictionary<CommandType, ICommand>();
 ~~~
 
-7. __Decorator Pattern:__
+##### Decorator Pattern:
 
 Used for adding new functionallity to the game as easy as possible
 
@@ -355,7 +355,7 @@ public class ConsoleSizeableGameBuilder : Decorator
 
 ### Behavioral Patterns
 
-8. __Command Pattern:__
+##### Command Pattern:
 
 It was used to handle all ingma commands
 
@@ -391,7 +391,7 @@ public class MoveLeftCommand : ICommand
     }
 ~~~
 
-9. __Observer Pattern:__
+##### Observer Pattern:
 
 Helps us to link the event of ending the game with the update of the List of the best players
 
@@ -414,7 +414,7 @@ public abstract class ObserverSubject
     }
 ~~~~
 
-10. __Memento Pattern:__
+##### Memento Pattern: 
 
 It was used to add new functionality to the game -> option to save the game and to load it.
 
@@ -441,7 +441,7 @@ public class Memento
 
 - - - - 
 
-## SOLID Principles
+## How SOLID Principles are followed:
 
 1. Single responsibility principle
 	* 
