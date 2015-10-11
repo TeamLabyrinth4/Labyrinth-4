@@ -1,6 +1,7 @@
 ﻿namespace Labyrinth.Factories
 {
     using System.Collections.Generic;
+
     using Labyrinth.Commands;
     using Labyrinth.Contexts;
     using Labyrinth.Enums;

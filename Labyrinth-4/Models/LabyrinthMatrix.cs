@@ -1,4 +1,4 @@
-﻿namespace Labyrinth
+﻿namespace Labyrinth.Model
 {
     using System;
 

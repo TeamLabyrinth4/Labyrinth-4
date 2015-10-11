@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth.Renderer
 {
+    using Model;
     using System;
     using Users;
 
@@ -42,6 +43,16 @@
             string input = Console.ReadLine();
             Console.Clear();
             return input;
+        }
+
+        /// <summary>
+        /// Generates the message with the final result from the game.
+        /// </summary>
+        /// <param name="moves">The actual result from the game.</param>
+        /// <returns>A message to be displayed to the client.</returns>
+        public string WriteFinalMessage(int moves)
+        {
+            return "Congratulations! You escaped in " + moves.ToString() + " moves.";
         }
     }
 }

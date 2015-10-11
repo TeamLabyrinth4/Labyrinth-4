@@ -44,20 +44,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStart.cs" />
-    <Compile Include="Commands\ExitCommand.cs" />
-    <Compile Include="Commands\Contract\ICommand.cs" />
-    <Compile Include="Commands\LoadCommand.cs" />
-    <Compile Include="Commands\MoveDownCommand.cs" />
-    <Compile Include="Commands\MoveLeftCommand.cs" />
-    <Compile Include="Commands\MoveRightCommand.cs" />
-    <Compile Include="Commands\MoveUpCommand.cs" />
-    <Compile Include="Commands\NewPlayerCommand.cs" />
-    <Compile Include="Commands\RestartCommand.cs" />
-    <Compile Include="Commands\SaveCommand.cs" />
-    <Compile Include="Commands\TopCommand.cs" />
-    <Compile Include="Common\CommandValidator.cs" />
-    <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\MoveValidator.cs" />
+    <Compile Include="Commands\GameCommands\ExitCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\GameCommands\LoadCommand.cs" />
+    <Compile Include="Commands\MoveCommands\MoveDownCommand.cs" />
+    <Compile Include="Commands\MoveCommands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveCommands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveCommands\MoveUpCommand.cs" />
+    <Compile Include="Commands\GameCommands\NewPlayerCommand.cs" />
+    <Compile Include="Commands\GameCommands\RestartCommand.cs" />
+    <Compile Include="Commands\GameCommands\SaveCommand.cs" />
+    <Compile Include="Commands\GameCommands\TopCommand.cs" />
+    <Compile Include="Utilities\CommandValidator.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\MoveValidator.cs" />
     <Compile Include="Contexts\Context.cs" />
     <Compile Include="Contexts\IContext.cs" />
     <Compile Include="Enums\CommandType.cs" />
@@ -72,7 +72,7 @@
     <Compile Include="ObjectBuilder\SimpleConsoleGameBuilder.cs" />
     <Compile Include="Scoreboard\IScoreBoardObserver.cs" />
     <Compile Include="Models\LabyrinthMatrix.cs" />
-    <Compile Include="Common\Messages.cs" />
+    <Compile Include="Utilities\Messages.cs" />
     <Compile Include="Renderer\ConsoleRenderer.cs" />
     <Compile Include="Renderer\IRenderer.cs" />
     <Compile Include="Scoreboard\IScoreboard.cs" />

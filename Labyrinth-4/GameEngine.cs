@@ -3,13 +3,14 @@
     using System;
 
     using Commands;
-    using Common;
     using Contexts;
     using Enums;
     using Factories;
     using Renderer;
     using Scoreboard;
     using Users;
+    using Utilities;
+    using Model;
 
     /// <summary>
     /// The Game Engine class, which implements thread safe Singleton pattern.
@@ -99,17 +100,16 @@
         public void HandleInput(string input)
         {
             var lowerInput = input.ToLower();
-            var commandsValidator = new CommandValidator<CommandType>();
             ICommand command;
 
-            if (commandsValidator.IsValidCommand(input))
+            if (CommandValidator<CommandType>.IsValidCommand(input))
             {
-                command = this.factory.CreateCommand(commandsValidator.GetType(input));
+                command = this.factory.CreateCommand(CommandValidator<CommandType>.GetType(input));
                 command.Execute();
             }
             else
             {
-                Console.WriteLine("Invalid Command");
+                this.context.Renderer.ShowMessage(Messages.InvalidMoveMessage);
             }
 
             this.IsFinished();
@@ -137,7 +137,7 @@
                 this.context.Player.PositionRow == Constants.MinimalVerticalPosition ||
                 this.context.Player.PositionRow == Constants.MaximalVerticalPosition)
             {
-                this.context.Renderer.ShowMessage(this.messenger.WriteFinalMessage(this.context.Player.Score));
+                this.context.Renderer.ShowMessage(this.context.Renderer.WriteFinalMessage(this.context.Player.Score));
                 var clone = (IPlayer)this.context.Player.Clone();
                 this.Notify(clone);
                 this.context.StartNewGame();

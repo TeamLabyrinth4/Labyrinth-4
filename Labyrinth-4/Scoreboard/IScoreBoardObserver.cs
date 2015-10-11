@@ -1,4 +1,4 @@
-﻿namespace Labyrinth
+﻿namespace Labyrinth.Scoreboard
 {
     using Labyrinth.Users;
 

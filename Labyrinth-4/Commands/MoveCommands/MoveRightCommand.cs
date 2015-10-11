@@ -4,19 +4,20 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Labyrinth.Common;
+
     using Labyrinth.Contexts;
+    using Labyrinth.Utilities;
 
     /// <summary>
-    /// Moves the player in direction down.
+    /// Moves the player in direction right.
     /// </summary>
-    public class MoveDownCommand : ICommand
+    public class MoveRightCommand : ICommand
     {
         /// <summary>
-        ///  Gets an instance of a move down command
+        ///  Gets an instance of a move right command
         /// </summary>
         /// <param name="context">Accepts the current game context.</param> 
-        public MoveDownCommand(IContext context)
+        public MoveRightCommand(IContext context)
         {
             this.Context = context;
         }
@@ -25,10 +26,10 @@
 
         public void Execute()
         {
-            if (!(this.Context.Player.PositionRow == Constants.MinimalVerticalPosition) &&
-                this.Context.Matrix.Matrix[this.Context.Player.PositionCol][this.Context.Player.PositionRow + 1] == '-')
+            if (!(this.Context.Player.PositionCol == Constants.MaximalHorizontalPosition) &&
+                  this.Context.Matrix.Matrix[this.Context.Player.PositionCol + 1][this.Context.Player.PositionRow] == '-')
             {
-                this.Context.Player.MoveDown();
+                this.Context.Player.MoveRight();
             }
         }
     }

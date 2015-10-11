@@ -1,9 +1,9 @@
-﻿namespace Labyrinth
+﻿namespace Labyrinth.Scoreboard
 {
     using System;
 
-    using Labyrinth.Scoreboard;
     using Users;
+    using Utilities;
 
     /// <summary>
     /// The 'ConcreteObserver' class, who manages the relation with the databases with top players.
@@ -32,10 +32,10 @@
             var currentScoreBoard = this.scoreboard.ReturnCurrentScoreBoard();
             if (currentScoreBoard.Count == 0)
             {
-                Console.WriteLine("The scoreboard is empty.");
+                Console.WriteLine(Messages.EmptyScoreBoard);
                 return;
             }
-
+            Console.WriteLine(Messages.ScoreBoardHeader);
             for (int i = 0; i < currentScoreBoard.Count; ++i)
             {
                 Console.WriteLine("{0}. {1} --> {2} moves", (i + 1).ToString(), currentScoreBoard[i].Name, currentScoreBoard[i].Score.ToString());

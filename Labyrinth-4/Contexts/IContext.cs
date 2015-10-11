@@ -1,6 +1,8 @@
 ﻿namespace Labyrinth.Contexts
 {
+    using Labyrinth.Model;
     using Labyrinth.Renderer;
+    using Labyrinth.Scoreboard;
     using Labyrinth.Users;
 
     public interface IContext

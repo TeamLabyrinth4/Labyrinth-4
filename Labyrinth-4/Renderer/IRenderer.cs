@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth.Renderer
 {
+    using Labyrinth.Model;
     using Labyrinth.Users;
 
     /// <summary>
@@ -11,6 +12,8 @@
 
         string AddInput();
 
-        void ShowMessage(string message);         
+        void ShowMessage(string message);
+
+        string WriteFinalMessage(int moves);
     }
 }

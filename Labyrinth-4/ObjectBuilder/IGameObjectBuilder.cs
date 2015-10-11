@@ -1,6 +1,8 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
-    using Renderer; 
+    using Utilities;
+    using Model;
+    using Renderer;
     using Scoreboard;
     using Users;
 

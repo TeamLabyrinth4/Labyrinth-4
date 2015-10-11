@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Common
+﻿namespace Labyrinth.Utilities
 {
     /// <summary>
     /// The class holds shared in-game constants which may be used by other classes.

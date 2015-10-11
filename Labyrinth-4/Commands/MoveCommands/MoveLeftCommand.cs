@@ -4,8 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
-    using Labyrinth.Common;
+
     using Labyrinth.Contexts;
+    using Labyrinth.Utilities;
 
     /// <summary>
     /// Moves the player in direction left.

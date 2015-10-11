@@ -4,18 +4,19 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+
     using Labyrinth.Contexts;
 
     /// <summary>
-    /// Displays the best player and their score.
+    /// Starts a new game.
     /// </summary>
-    public class TopCommand : ICommand
+    public class RestartCommand : ICommand
     {
         /// <summary>
-        ///  Gets an instance of a show top players command
+        ///  Gets an instance of a restart command
         /// </summary>
         /// <param name="context">Accepts the current game context.</param> 
-        public TopCommand(IContext context)
+        public RestartCommand(IContext context)
         {
             this.Context = context;
         }
@@ -24,7 +25,7 @@
 
         public void Execute()
         {
-            this.Context.ScoreboardHandler.ShowScoreboard();
+            this.Context.StartNewGame();
         }
     }
 }

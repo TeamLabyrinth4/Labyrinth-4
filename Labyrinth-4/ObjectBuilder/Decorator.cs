@@ -1,5 +1,7 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
+    using Utilities;
+    using Model;
     using Scoreboard;
 
     /// <summary>

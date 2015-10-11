@@ -1,7 +1,9 @@
 ﻿namespace Labyrinth.Commands
 {
     using System;
+
     using Labyrinth.Contexts;
+    using Labyrinth.Utilities;
 
     /// <summary>
     /// The class performs exit from the game.

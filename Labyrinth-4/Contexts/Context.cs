@@ -1,9 +1,12 @@
 ﻿namespace Labyrinth.Contexts
 {
     using System;
-    using Common;
+
+    using Labyrinth.Utilities;
     using Labyrinth.Renderer;
     using Labyrinth.Users;
+    using Labyrinth.Scoreboard;
+    using Labyrinth.Model;
 
     internal class Context : IContext
     {
@@ -28,7 +31,7 @@
 
         public void StartNewGame()
         {
-            this.Renderer.ShowMessage(Messages.Restarted);
+            this.Renderer.ShowMessage(Messages.StartNewGame);
             this.Matrix = new LabyrinthMatrix();
             this.Player.Score = 0;
             this.Player.PositionCol = Constants.StartPositionHorizontal;

@@ -5,6 +5,8 @@
     using Renderer;
     using Scoreboard;
     using Users;
+    using Model;
+    using Utilities;
 
     /// <summary>
     /// The 'ConcreteBuilder' class, it creates all needed object for a simple console game.

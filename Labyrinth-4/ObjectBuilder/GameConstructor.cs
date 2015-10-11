@@ -1,8 +1,10 @@
 ﻿namespace Labyrinth.ObjectBuilder
 {
+    using Utilities;
     using Renderer;
     using Scoreboard;
     using Users;
+    using Model;
 
     /// <summary>
     /// The 'Director' class who puts the creating of all game objects in the right order.
