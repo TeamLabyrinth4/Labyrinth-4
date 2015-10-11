@@ -6,8 +6,6 @@ Team Labyrinth-4 members:
   - Teodor Cholakov
   - Chavdar Angelov
   - Ivaylo Andonov
-  - Vasil Profirov
-  - Vasil Pavlov 
 
 - - - -
 
@@ -87,24 +85,27 @@ At the start most of the methods are already separated, so only parts of the cod
 
  which substitute<br/>
  <code>private IList<Tuple<uint, string>> scoreboard;</code><br/>
- with<br/>
-<code>private IList<IPlayer> scoreboard;</code><br/>
-in class top5score. Now we can store data in the player in a separate place.<br/>
-2. The Main method is extracted from the class ConsoleWritter and put in separate class AppStart. <br/>
+
+Also the Labyrint matrix no longer knows about the player position.
+
+2. The Main method is extracted from the class ConsoleWritter and put in separate class AppStart. 
+
 3. In method HandleScoreboard(int moveCount) in Top5Scoreboard class
 the logic for recording the top players is improved by substitution of a for loop with a LINQ:
-
 this.scoreboard = this.scoreboard.OrderBy(x => x.Score).ToList()</code>;
-<br/>
-4. New classes ScoreBoardHandler, LocalScoreBoard and new interface IScoreboard are introduced. LocalScoreBoard implements the new interface with the methods: </br>
+
+4. New classes ScoreBoardHandler, LocalScoreBoard and new interface IScoreboard are introduced. LocalScoreBoard implements the new interface with the methods:
+
 <code>
 void AddToScoreBoard(IPlayer player);<br/>
 IList<IPlayer> ReturnCurrentScoreBoard();
 </code>;<br/>
+
 ScoreBoardHandler has an instance of the LocalScoreBoard recorded in it.
-ScoreBoardHandler has method HandleScoreboard which calls the new method AddToScoreBoard from LocalScoreBoard. ShowScoreboard() calls ReturnCurrentScoreBoard.<br/>
+ScoreBoardHandler has method HandleScoreboard which calls the new method AddToScoreBoard from LocalScoreBoard. ShowScoreboard() calls ReturnCurrentScoreBoard.
+
 5. IRenderer interface added. The concrete implementation of this new interface is through the ConsoleRenderer class. This class has methods for all the logic of the game for the UI. This separation of the UI logic follows the Single responsibility principle. Now all the other classes when has to use the console they use method from this class. In the final version this class implements three methods: ShowLabyrinth(), AddInput() and ShowMessage(). There are several messages which could be passed to ShowMessage() method. Class for the messages is introduced where we have a couple of constants to keep the strings. Also it is possible to change the ConsoleRenderer with some different UI platform. This is implementation of the open-closed principle with strategy pattern. The other classes use instance of IRenderer - not the concrete implementation.  
-6. 
+
 - - - -
 
 ## Step 3: Introduction of Design Patterns
@@ -113,28 +114,327 @@ ScoreBoardHandler has method HandleScoreboard which calls the new method AddToSc
 
 1. __Builder Pattern:__
 
+Implemented to create all the needed initial game objects, respecrting all dependencies between them in order to create the Game Engine.
+
+What kind of objects will be created:
+
+~~~c#
+ public interface IGameObjectBuilder
+    {
+        IRenderer CreteRenderer();
+
+        IPlayer CreatePlayer();
+
+        IScoreboard CreateScoreboard();
+
+        IScoreBoardObserver CreteScoreBoardHanler(IScoreboard scoreboard);
+
+        LabyrinthMatrix CreateLabyrinthMatrix();
+
+        Messages CreateMessages();
+
+        string GetUserName();
+    }
+~~~ 
+
+The Direcotr class:
+
+~~~c#
+ public GameEngine SetupGame(IGameObjectBuilder objectBuilder)
+        {
+            this.renderer = objectBuilder.CreteRenderer();
+            this.player = objectBuilder.CreatePlayer();
+            this.scoreboard = objectBuilder.CreateScoreboard();
+            this.scoreBoardHandler = objectBuilder.CreteScoreBoardHanler(this.scoreboard);
+            this.matrix = objectBuilder.CreateLabyrinthMatrix();
+            this.messages = objectBuilder.CreateMessages();
+
+            return GameEngine.Instance(this.player, this.renderer, this.scoreBoardHandler, this.matrix, this.messages);
+        }
+~~~
+
+
+Usage:
+
+~~~c#
+ var constructor = new GameConstructor();
+ var gameBuilder = new ConsoleSizeableGameBuilder(new SimpleConsoleGameBuilder());
+ var game = constructor.SetupGame(gameBuilder);
+~~~ 
+
 2. __Singleton Pattern:__
+
+Used for the GameEngine, because we need only one istnce of this object.
+
+~~~c#
+public static GameEngine Instance(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
+        {
+            if (gameInstance == null)
+            {
+                lock (syncLock)
+                {
+                    if (gameInstance == null)
+                    {
+                        gameInstance = new GameEngine(player, renderer, scoreboard, matrix, messages);
+                    }
+                }
+            }
+
+            return gameInstance;
+        }
+~~~
 
 3. __Prototype Pattern:__ 
 
+Implemented in the Player class. Helps us to keep only one instance of the player within the hole game, the cloning is used when we need to save the player in the database.
+
+~~~c#
+ public object Clone()
+        {
+            // Don't serialize a null object, simply return the default for that object
+            if (object.ReferenceEquals(this, null))
+            {
+                return this;
+            }
+
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new MemoryStream();
+
+            using (stream)
+            {
+                formatter.Serialize(stream, this);
+                stream.Seek(0, SeekOrigin.Begin);
+                return formatter.Deserialize(stream);
+            }
+        }
+~~~
+
 4. __Factory Method:__
+
+Used for creating the ingame commands:
+~~~c#
+ public interface ICommandFactory
+    {
+        IContext Context { get; }
+
+        ICommand CreateCommand(CommandType input);
+    }
+
+
+public ICommand CreateCommand(CommandType input)
+        {
+            if (this.commands.ContainsKey(input))
+            {
+                return this.commands[input];
+            }
+
+            switch (input)
+            {
+                case CommandType.U:
+                    this.commands[CommandType.U] = new MoveUpCommand(this.Context); 
+                    break;
+                case CommandType.D:
+                    this.commands[CommandType.D] = new MoveDownCommand(this.Context); 
+                    break;
+                case CommandType.R:
+                    this.commands[CommandType.R] = new MoveRightCommand(this.Context); 
+                    break;
+                case CommandType.L:
+                    this.commands[CommandType.L] = new MoveLeftCommand(this.Context);
+                    break;
+                case CommandType.Exit:
+                    this.commands[CommandType.Exit] = new ExitCommand(this.Context);
+                    break;
+                case CommandType.Restart:
+                    this.commands[CommandType.Restart] = new RestartCommand(this.Context); 
+                    break;
+                case CommandType.Top:
+                    this.commands[CommandType.Top] = new TopCommand(this.Context); 
+                    break;
+                case CommandType.Save:
+                    this.commands[CommandType.Save] = new SaveCommand(this.Context); 
+                    break;
+                case CommandType.Restore:
+                    this.commands[CommandType.Restore] = new LoadCommand(this.Context); 
+                    break;
+                case CommandType.Newplayer:
+                    this.commands[CommandType.Newplayer] = new NewPlayerCommand(this.Context); 
+                    break;
+                default:
+                    this.commands[CommandType.Restore] = null; 
+                    break;
+            }
+
+            return this.commands[input];
+        }
+~~~
+
+Also it masused for creating the player movements and etc.
 
 ### Structural Patterns
 
 5. __Facade Pattern:__
 
+In this project this is the GameEngine class, which hides all complex logic and relation between the object within itself.
+
+~~~c#
+private GameEngine(IPlayer player, IRenderer renderer, IScoreBoardObserver scoreboard, LabyrinthMatrix matrix, Messages messages)
+        {
+            this.messenger = messages;
+
+            this.context = new Context(scoreboard, renderer, player, matrix);
+            this.factory = new CommandFactory(this.context);
+
+            this.Attach(this.context.ScoreboardHandler);
+            this.context.StartNewGame();
+        }
+~~~ 
+
+Also implments the core game logic:
+
+~~~c#
+public void GameRun()
+        {
+            while (true)
+            {
+                this.context.Renderer.ShowLabyrinth(this.context.Matrix, this.context.Player);
+                this.ShowInputMessage();
+                this.input = this.context.Renderer.AddInput();
+                this.HandleInput(this.input);
+            }
+        }
+~~~ 
+
 6. __Flyweight Pattern:__
 
+Reduceses the creation of new in game objects.
+
+It was used for the player command movemnts:
+~~~c#
+ public class PlayerFactory
+    {
+        private static PlayerMovement playerMovement;
+
+        public static PlayerMovement GetPlayer()
+        {
+            if (playerMovement == null)
+            {
+                playerMovement = new PlayerMovement();
+            }
+
+            return playerMovement;
+        }
+    }
+~~~
+
+Also how the commands are stored:
+
+~~~c#
+private readonly Dictionary<CommandType, ICommand> commands = new Dictionary<CommandType, ICommand>();
+~~~
+
 7. __Decorator Pattern:__
+
+Used for adding new functionallity to the game as easy as possible
+
+~~~c#
+public class ConsoleSizeableGameBuilder : Decorator
+    {
+        public ConsoleSizeableGameBuilder(IGameObjectBuilder gameObjectBuilder)
+            : base(gameObjectBuilder)
+        {
+            this.ChangeConsoleWindowSize();
+        }
+
+        private void ChangeConsoleWindowSize()
+        {
+            Console.SetWindowSize(100, 50);
+        }
+    }
+~~~~
 
 ### Behavioral Patterns
 
 8. __Command Pattern:__
 
+It was used to handle all ingma commands
+
+~~~c#
+ public interface ICommand
+    {
+        IContext Context { get; }
+
+        void Execute();
+    }
+~~~
+
+And a simple example of a command:
+
+~~~c#
+public class MoveLeftCommand : ICommand
+    {
+        public MoveLeftCommand(IContext context)
+        {
+            this.Context = context;
+        }
+
+        public IContext Context { get; private set; }
+
+        public void Execute()
+        {
+            if (!(this.Context.Player.PositionCol == Constants.MinimalHorizontalPosition) &&
+                 this.Context.Matrix.Matrix[this.Context.Player.PositionCol - 1][this.Context.Player.PositionRow] == '-')
+            {
+                this.Context.Player.MoveLeft();
+            }
+        }
+    }
+~~~
+
 9. __Observer Pattern:__
+
+Helps us to link the event of ending the game with the update of the List of the best players
+
+~~~c#
+public abstract class ObserverSubject
+    {
+        protected readonly List<IScoreBoardObserver> Observers = new List<IScoreBoardObserver>();
+
+        public void Attach(IScoreBoardObserver observer)
+        {
+            this.Observers.Add(observer);
+        }
+
+        public void Detach(IScoreBoardObserver observer)
+        {
+            this.Observers.Remove(observer);
+        }
+
+        public abstract void Notify(IPlayer player);
+    }
+~~~~
 
 10. __Memento Pattern:__
 
+It was used to add new functionality to the game -> option to save the game and to load it.
+
+~~~c#
+public class Memento
+    {
+        public Memento(int score, int positionRow, int positionCol)
+        {
+            this.Score = score;
+            this.PositionRow = positionRow;
+            this.PositionCol = positionCol;
+        }
+
+        public int Score { get; set; }
+
+        public int PositionRow { get; set; }
+
+        public int PositionCol { get; set; }
+    }
+~~~
 - - - - 
 
 ## Step 4: Created Unit Tests
