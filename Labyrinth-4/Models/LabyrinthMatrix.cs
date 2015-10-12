@@ -24,6 +24,9 @@
             this.matrix = this.CreateMatrix();
         }
 
+        /// <summary>
+        /// Gets a jagged array with the playfield.
+        /// </summary>
         public char[][] Matrix
         {
             get
@@ -32,6 +35,10 @@
             }
         }
 
+        /// <summary>
+        /// Generates the playfield.
+        /// </summary>
+        /// <returns>Returns a jagged array of chars.</returns>
         private char[][] CreateMatrix()
         {
             var matrix = new char[MatrixRows][];
@@ -52,6 +59,10 @@
             return matrix;
         }
 
+        /// <summary>
+        /// Creates random generated chars for the playfiled.
+        /// </summary>
+        /// <returns>Char symbol.</returns>
         private char GetRandomSymbol()
         {
             int randomNumber = this.random.Next(0, 3);

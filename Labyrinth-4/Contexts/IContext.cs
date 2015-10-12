@@ -5,6 +5,9 @@
     using Labyrinth.Scoreboard;
     using Labyrinth.Users;
 
+    /// <summary>
+    /// Interface setting up all requirements for the context class.
+    /// </summary>
     public interface IContext
     {
         LabyrinthMatrix Matrix { get; set; }
