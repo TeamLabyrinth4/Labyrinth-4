@@ -28,6 +28,10 @@
 
         public IScoreBoardObserver ScoreboardHandler { get; set; }
 
+
+        /// <summary>
+        /// Void method used for start new game.Returns player position into start position and zero score.
+        /// </summary>
         public void StartNewGame()
         {
             this.Renderer.ShowMessage(Messages.StartNewGame);

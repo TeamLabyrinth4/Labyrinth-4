@@ -45,12 +45,20 @@
             Console.WriteLine(message);
         }
 
+        /// <summary>
+        /// Add new player and get new valid user name as input.
+        /// </summary>
+        /// <returns></returns>
         public string AddPlayersName()
         {
             string input = Console.ReadLine();
             return input;
         }
 
+        /// <summary>
+        /// Get user`s input from the console and clear the console after that.
+        /// </summary>
+        /// <returns></returns>
         public string AddInput()
         {
             string input = Console.ReadLine();

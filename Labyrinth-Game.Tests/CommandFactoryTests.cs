@@ -1,18 +1,15 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Labyrinth.Commands;
-using Labyrinth.Enums;
-using Labyrinth.Factories;
-using Labyrinth.Contexts;
-using Labyrinth.Scoreboard;
-using Labyrinth.Renderer;
-using Labyrinth.Users;
-using Labyrinth.Model;
-
-namespace Labyrinth_Game.Tests
+﻿namespace Labyrinth_Game.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Labyrinth.Commands;
+    using Labyrinth.Enums;
+    using Labyrinth.Factories;
+    using Labyrinth.Contexts;
+    using Labyrinth.Scoreboard;
+    using Labyrinth.Renderer;
+    using Labyrinth.Users;
+    using Labyrinth.Model;
+
     [TestClass]
     public class CommandFactoryTests
     {
@@ -26,11 +23,11 @@ namespace Labyrinth_Game.Tests
 
         public CommandFactoryTests()
         {
-            this.factory = new CommandFactory(context);
+            this.factory = new CommandFactory(this.context);
         }        
 
         [TestMethod]
-        public void CreateCommand_WithExit_ShouldCreateExitCommand()
+        public void CreateCommandWithExitShouldCreateExitCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Exit);
 
@@ -39,7 +36,7 @@ namespace Labyrinth_Game.Tests
        
 
         [TestMethod]
-        public void CreateCommand_WithRestart_ShouldCreateRestartCommand()
+        public void CreateCommandWithRestartShouldCreateRestartCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Restart);
 
@@ -47,7 +44,7 @@ namespace Labyrinth_Game.Tests
         }
 
         [TestMethod]
-        public void CreateCommand_WithRestore_ShouldCreateRestoreCommand()
+        public void CreateCommandWithRestoreShouldCreateRestoreCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Restore);
 
@@ -55,7 +52,7 @@ namespace Labyrinth_Game.Tests
         }
 
         [TestMethod]
-        public void CreateCommand_WithTop_ShouldCreateTopScoreCommand()
+        public void CreateCommandWithTopShouldCreateTopScoreCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Top);
 
@@ -63,7 +60,7 @@ namespace Labyrinth_Game.Tests
         }
 
         [TestMethod]
-        public void CreateCommand_WithUndo_ShouldCreateUndoCommand()
+        public void CreateCommandWithNewPlayerShouldCreateNewPlayerCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Newplayer);
 
@@ -71,11 +68,19 @@ namespace Labyrinth_Game.Tests
         }
 
         [TestMethod]
-        public void CreateCommand_WithSave_ShouldCreateSaveCommand()
+        public void CreateCommandWithSaveShouldCreateSaveCommand()
         {
             ICommand command = this.factory.CreateCommand(CommandType.Save);
 
             Assert.IsTrue(command.GetType() == typeof(SaveCommand));
-        }       
+        }   
+        
+        [TestMethod]
+        public void CreateCommandWithUShouldCreateMoveUpCommand()
+        {
+            ICommand command = this.factory.CreateCommand(CommandType.U);
+
+            Assert.IsTrue(command.GetType() == typeof(MoveUpCommand));
+        }    
     }
 }
