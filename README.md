@@ -436,6 +436,12 @@ public class Memento
 
 ## Step 4: Created Unit Tests
 
+1. Mock tests and standart tests are included in the Labyrinth-Game.Tests Project
+
+Current Coverage: 38%
+
+- The usage of abstract classes reduceses the overall code coverage
+
 - - - - 
 
 ## How SOLID Principles are followed:
