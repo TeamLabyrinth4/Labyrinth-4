@@ -138,5 +138,10 @@
                 this.context.StartNewGame();
             }
         }
+
+        public IContext GetCurrentContext()
+        {
+            return this.context;
+        }
     }
 }
