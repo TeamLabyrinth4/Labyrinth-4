@@ -27,11 +27,16 @@
 
             var playerObject = mockedPlayer.Object;
 
-            var gameIntance = GameEngine.Instance(playerObject, mockedRenderer.Object, mockedScoreBoardObserver.Object, labyrinthMatrix);
+            var mockedGameInstance = new Mock<GameEngine>();
+            mockedGameInstance.Setup(x => x.HandleInput(It.Is<string>(s => s.StartsWith("U")))).Verifiable("Up Move Invoked");
+            var fakeeGame = mockedGameInstance.Object;
 
-            gameIntance.HandleInput("U");
+            var fakeGameIntance = GameEngine.Instance(playerObject, mockedRenderer.Object, mockedScoreBoardObserver.Object, labyrinthMatrix);
+            
 
-            Assert.AreEqual(1, playerObject.Score);
+            fakeGameIntance.HandleInput("U");
+
+            
         }
     }
 }
