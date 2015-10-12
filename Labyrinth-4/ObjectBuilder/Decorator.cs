@@ -47,7 +47,7 @@
 
         public IScoreboard CreateScoreboard()
         {
-            return new LocalScoreBoard();
+            return this.GameObjectBuilder.CreateScoreboard();
         }
     }
 }
