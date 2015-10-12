@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth.Model
 {
+    using Utilities;
     using System;
 
     /// <summary>
@@ -8,11 +9,6 @@
     /// </summary>
     public class LabyrinthMatrix
     {
-        public const int MatrixRows = 17;
-        public const int MatrixCols = 17;
-        public const char BlockedField = 'X';
-        public const char EmptyField = '-';
-
         private char[][] matrix;
         private Random random = new Random();
 
@@ -41,11 +37,11 @@
         /// <returns>Returns a jagged array of chars.</returns>
         private char[][] CreateMatrix()
         {
-            var matrix = new char[MatrixRows][];
+            var matrix = new char[Constants.MatrixRows][];
 
             for (int i = 0; i < matrix.Length; i++)
             {
-                matrix[i] = new char[MatrixCols];
+                matrix[i] = new char[Constants.MatrixCols];
             }
 
             for (int i = 0; i < matrix.Length; i++)
@@ -69,11 +65,11 @@
 
             if (randomNumber == 1)
             {               
-                return BlockedField;
+                return Constants.BlockedField;
             }
             else
             {
-                return EmptyField;
+                return Constants.EmptyField;
             }
         }
     }
