@@ -59,6 +59,7 @@
     <Compile Include="CommandFactoryTests.cs" />
     <Compile Include="GameBuilderTests.cs" />
     <Compile Include="GameEngineInstanceTests.cs" />
+    <Compile Include="MementoTests.cs" />
     <Compile Include="ModelsTests.cs" />
     <Compile Include="PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

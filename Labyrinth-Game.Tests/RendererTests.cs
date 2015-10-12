@@ -1,9 +1,8 @@
 ﻿namespace Labyrinth_Game.Tests
 {
+    using Labyrinth.Renderer;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-
-    using Labyrinth.Renderer;
 
     [TestClass]
     public class RendererTests
