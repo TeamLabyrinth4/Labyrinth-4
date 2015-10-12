@@ -62,8 +62,8 @@ namespace Labyrinth_Game.Tests
             var simpleConsoleGameBuilder = new SimpleConsoleGameBuilder();
             var consoleColorable = new ConsoleColorableGameBuilder(simpleConsoleGameBuilder);
             consoleColorable.ChangeConsoleColor();
-            var consoleColor = Console.ForegroundColor;           
-            Assert.AreEqual(consoleColor, ConsoleColor.Cyan);            
-        }     
+            var consoleColor = Console.ForegroundColor;
+            Assert.AreEqual(consoleColor, ConsoleColor.Cyan);
+        }
     }
 }
