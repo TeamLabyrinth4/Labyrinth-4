@@ -26,6 +26,11 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Creates a Command depending on the given input.
+        /// </summary>
+        /// <param name="input">A enum of Command Type.</param>
+        /// <returns>Instance of ICommand.</returns>
         public ICommand CreateCommand(CommandType input)
         {
             if (this.commands.ContainsKey(input))
