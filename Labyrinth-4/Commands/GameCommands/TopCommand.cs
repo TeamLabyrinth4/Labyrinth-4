@@ -23,6 +23,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Calls teh ScoreboardHandler to display the best players.
+        /// </summary>
         public void Execute()
         {
             this.Context.ScoreboardHandler.ShowScoreboard();

@@ -23,6 +23,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Starts the game over again.
+        /// </summary>
         public void Execute()
         {
             this.Context.StartNewGame();

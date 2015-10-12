@@ -25,6 +25,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Saves the game with help of the Memento pattern.
+        /// </summary>
         public void Execute()
         {
             this.Context.Memory.Memento = this.SaveMemento();

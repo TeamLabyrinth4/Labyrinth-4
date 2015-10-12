@@ -25,6 +25,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Restores the Memenoto.
+        /// </summary>
         public void Execute()
         {
             this.RestoreMemento(this.Context.Memory.Memento);

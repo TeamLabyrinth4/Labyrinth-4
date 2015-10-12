@@ -24,6 +24,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Changes the name of the player.
+        /// </summary>
         public void Execute()
         {
             this.Context.Renderer.ShowMessage(Messages.ChangePlayer);

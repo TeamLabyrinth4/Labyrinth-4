@@ -21,6 +21,9 @@
 
         public IContext Context { get; private set; }
 
+        /// <summary>
+        /// Shows exit message and performs exit.
+        /// </summary>
         public void Execute()
         {
             this.Context.Renderer.ShowMessage(Messages.GoodBye);
