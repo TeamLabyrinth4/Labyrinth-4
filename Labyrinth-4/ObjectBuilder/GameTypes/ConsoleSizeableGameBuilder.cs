@@ -17,7 +17,7 @@
             this.ChangeConsoleWindowSize();
         }
 
-        private void ChangeConsoleWindowSize()
+        public void ChangeConsoleWindowSize()
         {
             Console.SetWindowSize(100, 50);
         }
