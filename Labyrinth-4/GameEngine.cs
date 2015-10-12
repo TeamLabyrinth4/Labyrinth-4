@@ -122,6 +122,11 @@
             }
         }
 
+        public IContext GetCurrentContext()
+        {
+            return this.context;
+        }
+
         /// <summary>
         /// Method that handles the ending of the current game.
         /// </summary>
@@ -137,11 +142,6 @@
                 this.Notify(clone);
                 this.context.StartNewGame();
             }
-        }
-
-        public IContext GetCurrentContext()
-        {
-            return this.context;
         }
     }
 }

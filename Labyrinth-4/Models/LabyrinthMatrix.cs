@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Model
 {
-    using Utilities;
     using System;
+    using Utilities;
 
     /// <summary>
     /// Generates the playfield of the game.
